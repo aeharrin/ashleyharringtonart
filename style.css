@@ -35,14 +35,14 @@ body {
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
 }
-nav.scrolled { border-color: var(--border); }
-nav.dark-bg { background: var(--ink); }
-nav.dark-bg .nav-name { color: var(--cream); }
-nav.dark-bg .nav-links a { color: rgba(244,240,232,0.5); }
-nav.dark-bg .nav-links a:hover { color: var(--cream); }
-nav.dark-bg.scrolled { border-color: rgba(244,240,232,0.1); }
+#main-nav.scrolled { border-color: var(--border); }
+#main-nav.dark-bg { background: var(--ink); }
+#main-nav.dark-bg .nav-name { color: var(--cream); }
+#main-nav.dark-bg .nav-links a { color: rgba(244,240,232,0.5); }
+#main-nav.dark-bg .nav-links a:hover { color: var(--cream); }
+#main-nav.dark-bg.scrolled { border-color: rgba(244,240,232,0.1); }
 
-.nav-name {
+#main-nav .nav-name {
   font-family: var(--serif);
   font-size: 1.05rem;
   font-weight: 400;
