@@ -42,7 +42,7 @@ body {
 #main-nav.dark-bg .nav-links a:hover { color: var(--cream); }
 #main-nav.dark-bg.scrolled { border-color: rgba(244,240,232,0.1); }
 
-#main-nav .nav-name {
+.nav-name {
   font-family: var(--serif);
   font-size: 1.05rem;
   font-weight: 400;
