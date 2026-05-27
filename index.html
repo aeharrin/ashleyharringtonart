@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashley Harrington Art</title>
+<meta name="description" content="Somatic, intuitive abstract paintings and fine art studies by Ashley Harrington, based in Raleigh, North Carolina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4vw;
+    gap: 4rem;
+    padding-top: 5rem;
+  }
+  .hero-text { padding-left: 2vw; }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 36ch;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
+  .hero-image-block { position: relative; height: 75vh; max-height: 680px; }
+
+  /* ── FEATURED ── */
+  #featured { padding: 6rem 4vw; }
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.2rem;
+  }
+  .feat-main { grid-row: span 2; }
+  .feat-thumb {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .feat-main .feat-thumb { height: 100%; aspect-ratio: unset; }
+  .feat-meta { padding: 0.8rem 0 0; }
+  .feat-title { font-size: 0.95rem; font-weight: 400; }
+  .feat-detail {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+  .featured-cta {
+    margin-top: 3rem;
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .featured-cta:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── STATEMENT STRIP ── */
+  #statement-strip {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 6rem 4vw;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .strip-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(244,240,232,0.35);
+    padding-top: 0.4rem;
+  }
+  .strip-quote {
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 300;
+    line-height: 1.55;
+    font-style: italic;
+    color: var(--cream);
+  }
+  .strip-quote em { font-style: normal; color: #c4a882; }
+
+  /* ── ABOUT STRIP ── */
+  #about-strip {
+    background: var(--light-bg);
+    padding: 6rem 4vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-photo-block { position: relative; }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 540px;
+  }
+  .about-text-block {}
+  .about-heading {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .about-heading em { font-style: italic; color: var(--accent); }
+  .about-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--ink);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .about-link {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    margin-top: 0.5rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .about-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── CONTACT STRIP ── */
+  #contact-strip {
+    background: var(--cream);
+    padding: 6rem 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .contact-heading {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+  .contact-heading em { font-style: italic; color: var(--accent); }
+  .contact-sub {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .contact-email {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 3px;
+    letter-spacing: 0.02em;
+    transition: border-color 0.2s;
+    margin-bottom: 3rem;
+    display: inline-block;
+  }
+  .contact-email:hover { border-color: var(--accent); }
+  .social-row { display: flex; gap: 2.5rem; }
+  .social-link {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--ink); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; padding-top: 6rem; }
+    .hero-image-block { height: 55vw; max-height: 400px; order: -1; }
+    .hero-text { padding-left: 0; }
+    .featured-grid { grid-template-columns: 1fr 1fr; }
+    .feat-main { grid-row: span 1; grid-column: span 2; }
+    .feat-main .feat-thumb { aspect-ratio: 4/3; height: auto; }
+    #statement-strip { grid-template-columns: 1fr; gap: 1.5rem; }
+    #about-strip { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  @media (max-width: 600px) {
+    #hero, #featured, #statement-strip, #about-strip, #contact-strip { padding-left: 5vw; padding-right: 5vw; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .feat-main { grid-column: span 1; }
+    .feat-main .feat-thumb { aspect-ratio: 4/3; height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-name">Ashley Harrington</a>
+  <ul class="nav-links">
+    <li><a href="paintings.html">Work</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="about.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Raleigh, North Carolina</p>
+    <h1 class="hero-title">
+      Somatic.<br>
+      <em>Intuitive.</em><br>
+      Abstract.
+    </h1>
+    <p class="hero-tagline">Oil and acrylic paintings that trace the interior — where emotion meets identity, and the body remembers what the mind forgets.</p>
+    <a href="paintings.html" class="hero-cta">View work</a>
+  </div>
+  <div class="hero-image-block fade-in" style="transition-delay:0.15s">
+    <div class="placeholder" style="height:100%">
+      <div class="ph-icon"></div>
+      <span>Featured painting</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORKS -->
+<section id="featured">
+  <p class="section-label fade-in">Selected works</p>
+  <div class="featured-grid">
+    <div class="feat-main fade-in">
+      <div class="feat-thumb placeholder" style="height:560px">
+        <div class="ph-icon"></div><span>Blue Figures series</span>
+      </div>
+      <div class="feat-meta">
+        <p class="feat-title">Blue Figures</p>
+        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; Series of 12</p>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.05s">
+      <div class="feat-thumb placeholder">
+        <div class="ph-icon"></div><span>Shifting Bodies</span>
+      </div>
+      <div class="feat-meta">
+        <p class="feat-title">Shifting Bodies</p>
+        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; 2023</p>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.1s">
+      <div class="feat-thumb placeholder">
+        <div class="ph-icon"></div><span>Study</span>
+      </div>
+      <div class="feat-meta">
+        <p class="feat-title">Figure Study</p>
+        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; 2024</p>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.05s">
+      <div class="feat-thumb placeholder">
+        <div class="ph-icon"></div><span>Figures</span>
+      </div>
+      <div class="feat-meta">
+        <p class="feat-title">The Figures</p>
+        <p class="feat-detail">Acrylic on canvas &nbsp;·&nbsp; 2022</p>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.1s">
+      <div class="feat-thumb placeholder">
+        <div class="ph-icon"></div><span>Commission</span>
+      </div>
+      <div class="feat-meta">
+        <p class="feat-title">Cosmos</p>
+        <p class="feat-detail">Commission &nbsp;·&nbsp; 2024</p>
+      </div>
+    </div>
+  </div>
+  <a href="paintings.html" class="featured-cta fade-in">View all paintings</a>
+</section>
+
+<!-- STATEMENT STRIP -->
+<section id="statement-strip">
+  <p class="strip-label fade-in">Artist statement</p>
+  <blockquote class="strip-quote fade-in" style="transition-delay:0.1s">
+    My paintings are built up in layers — allowing the initial layers to be intuitive without worrying about the outcome. It is in these layers that my subconscious finds its voice, conveying <em>emotions that I interpret and direct,</em> shaping the overall feeling of the painting.
+  </blockquote>
+</section>
+
+<!-- ABOUT STRIP -->
+<section id="about-strip">
+  <div class="about-photo-block fade-in">
+    <div class="about-photo placeholder">
+      <div class="ph-icon"></div><span>Artist photo</span>
+    </div>
+  </div>
+  <div class="about-text-block fade-in" style="transition-delay:0.1s">
+    <h2 class="about-heading">Ashley<br><em>Harrington</em></h2>
+    <p class="about-body">Ashley Harrington is a self-taught painter from Raleigh, North Carolina. Her figurative and abstract work explores self-awareness through emotional observance — painting as a practice of reconnection, identity, and inner excavation.</p>
+    <p class="about-body">Her work has been exhibited at Artspace, Duke University Hospitals, Cameron Art Museum, and Industrious offices across the Triangle. She is a 2023 United Arts Council grant recipient.</p>
+    <a href="about.html" class="about-link">Full bio & CV</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact-strip">
+  <h2 class="contact-heading fade-in">Let's<br><em>connect.</em></h2>
+  <p class="contact-sub fade-in">Commissions &nbsp;·&nbsp; Inquiries &nbsp;·&nbsp; Press</p>
+  <a href="mailto:hello@ashleyharringtonart.com" class="contact-email fade-in">hello@ashleyharringtonart.com</a>
+  <div class="social-row fade-in">
+    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener" class="social-link">Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Ashley Harrington Art &nbsp;·&nbsp; Raleigh, NC</p>
+  <nav class="footer-links">
+    <a href="paintings.html">Work</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="mailto:hello@ashleyharringtonart.com">Contact</a>
+    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — Ashley Harrington Art</title>
+<meta name="description" content="Prints and original mini paintings by Ashley Harrington. Available to purchase online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-header {
+    padding: 10rem 4vw 4rem;
+    background: var(--cream);
+  }
+  .page-title {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+  }
+  .page-title em { font-style: italic; color: var(--accent); }
+  .page-desc {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 52ch;
+    line-height: 1.75;
+  }
+  .shop-note {
+    margin-top: 1rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── SHOP TABS ── */
+  .shop-tabs {
+    position: sticky;
+    top: 57px;
+    z-index: 50;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    padding: 0 4vw;
+  }
+  .shop-tabs a {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 1rem 1.5rem 0.9rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .shop-tabs a:hover { color: var(--ink); }
+  .shop-tabs a.active { color: var(--ink); border-bottom-color: var(--accent); }
+
+  /* ── SHOP SECTION ── */
+  .shop-section { padding: 5rem 4vw; }
+  .shop-section + .shop-section { border-top: 1px solid var(--border); }
+  .shop-section.alt-bg { background: var(--light-bg); }
+
+  .shop-section-header { margin-bottom: 3rem; }
+  .shop-section-title {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .shop-section-title em { font-style: italic; color: var(--accent); }
+  .shop-section-sub {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .shop-section-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 56ch;
+    line-height: 1.75;
+  }
+
+  /* ── SHOP GRID ── */
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .shop-item { cursor: pointer; }
+  .shop-thumb {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    transition: filter 0.3s;
+    position: relative;
+  }
+  .shop-thumb:hover { filter: brightness(0.9); }
+  .shop-thumb.portrait { aspect-ratio: 3/4; }
+  .shop-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+  }
+  .shop-meta { padding: 0.9rem 0 0; }
+  .shop-title { font-size: 0.9rem; font-weight: 400; margin-bottom: 0.2rem; }
+  .shop-price {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .shop-size {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+
+  /* ── PRINTS INFO STRIP ── */
+  .prints-info {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3rem 4vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .info-block {}
+  .info-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244,240,232,0.35);
+    margin-bottom: 0.5rem;
+  }
+  .info-text { font-size: 0.95rem; font-weight: 300; line-height: 1.6; }
+
+  /* ── COMMISSIONS CTA ── */
+  .commissions-cta {
+    background: var(--cream);
+    padding: 5rem 4vw;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .commissions-cta h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+  }
+  .commissions-cta h2 em { font-style: italic; color: var(--accent); }
+  .commissions-cta p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 44ch;
+    line-height: 1.75;
+    margin: 0 auto 2rem;
+  }
+  .btn-outline {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    padding: 0.75rem 2rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none; position: fixed; inset: 0;
+    background: rgba(26,24,21,0.92); z-index: 200;
+    align-items: center; justify-content: center; padding: 2rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { position: relative; max-width: 80vw; display: flex; gap: 3rem; align-items: center; }
+  .lb-placeholder {
+    width: 340px; height: 340px; max-width: 55vw;
+    background: #2e2b28;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+  }
+  .lb-placeholder span { font-family: var(--mono); font-size: 0.6rem; color: rgba(244,240,232,0.3); letter-spacing: 0.12em; text-transform: uppercase; }
+  .lb-info { color: var(--cream); min-width: 180px; }
+  .lb-title { font-size: 1.4rem; font-weight: 300; margin-bottom: 0.4rem; }
+  .lb-detail { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(244,240,232,0.5); text-transform: uppercase; line-height: 1.9; }
+  .lb-price { font-size: 1.1rem; font-weight: 300; color: var(--cream); margin-top: 1rem; }
+  .lb-buy {
+    display: inline-block; margin-top: 1.5rem;
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink); background: var(--cream); text-decoration: none;
+    padding: 0.6rem 1.5rem; transition: background 0.2s;
+  }
+  .lb-buy:hover { background: #e0dbd0; }
+  .lb-close {
+    position: absolute; top: -2.5rem; right: 0;
+    background: none; border: none; color: rgba(244,240,232,0.5);
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; cursor: pointer; transition: color 0.2s;
+  }
+  .lb-close:hover { color: var(--cream); }
+
+  @media (max-width: 1024px) { .shop-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px) {
+    .shop-grid { grid-template-columns: repeat(2, 1fr); }
+    .shop-section, .page-header { padding-left: 5vw; padding-right: 5vw; }
+    .prints-info { grid-template-columns: 1fr; }
+    .lightbox-inner { flex-direction: column; gap: 1.5rem; max-width: 95vw; }
+    .lb-placeholder { width: 80vw; height: 80vw; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-name">Ashley Harrington</a>
+  <ul class="nav-links">
+    <li><a href="paintings.html">Work</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="about.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header fade-in">
+  <h1 class="page-title">Shop &<br><em>Prints</em></h1>
+  <p class="page-desc">Original mini paintings and fine art prints — made to live in your space. All prints are produced on archival paper with museum-quality inks.</p>
+  <p class="shop-note">To inquire about an original painting, visit the <a href="paintings.html" style="color:var(--muted);text-decoration:underline">Work</a> page</p>
+</div>
+
+<nav class="shop-tabs">
+  <a href="#prints" class="active">Prints</a>
+  <a href="#mini-paintings">Mini Paintings</a>
+</nav>
+
+<!-- PRINTS -->
+<section class="shop-section" id="prints">
+  <div class="shop-section-header fade-in">
+    <p class="shop-section-sub">Fine art prints</p>
+    <h2 class="shop-section-title">Select <em>Prints</em></h2>
+    <p class="shop-section-desc">Archival giclée prints of select original paintings. Each print is signed and numbered in a limited edition. Available in multiple sizes.</p>
+  </div>
+  <div class="shop-grid">
+    <div class="shop-item fade-in" data-title="Blue Figure — Print" data-detail="Giclée print · Limited edition · Signed &amp; numbered" data-price="From $85">
+      <div class="shop-thumb portrait placeholder">
+        <div class="shop-badge">Print</div>
+        <div class="ph-icon"></div><span>Blue Figure</span>
+      </div>
+      <div class="shop-meta">
+        <p class="shop-title">Blue Figure</p>
+        <p class="shop-price">From $85</p>
+        <p class="shop-size">8×10 · 11×14 · 16×20</p>
+      </div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.05s" data-title="Shifting Bodies — Print" data-detail="Giclée print · Limited edition · Signed &amp; numbered" data-price="From $85">
+      <div class="shop-thumb portrait placeholder">
+        <div class="shop-badge">Print</div>
+        <div class="ph-icon"></div><span>Shifting Bodies</span>
+      </div>
+      <div class="shop-meta">
+        <p class="shop-title">Shifting Bodies</p>
+        <p class="shop-price">From $85</p>
+        <p class="shop-size">8×10 · 11×14 · 16×20</p>
+      </div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.1s" data-title="The Figures — Print" data-detail="Giclée print · Limited edition · Signed &amp; numbered" data-price="From $85">
+      <div class="shop-thumb portrait placeholder">
+        <div class="shop-badge">Print</div>
+        <div class="ph-icon"></div><span>The Figures</span>
+      </div>
+      <div class="shop-meta">
+        <p class="shop-title">The Figures</p>
+        <p class="shop-price">From $85</p>
+        <p class="shop-size">8×10 · 11×14 · 16×20</p>
+      </div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.15s" data-title="Blue Sass — Print" data-detail="Giclée print · Limited edition · Signed &amp; numbered" data-price="From $85">
+      <div class="shop-thumb portrait placeholder">
+        <div class="shop-badge">Print</div>
+        <div class="ph-icon"></div><span>Blue Sass</span>
+      </div>
+      <div class="shop-meta">
+        <p class="shop-title">Blue Sass</p>
+        <p class="shop-price">From $85</p>
+        <p class="shop-size">8×10 · 11×14 · 16×20</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINTS INFO -->
+<div class="prints-info fade-in">
+  <div class="info-block">
+    <p class="info-label">Materials</p>
+    <p class="info-text">Archival giclée on 100% cotton rag paper. Pigment inks rated 100+ years.</p>
+  </div>
+  <div class="info-block">
+    <p class="info-label">Edition</p>
+    <p class="info-text">Each print is hand-signed and numbered. Limited to 50 per image, per size.</p>
+  </div>
+  <div class="info-block">
+    <p class="info-label">Ordering</p>
+    <p class="info-text">Click any print to inquire. Custom sizing available on request.</p>
+  </div>
+</div>
+
+<!-- MINI PAINTINGS -->
+<section class="shop-section alt-bg" id="mini-paintings">
+  <div class="shop-section-header fade-in">
+    <p class="shop-section-sub">Original works · One of a kind</p>
+    <h2 class="shop-section-title">Mini <em>Paintings</em></h2>
+    <p class="shop-section-desc">Small originals made for art markets — birds, botanicals, landscapes, and more. Each one unique, acrylic on panel or canvas. Priced to find a home.</p>
+  </div>
+  <div class="shop-grid">
+    <div class="shop-item fade-in" data-title="Bird Study 01" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Bird</span></div>
+      <div class="shop-meta"><p class="shop-title">Bird Study 01</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.04s" data-title="Bird Study 02" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Bird</span></div>
+      <div class="shop-meta"><p class="shop-title">Bird Study 02</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.08s" data-title="Floral Study 01" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Flower</span></div>
+      <div class="shop-meta"><p class="shop-title">Floral Study 01</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.12s" data-title="Floral Study 02" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Flower</span></div>
+      <div class="shop-meta"><p class="shop-title">Floral Study 02</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" data-title="Landscape Mini 01" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Landscape</span></div>
+      <div class="shop-meta"><p class="shop-title">Landscape Mini 01</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.04s" data-title="Landscape Mini 02" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Landscape</span></div>
+      <div class="shop-meta"><p class="shop-title">Landscape Mini 02</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.08s" data-title="Vegetable Study 01" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Vegetable</span></div>
+      <div class="shop-meta"><p class="shop-title">Vegetable Study 01</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.12s" data-title="Vegetable Study 02" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Vegetable</span></div>
+      <div class="shop-meta"><p class="shop-title">Vegetable Study 02</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" data-title="Bird Study 03" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Bird</span></div>
+      <div class="shop-meta"><p class="shop-title">Bird Study 03</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.04s" data-title="Floral Study 03" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Flower</span></div>
+      <div class="shop-meta"><p class="shop-title">Floral Study 03</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.08s" data-title="Bird Study 04" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Bird</span></div>
+      <div class="shop-meta"><p class="shop-title">Bird Study 04</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.12s" data-title="Landscape Mini 03" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Landscape</span></div>
+      <div class="shop-meta"><p class="shop-title">Landscape Mini 03</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" data-title="Floral Study 04" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Flower</span></div>
+      <div class="shop-meta"><p class="shop-title">Floral Study 04</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.04s" data-title="Vegetable Study 03" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Vegetable</span></div>
+      <div class="shop-meta"><p class="shop-title">Vegetable Study 03</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.08s" data-title="Bird Study 05" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Bird</span></div>
+      <div class="shop-meta"><p class="shop-title">Bird Study 05</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" style="transition-delay:0.12s" data-title="Floral Study 05" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Flower</span></div>
+      <div class="shop-meta"><p class="shop-title">Floral Study 05</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+    <div class="shop-item fade-in" data-title="Landscape Mini 04" data-detail="Acrylic on panel · Original · One of a kind" data-price="$45–$95">
+      <div class="shop-thumb placeholder"><div class="ph-icon"></div><span>Landscape</span></div>
+      <div class="shop-meta"><p class="shop-title">Landscape Mini 04</p><p class="shop-price">$45–$95</p><p class="shop-size">4×4 / 5×7 original</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMISSIONS CTA -->
+<div class="commissions-cta fade-in">
+  <h2>Looking for something <em>original?</em></h2>
+  <p>Commissions are open. Share your vision and Ashley will create a one-of-a-kind painting for your space.</p>
+  <a href="mailto:hello@ashleyharringtonart.com?subject=Commission Inquiry" class="btn-outline">Inquire about a commission</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lb-close" id="lb-close">✕ Close</button>
+    <div class="lb-placeholder" id="lb-image">
+      <div class="ph-icon" style="width:50px;height:40px;border-color:#4a4742"></div>
+      <span>Artwork</span>
+    </div>
+    <div class="lb-info">
+      <p class="lb-title" id="lb-title">Title</p>
+      <p class="lb-detail" id="lb-detail">Detail</p>
+      <p class="lb-price" id="lb-price"></p>
+      <a href="mailto:hello@ashleyharringtonart.com" class="lb-buy" id="lb-buy">Inquire to purchase</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Ashley Harrington Art &nbsp;·&nbsp; Raleigh, NC</p>
+  <nav class="footer-links">
+    <a href="paintings.html">Work</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="mailto:hello@ashleyharringtonart.com">Contact</a>
+    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const tabs = document.querySelectorAll('.shop-tabs a');
+  const shopSections = document.querySelectorAll('.shop-section');
+  const tabObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tabs.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.shop-tabs a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -40% 0px' });
+  shopSections.forEach(s => tabObserver.observe(s));
+
+  const lightbox = document.getElementById('lightbox');
+  document.querySelectorAll('.shop-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.getElementById('lb-title').textContent = item.dataset.title || 'Untitled';
+      document.getElementById('lb-detail').textContent = item.dataset.detail || '';
+      document.getElementById('lb-price').textContent = item.dataset.price || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+</script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Ashley Harrington Art</title>
+<meta name="description" content="About Ashley Harrington — self-taught painter from Raleigh, NC. Artist statement, biography, CV, exhibitions, and press.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── ABOUT HERO ── */
+  .about-hero {
+    min-height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .about-hero-img {
+    min-height: 80vh;
+    background: #2a2724;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+  }
+  .about-hero-img span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,240,232,0.25); }
+  .about-hero-text {
+    padding: 6rem 5vw;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .about-eyebrow {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(244,240,232,0.35); margin-bottom: 1.5rem;
+  }
+  .about-hero-name {
+    font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.05; margin-bottom: 1.5rem;
+  }
+  .about-hero-name em { font-style: italic; color: #c4a882; }
+  .about-hero-bio {
+    font-size: 1rem; font-weight: 300; line-height: 1.8;
+    color: rgba(244,240,232,0.7); max-width: 44ch;
+  }
+
+  /* ── STATEMENT ── */
+  .statement-section {
+    padding: 7rem 4vw;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 5rem;
+    background: var(--cream);
+  }
+  .statement-sidebar {}
+  .sidebar-label {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); writing-mode: vertical-rl;
+    transform: rotate(180deg); height: fit-content;
+  }
+  .statement-body {}
+  .statement-body p {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.85;
+    color: var(--ink); margin-bottom: 1.5rem;
+  }
+  .statement-body p:first-of-type {
+    font-size: 1.35rem; font-weight: 300; line-height: 1.6; font-style: italic; color: var(--accent);
+  }
+
+  /* ── CV ── */
+  .cv-section { padding: 6rem 4vw; background: var(--light-bg); }
+  .cv-section + .cv-section { background: var(--cream); }
+
+  .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 6rem; }
+
+  .cv-col-title {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted);
+    padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem;
+  }
+  .cv-list { list-style: none; }
+  .cv-item {
+    display: flex; gap: 1.5rem; padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border); align-items: baseline;
+  }
+  .cv-year { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); min-width: 2.5rem; }
+  .cv-title { font-size: 0.9rem; font-weight: 300; line-height: 1.4; }
+  .cv-sub { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); display: block; margin-top: 0.1rem; }
+  .cv-solo {
+    display: inline-block; font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent);
+    padding: 1px 5px; border-radius: 2px; vertical-align: middle; margin-left: 0.4rem;
+  }
+
+  .award-block {
+    margin-top: 2.5rem; padding: 1.5rem; border-left: 2px solid var(--accent);
+  }
+  .award-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .award-title { font-size: 0.95rem; font-weight: 400; }
+  .award-sub { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .press-list { list-style: none; }
+  .press-item { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+  .press-item a { font-size: 0.9rem; font-weight: 300; color: var(--ink); text-decoration: none; transition: color 0.2s; display: block; }
+  .press-item a:hover { color: var(--accent); }
+  .press-src { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); margin-top: 0.1rem; }
+
+  .affil-list { list-style: none; }
+  .affil-item { display: flex; gap: 1.5rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink); color: var(--cream);
+    padding: 7rem 4vw;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .contact-heading { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 0.75rem; }
+  .contact-heading em { font-style: italic; color: #c4a882; }
+  .contact-sub { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(244,240,232,0.35); margin-bottom: 2.5rem; }
+  .contact-email { font-size: 1.05rem; font-weight: 300; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(244,240,232,0.25); padding-bottom: 3px; transition: border-color 0.2s; margin-bottom: 3rem; display: inline-block; letter-spacing: 0.02em; }
+  .contact-email:hover { border-color: #c4a882; }
+  .social-row { display: flex; gap: 2.5rem; }
+  .social-link { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(244,240,232,0.4); text-decoration: none; transition: color 0.2s; }
+  .social-link:hover { color: var(--cream); }
+
+  @media (max-width: 900px) {
+    .about-hero { grid-template-columns: 1fr; }
+    .about-hero-img { min-height: 50vw; }
+    .statement-section { grid-template-columns: 1fr; gap: 2rem; }
+    .sidebar-label { writing-mode: horizontal-tb; transform: none; }
+    .cv-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  @media (max-width: 600px) {
+    .about-hero-text, .statement-section, .cv-section, #contact { padding-left: 5vw; padding-right: 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="main-nav" class="dark-bg">
+  <a href="index.html" class="nav-name">Ashley Harrington</a>
+  <ul class="nav-links">
+    <li><a href="paintings.html">Work</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html" class="active" style="color:rgba(244,240,232,0.8)">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ABOUT HERO -->
+<div class="about-hero">
+  <div class="about-hero-img fade-in">
+    <div class="ph-icon" style="border-color:rgba(244,240,232,0.15)"></div>
+    <span>Artist photo</span>
+  </div>
+  <div class="about-hero-text fade-in" style="transition-delay:0.1s">
+    <p class="about-eyebrow">Raleigh, North Carolina</p>
+    <h1 class="about-hero-name">Ashley<br><em>Harrington</em></h1>
+    <p class="about-hero-bio">Self-taught painter working in acrylic on canvas. Her figurative and abstract paintings trace the interior — using the body as a site of emotional excavation, identity, and reconnection.</p>
+  </div>
+</div>
+
+<!-- ARTIST STATEMENT -->
+<section class="statement-section">
+  <div class="statement-sidebar fade-in">
+    <span class="sidebar-label">Artist Statement</span>
+  </div>
+  <div class="statement-body fade-in" style="transition-delay:0.1s">
+    <p>My art explores self-awareness through emotional observance.</p>
+    <p>Shaped by societal norms and my own personal expectations, I developed a habit of concealing my emotions, causing a sense of disconnection and identity loss. Through my figurative art, I aim to reconnect with these emotions to deepen my self-understanding.</p>
+    <p>My creative process is a journey of mental exploration, grounded in meditation, journaling, and drawing. My rational brain is well-versed in controlling my emotions, so it takes a lot of practice and patience to allow intuitive play into my process.</p>
+    <p>My paintings are built up in layers, allowing the initial layers to be intuitive without worrying about the outcome. It is in these initial layers that my subconscious finds its voice, conveying emotions that I interpret and direct, shaping the overall feeling of the painting.</p>
+    <p>My art evolves alongside my internal exploration, serving as a mirror to reflect on who I am and how emotions have shaped my identity. I hope that my artwork provides viewers with a unique female perspective of self-discovery and encourages their own exploration of emotional awareness.</p>
+  </div>
+</section>
+
+<!-- CV: EXHIBITIONS & COMMISSIONS -->
+<section class="cv-section">
+  <p class="section-label fade-in">CV</p>
+  <div class="cv-grid">
+    <div class="fade-in">
+      <p class="cv-col-title">Exhibitions</p>
+      <ul class="cv-list">
+        <li class="cv-item"><span class="cv-year">2025</span><div><span class="cv-title">Lost in Nature <span class="cv-solo">Solo</span></span><span class="cv-sub">WakeMed North Hospital, Wake Forest Guild of Artists</span></div></li>
+        <li class="cv-item"><span class="cv-year">2025</span><div><span class="cv-title">Hair Undone</span><span class="cv-sub">Wake Forest Guild of Artists</span></div></li>
+        <li class="cv-item"><span class="cv-year">2025</span><div><span class="cv-title">Wake Forest Coffee Company</span><span class="cv-sub">Wake Forest Guild of Artists</span></div></li>
+        <li class="cv-item"><span class="cv-year">2024</span><div><span class="cv-title">12x12 Member Showcase</span><span class="cv-sub">Artspace, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2024</span><div><span class="cv-title">29th Annual Juried Exhibition</span><span class="cv-sub">Fine Arts League of Cary</span></div></li>
+        <li class="cv-item"><span class="cv-year">2024</span><div><span class="cv-title">Small Treasures</span><span class="cv-sub">Cary Gallery of Artists</span></div></li>
+        <li class="cv-item"><span class="cv-year">2023</span><div><span class="cv-title">Shifting Bodies Pop-up <span class="cv-solo">Solo</span></span><span class="cv-sub">Funded by United Arts, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2023</span><div><span class="cv-title">12x12 Member Showcase</span><span class="cv-sub">Artspace, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2023</span><div><span class="cv-title">Process Behind The Figures <span class="cv-solo">Solo</span></span><span class="cv-sub">Artist's Home Studio, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2023</span><div><span class="cv-title">Lost in Nature</span><span class="cv-sub">Duke University Hospital Eye Center, Durham</span></div></li>
+        <li class="cv-item"><span class="cv-year">2022</span><div><span class="cv-title">The Figures Collection <span class="cv-solo">Solo</span></span><span class="cv-sub">Artist's Home Studio, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2022</span><div><span class="cv-title">Fresh</span><span class="cv-sub">Artspace, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2022</span><div><span class="cv-title">State of the Art</span><span class="cv-sub">Cameron Art Museum, Wilmington</span></div></li>
+        <li class="cv-item"><span class="cv-year">2022</span><div><span class="cv-title">Annual Bara Bara Art Sale</span><span class="cv-sub">Diamante Arts & Cultural Center, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Lost in Nature <span class="cv-solo">Solo</span></span><span class="cv-sub">Duke University Hospital, Durham</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Lost in Nature <span class="cv-solo">Solo</span></span><span class="cv-sub">Industrious Charter Square, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Lost in Nature <span class="cv-solo">Solo</span></span><span class="cv-sub">Industrious Wells Fargo Capital Center</span></div></li>
+      </ul>
+
+      <div class="award-block fade-in">
+        <p class="award-label">Award · 2023</p>
+        <p class="award-title">Artist Support Grant</p>
+        <p class="award-sub">United Arts Council of Raleigh &amp; Wake County, North Carolina</p>
+      </div>
+    </div>
+
+    <div class="fade-in" style="transition-delay:0.1s">
+      <p class="cv-col-title">Selected Commissions</p>
+      <ul class="cv-list">
+        <li class="cv-item"><span class="cv-year">2024</span><div><span class="cv-title">Sunflower Series (3 paintings)</span><span class="cv-sub">Private collector, Durham</span></div></li>
+        <li class="cv-item"><span class="cv-year">2024</span><div><span class="cv-title">Cosmos</span><span class="cv-sub">Private collector, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2022</span><div><span class="cv-title">Triptych</span><span class="cv-sub">Duke-Raleigh Cancer Center, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Moments Between the Lines</span><span class="cv-sub">Private collector, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Sudler Family Zoo</span><span class="cv-sub">Private collector, Raleigh</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Muddy Waters</span><span class="cv-sub">Private collector, Cornelius</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Blue Sass &amp; Pretty in Pink</span><span class="cv-sub">Private collectors, NC</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Stir It Up &amp; With a Twist (Diptych)</span><span class="cv-sub">Private collector, Raleigh</span></div></li>
+      </ul>
+
+      <p class="cv-col-title" style="margin-top:2.5rem">Press &amp; Media</p>
+      <ul class="press-list">
+        <li class="press-item">
+          <a href="https://www.youtube.com/watch?v=BBYQ6viIQ9k" target="_blank" rel="noopener">Expanding Your Awareness with Ashley Harrington</a>
+          <p class="press-src">Level Up Artist Podcast, Ep. 155 · March 2024</p>
+        </li>
+        <li class="press-item">
+          <a href="https://boldjourney.com/news/meet-ashley-harrington/" target="_blank" rel="noopener">Meet Ashley Harrington</a>
+          <p class="press-src">Bold Journey · Nov 2023</p>
+        </li>
+        <li class="press-item">
+          <a href="https://canvasrebel.com/meet-ashley-harrington/" target="_blank" rel="noopener">Meet Ashley Harrington</a>
+          <p class="press-src">Canvas Rebel Raleigh Magazine · Dec 2022</p>
+        </li>
+        <li class="press-item">
+          <a href="https://voyageraleigh.com/interview/meet-ashley-harrington-of-midtown-north-hills/" target="_blank" rel="noopener">Meet Ashley Harrington</a>
+          <p class="press-src">Voyage Raleigh Magazine · Aug 2021</p>
+        </li>
+      </ul>
+
+      <p class="cv-col-title" style="margin-top:2.5rem">Professional Affiliations</p>
+      <ul class="affil-list">
+        <li class="cv-item"><span class="cv-year">2023</span><div><span class="cv-title">Durham Art Guild</span></div></li>
+        <li class="cv-item"><span class="cv-year">2022</span><div><span class="cv-title">Artspace Artist Member</span></div></li>
+        <li class="cv-item"><span class="cv-year">2021</span><div><span class="cv-title">Level Up Artists</span><span class="cv-sub">Founding Member</span></div></li>
+        <li class="cv-item"><span class="cv-year">2020</span><div><span class="cv-title">Artist Mastermind Group</span><span class="cv-sub">Founding Member</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="contact-heading fade-in">Let's<br><em>connect.</em></h2>
+  <p class="contact-sub fade-in">Commissions &nbsp;·&nbsp; Inquiries &nbsp;·&nbsp; Press</p>
+  <a href="mailto:hello@ashleyharringtonart.com" class="contact-email fade-in">hello@ashleyharringtonart.com</a>
+  <div class="social-row fade-in">
+    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener" class="social-link">Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Ashley Harrington Art &nbsp;·&nbsp; Raleigh, NC</p>
+  <nav class="footer-links">
+    <a href="paintings.html">Work</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="mailto:hello@ashleyharringtonart.com">Contact</a>
+    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) { nav.classList.add('scrolled'); nav.classList.remove('dark-bg'); }
+    else { nav.classList.remove('scrolled'); nav.classList.add('dark-bg'); }
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
