@@ -231,14 +231,12 @@ main {
 /* Shared Sections and Visual Accents */
 .fade-in {
   opacity: 0;
-  transform: translateY(15px);
   animation: entrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes entrance {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -574,8 +572,10 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   z-index: 200;
   display: flex;
   align-items: center;
@@ -595,6 +595,8 @@ main {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-color: var(--color-overlay-dark);
