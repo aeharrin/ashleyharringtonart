@@ -1,607 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paintings — Ashley Harrington Art</title>
-<meta name="description" content="Original paintings by Ashley Harrington — Blue Figures, Shifting Bodies, and figure studies in acrylic on canvas.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<style>
-  .page-header {
-    padding: 10rem 4vw 4rem;
-    background: var(--cream);
-  }
-  .page-title {
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    max-width: 18ch;
-  }
-  .page-title em { font-style: italic; color: var(--accent); }
-  .page-desc {
-    margin-top: 1.25rem;
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 52ch;
-    line-height: 1.75;
-  }
-
-  /* ── SERIES NAV ── */
-  .series-nav {
-    position: sticky;
-    top: 57px;
-    z-index: 50;
-    background: var(--cream);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 0;
-    padding: 0 4vw;
-    overflow-x: auto;
-  }
-  .series-nav a {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 1rem 1.5rem 0.9rem;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .series-nav a:hover { color: var(--ink); }
-  .series-nav a.active { color: var(--ink); border-bottom-color: var(--accent); }
-
-  /* ── SERIES SECTION ── */
-  .series-section { padding: 5rem 4vw; }
-  .series-section + .series-section { border-top: 1px solid var(--border); }
-  .series-section.alt-bg { background: var(--light-bg); }
-
-  .series-header { margin-bottom: 3rem; }
-  .series-title {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 0.6rem;
-  }
-  .series-title em { font-style: italic; color: var(--accent); }
-  .series-count {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .series-desc {
-    margin-top: 0.75rem;
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 58ch;
-    line-height: 1.75;
-  }
-
-  /* ── GALLERY GRID ── */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-  }
-  .gallery-grid.three-col { grid-template-columns: repeat(3, 1fr); }
-
-  .work-item { cursor: pointer; }
-  .work-thumb {
-    aspect-ratio: 3/4;
-    overflow: hidden;
-    transition: filter 0.3s;
-  }
-  .work-thumb:hover { filter: brightness(0.9); }
-  .work-meta { padding: 0.8rem 0 0; }
-  .work-title { font-size: 0.9rem; font-weight: 400; }
-  .work-detail {
-    font-family: var(--mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    margin-top: 0.15rem;
-  }
-
-  /* ── EARLIER WORK ── */
-  .earlier-toggle {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    margin-bottom: 2rem;
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    transition: color 0.2s;
-  }
-  .earlier-toggle:hover { color: var(--ink); }
-  .earlier-toggle .toggle-arrow {
-    display: inline-block;
-    transition: transform 0.3s;
-    font-size: 0.7rem;
-  }
-  .earlier-toggle.open .toggle-arrow { transform: rotate(90deg); }
-  .earlier-content { display: none; }
-  .earlier-content.open { display: block; }
-  .earlier-note {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--muted);
-    font-style: italic;
-    max-width: 58ch;
-    line-height: 1.75;
-    margin-bottom: 2rem;
-  }
-
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(26,24,21,0.92);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-  .lightbox.open { display: flex; }
-  .lightbox-inner {
-    position: relative;
-    max-width: 80vw;
-    max-height: 85vh;
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-  }
-  .lightbox-img {
-    max-height: 85vh;
-    max-width: 65vw;
-    object-fit: contain;
-  }
-  .lightbox-placeholder {
-    width: 400px;
-    height: 540px;
-    max-width: 65vw;
-    max-height: 85vh;
-    background: #2e2b28;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-  .lightbox-placeholder span {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: rgba(244,240,232,0.3);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .lightbox-info { color: var(--cream); min-width: 200px; }
-  .lb-title {
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-  }
-  .lb-detail {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    color: rgba(244,240,232,0.5);
-    text-transform: uppercase;
-    line-height: 1.8;
-  }
-  .lb-inquire {
-    display: inline-block;
-    margin-top: 2rem;
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--cream);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(244,240,232,0.4);
-    padding-bottom: 2px;
-    transition: border-color 0.2s;
-  }
-  .lb-inquire:hover { border-color: var(--cream); }
-  .lb-close {
-    position: absolute;
-    top: -2.5rem;
-    right: 0;
-    background: none;
-    border: none;
-    color: rgba(244,240,232,0.5);
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-  .lb-close:hover { color: var(--cream); }
-
-  @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 700px) {
-    .gallery-grid, .gallery-grid.three-col { grid-template-columns: repeat(2, 1fr); }
-    .series-section, .page-header { padding-left: 5vw; padding-right: 5vw; }
-    .lightbox-inner { flex-direction: column; gap: 1.5rem; max-width: 95vw; }
-    .lightbox-placeholder { width: 80vw; height: 50vw; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Ashley Harrington Fine Art</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="fade-in">
 
-<nav id="main-nav">
-  <a href="index.html" class="nav-name">Ashley Harrington</a>
-  <ul class="nav-links">
-    <li><a href="paintings.html" class="active">Work</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="about.html#contact">Contact</a></li>
-  </ul>
-</nav>
+  <!-- Responsive Navigation Header (Identical across pages) -->
+  <header id="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-link" id="nav-logo">
+        <span class="logo-title">Ashley Harrington</span>
+        <span class="logo-subtitle">Fine Art</span>
+      </a>
 
-<div class="page-header fade-in">
-  <h1 class="page-title">Original<br><em>Paintings</em></h1>
-  <p class="page-desc">Acrylic on canvas. Built in layers — the subconscious first, then interpretation. Available for purchase and commission.</p>
-</div>
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" id="menu-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="artwork.html" class="nav-link active">Gallery</a>
+        <a href="shop.html" class="nav-link">Shop Prints</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="faq.html" class="nav-link">FAQ & Shipping</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
 
-<nav class="series-nav" id="series-nav">
-  <a href="#blue-figures" class="active">Blue Figures</a>
-  <a href="#shifting-bodies">Shifting Bodies</a>
-  <a href="#figures">Figures</a>
-  <a href="#earlier-work">Earlier Work</a>
-</nav>
+      <!-- Mobile Hamburger Toggle -->
+      <button class="menu-toggle" aria-label="Toggle navigation menu" id="mobile-toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
 
-<!-- BLUE FIGURES -->
-<section class="series-section" id="blue-figures">
-  <div class="series-header fade-in">
-    <h2 class="series-title"><em>Blue</em> Figures</h2>
-    <p class="series-count">Series of 12 &nbsp;·&nbsp; Acrylic on canvas</p>
-    <p class="series-desc">Figures rendered in deep, meditative blues — exploring the emotional body as it moves between containment and release.</p>
+  <!-- Mobile Fullscreen Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="menu-mobile">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="artwork.html" class="nav-link active">Gallery</a>
+    <a href="shop.html" class="nav-link">Shop Prints</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="faq.html" class="nav-link">FAQ & Shipping</a>
+    <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <div class="gallery-grid" id="blue-figures-grid">
-    <!-- 12 pieces — replace src="" with your image paths -->
-    <div class="work-item fade-in" data-title="Blue Figure 01" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 01</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 01</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Blue Figure 02" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 02</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 02</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Blue Figure 03" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 03</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 03</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Blue Figure 04" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 04</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 04</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" data-title="Blue Figure 05" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 05</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 05</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Blue Figure 06" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 06</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 06</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Blue Figure 07" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 07</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 07</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Blue Figure 08" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 08</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 08</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" data-title="Blue Figure 09" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 09</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 09</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Blue Figure 10" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 10</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 10</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Blue Figure 11" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 11</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 11</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Blue Figure 12" data-detail="Acrylic on canvas · Blue Figures series">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Figure 12</span></div>
-      <div class="work-meta"><p class="work-title">Blue Figure 12</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-  </div>
-</section>
 
-<!-- SHIFTING BODIES -->
-<section class="series-section alt-bg" id="shifting-bodies">
-  <div class="series-header fade-in">
-    <h2 class="series-title">Shifting <em>Bodies</em></h2>
-    <p class="series-count">Series of 12 &nbsp;·&nbsp; Acrylic on canvas &nbsp;·&nbsp; 2023</p>
-    <p class="series-desc">Funded by a United Arts Council grant — this series examines the body in flux, shaped by forces both internal and cultural. Exhibited at a solo pop-up in Raleigh, 2023.</p>
-  </div>
-  <div class="gallery-grid" id="shifting-bodies-grid">
-    <div class="work-item fade-in" data-title="Shifting Bodies 01" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 01</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 01</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
+  <!-- Minimalist Sticky Sub-Navigation Menu for Series Navigation -->
+  <nav class="series-subnav" id="series-menu">
+    <div class="subnav-container">
+      <a href="#shifting-bodies" class="subnav-link">Shifting Bodies</a>
+      <a href="#blue-figures" class="subnav-link">The Blue Figures</a>
+      <a href="#figure-studies" class="subnav-link">Figure Studies</a>
+      <a href="#earlier-work" class="subnav-link">Earlier Work</a>
     </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Shifting Bodies 02" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 02</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 02</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Shifting Bodies 03" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 03</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 03</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Shifting Bodies 04" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 04</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 04</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" data-title="Shifting Bodies 05" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 05</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 05</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Shifting Bodies 06" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 06</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 06</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Shifting Bodies 07" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 07</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 07</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Shifting Bodies 08" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 08</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 08</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" data-title="Shifting Bodies 09" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 09</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 09</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Shifting Bodies 10" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 10</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 10</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Shifting Bodies 11" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 11</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 11</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Shifting Bodies 12" data-detail="Acrylic on canvas · Shifting Bodies series · 2023">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Shifting Bodies 12</span></div>
-      <div class="work-meta"><p class="work-title">Shifting Bodies 12</p><p class="work-detail">Acrylic on canvas · 2023</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FIGURES -->
-<section class="series-section" id="figures">
-  <div class="series-header fade-in">
-    <h2 class="series-title">The <em>Figures</em></h2>
-    <p class="series-count">15 works &nbsp;·&nbsp; Acrylic on canvas &nbsp;·&nbsp; 2021–2024</p>
-    <p class="series-desc">Individual figure studies that sit outside the named series — each one a separate inquiry into form, emotion, and presence.</p>
-  </div>
-  <div class="gallery-grid" id="figures-grid">
-    <div class="work-item fade-in" data-title="Figure Study 01" data-detail="Acrylic on canvas · 2021–2024">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 01</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 01</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Figure Study 02" data-detail="Acrylic on canvas · 2021–2024">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 02</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 02</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Figure Study 03" data-detail="Acrylic on canvas · 2021–2024">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 03</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 03</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Figure Study 04" data-detail="Acrylic on canvas · 2021–2024">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 04</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 04</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" data-title="Blue Sass" data-detail="Acrylic on canvas · 2021 · Private collection">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Blue Sass</span></div>
-      <div class="work-meta"><p class="work-title">Blue Sass</p><p class="work-detail">Acrylic on canvas · 2021</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Pretty in Pink" data-detail="Acrylic on canvas · 2021 · Private collection">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Pretty in Pink</span></div>
-      <div class="work-meta"><p class="work-title">Pretty in Pink</p><p class="work-detail">Acrylic on canvas · 2021</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Moments Between the Lines" data-detail="Acrylic on canvas · 2021 · Private collection">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Moments Between the Lines</span></div>
-      <div class="work-meta"><p class="work-title">Moments Between the Lines</p><p class="work-detail">Acrylic on canvas · 2021</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Stir It Up / With a Twist" data-detail="Diptych · Acrylic on canvas · 2021 · Private collection">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Stir It Up / With a Twist</span></div>
-      <div class="work-meta"><p class="work-title">Stir It Up &amp; With a Twist</p><p class="work-detail">Diptych · Acrylic on canvas · 2021</p></div>
-    </div>
-    <div class="work-item fade-in" data-title="Figure Study 09" data-detail="Acrylic on canvas">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 09</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 09</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Figure Study 10" data-detail="Acrylic on canvas">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 10</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 10</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Figure Study 11" data-detail="Acrylic on canvas">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 11</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 11</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Figure Study 12" data-detail="Acrylic on canvas">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 12</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 12</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" data-title="Figure Study 13" data-detail="Acrylic on canvas">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 13</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 13</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Figure Study 14" data-detail="Acrylic on canvas">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 14</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 14</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-    <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Figure Study 15" data-detail="Acrylic on canvas">
-      <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Figure Study 15</span></div>
-      <div class="work-meta"><p class="work-title">Figure Study 15</p><p class="work-detail">Acrylic on canvas</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- EARLIER WORK -->
-<section class="series-section alt-bg" id="earlier-work">
-  <div class="series-header fade-in">
-    <h2 class="series-title"><em>Earlier</em> Work</h2>
-    <p class="series-count">13 works &nbsp;·&nbsp; Landscapes &amp; Botanicals</p>
-  </div>
-  <button class="earlier-toggle fade-in" id="earlier-toggle">
-    <span class="toggle-arrow">›</span>
-    <span>Show earlier work</span>
-  </button>
-  <div class="earlier-content" id="earlier-content">
-    <p class="earlier-note">These landscape and botanical paintings mark the beginning of the practice — the foundation that made the deeper figurative work possible.</p>
-    <div class="gallery-grid three-col" id="earlier-grid">
-      <div class="work-item fade-in" data-title="Landscape 01" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Landscape 01</span></div>
-        <div class="work-meta"><p class="work-title">Landscape 01</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Landscape 02" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Landscape 02</span></div>
-        <div class="work-meta"><p class="work-title">Landscape 02</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Botanical 01" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Botanical 01</span></div>
-        <div class="work-meta"><p class="work-title">Botanical 01</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" data-title="Botanical 02" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Botanical 02</span></div>
-        <div class="work-meta"><p class="work-title">Botanical 02</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Lost in Nature" data-detail="Acrylic on canvas · Duke University Hospital · 2021">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Lost in Nature</span></div>
-        <div class="work-meta"><p class="work-title">Lost in Nature</p><p class="work-detail">Acrylic on canvas · 2021</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Landscape 03" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Landscape 03</span></div>
-        <div class="work-meta"><p class="work-title">Landscape 03</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" data-title="Botanical 03" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Botanical 03</span></div>
-        <div class="work-meta"><p class="work-title">Botanical 03</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Landscape 04" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Landscape 04</span></div>
-        <div class="work-meta"><p class="work-title">Landscape 04</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Sunflower Series" data-detail="Acrylic on canvas · Commission · 2024">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Sunflower Series</span></div>
-        <div class="work-meta"><p class="work-title">Sunflower Series</p><p class="work-detail">Acrylic on canvas · Commission · 2024</p></div>
-      </div>
-      <div class="work-item fade-in" data-title="Botanical 04" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Botanical 04</span></div>
-        <div class="work-meta"><p class="work-title">Botanical 04</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.05s" data-title="Landscape 05" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Landscape 05</span></div>
-        <div class="work-meta"><p class="work-title">Landscape 05</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.1s" data-title="Landscape 06" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Landscape 06</span></div>
-        <div class="work-meta"><p class="work-title">Landscape 06</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-      <div class="work-item fade-in" style="transition-delay:0.15s" data-title="Botanical 05" data-detail="Acrylic on canvas · Earlier work">
-        <div class="work-thumb placeholder"><div class="ph-icon"></div><span>Botanical 05</span></div>
-        <div class="work-meta"><p class="work-title">Botanical 05</p><p class="work-detail">Acrylic on canvas</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner">
-    <button class="lb-close" id="lb-close">✕ Close</button>
-    <div class="lightbox-placeholder" id="lb-image">
-      <div class="ph-icon" style="width:50px;height:40px;border-color:#4a4742"></div>
-      <span>Artwork</span>
-    </div>
-    <div class="lightbox-info">
-      <p class="lb-title" id="lb-title">Title</p>
-      <p class="lb-detail" id="lb-detail">Detail</p>
-      <a href="mailto:hello@ashleyharringtonart.com" class="lb-inquire">Inquire about this work</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2025 Ashley Harrington Art &nbsp;·&nbsp; Raleigh, NC</p>
-  <nav class="footer-links">
-    <a href="paintings.html">Work</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="mailto:hello@ashleyharringtonart.com">Contact</a>
-    <a href="https://www.instagram.com/ashleyharringtonart" target="_blank" rel="noopener">Instagram</a>
   </nav>
-</footer>
 
-<script>
-  // Nav scroll
-  const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+  <main class="page-container" id="gallery-page-main">
+    
+    <!-- Title Area with Editorial Intro -->
+    <header class="section-header" style="margin-top: var(--spacing-sm); margin-bottom: var(--spacing-lg);" id="gallery-intro-header">
+      <div>
+        <span class="section-label">Selected Collections</span>
+        <h1 class="font-serif" style="font-size: 2.8rem; margin-bottom: var(--spacing-xs);">The Galleries</h1>
+        <p style="font-size: 1.15rem; font-weight: 300; max-width: 650px; margin-bottom: 0; color: var(--color-text-muted);">
+          A curated archive of original oil paintings, tempera drawings, and raw plasters exploring the intersections of landscape geologies and figure lines.
+        </p>
+      </div>
+      <span class="section-action" style="align-self: flex-end;">Archive 2024–2026</span>
+    </header>
 
-  // Fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    <!-- Series 1: Shifting Bodies -->
+    <section id="shifting-bodies" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
+      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem;">I. Shifting Bodies</h2>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Tactile Earth Pigments</span>
+      </div>
 
-  // Series nav active state
-  const sections = document.querySelectorAll('.series-section');
-  const navLinks = document.querySelectorAll('.series-nav a');
-  const seriesObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.series-nav a[href="#${e.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -40% 0px' });
-  sections.forEach(s => seriesObserver.observe(s));
+      <div class="gallery-grid">
+        
+        <!-- Artwork 1 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?q=80&w=1200"
+                 data-title="Clay & Recline I"
+                 data-category="Shifting Bodies"
+                 data-dimensions="30&quot; x 30&quot;"
+                 data-medium="Raw Earth Pigment & Plaster on Linen"
+                 data-price="$1,650"
+                 data-type="Original Painting"
+                 data-desc="Earth ochre and pure terracotta powders mixed into built-up local gypsum plaster folds. A heavy, tactile and dimensional body form outline study."
+                 id="gal-clay-recline-1">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?q=80&w=600" alt="Terracotta earthy figure silhouette block painting">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2026 Series</span>
+            <h3 class="card-title">Clay & Recline I</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,650</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
 
-  // Earlier work toggle
-  const toggle = document.getElementById('earlier-toggle');
-  const content = document.getElementById('earlier-content');
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
-    content.classList.toggle('open');
-    const label = toggle.querySelector('span:last-child');
-    label.textContent = content.classList.contains('open') ? 'Hide earlier work' : 'Show earlier work';
-  });
+        <!-- Artwork 2 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200"
+                 data-title="The Heavy Earth"
+                 data-category="Shifting Bodies"
+                 data-dimensions="36&quot; x 48&quot;"
+                 data-medium="Oil & Gypsum Dust on Wood Block"
+                 data-price="$2,200"
+                 data-type="Original Painting"
+                 data-desc="An intense textural exploration of skeletal gravity and physical posture. Employs thick layered palette-knife fields of warm marble mud."
+                 id="gal-heavy-earth">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=600" alt="Earthy abstract brushwork with loaded textures">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2026 Series</span>
+            <h3 class="card-title">The Heavy Earth</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$2,200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
 
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  document.querySelectorAll('.work-item').forEach(item => {
-    item.addEventListener('click', () => {
-      document.getElementById('lb-title').textContent = item.dataset.title || 'Untitled';
-      document.getElementById('lb-detail').textContent = item.dataset.detail || '';
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-  document.getElementById('lb-close').addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-  function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
-</script>
+        <!-- Artwork 3 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200"
+                 data-title="Torso & Charcoal Glow"
+                 data-category="Shifting Bodies"
+                 data-dimensions="24&quot; x 36&quot;"
+                 data-medium="Cold Wax & Oil on Cotton Panel"
+                 data-price="$1,400"
+                 data-type="Original Painting"
+                 data-desc="Intimate contours of the human back in reflection. A deep dialogue between bright wax whites and raw obsidian charcoal dust."
+                 id="gal-torso-glow">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600" alt="Fine art warm high-contrast portrait">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2025 Series</span>
+            <h3 class="card-title">Torso & Charcoal Glow</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,400</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Series 2: The Blue Figures -->
+    <section id="blue-figures" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
+      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem;">II. The Blue Figures</h2>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Prussian Indigos & Moody Teals</span>
+      </div>
+
+      <div class="gallery-grid">
+        
+        <!-- Artwork 1 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=1200"
+                 data-title="Introspection II (Blue)"
+                 data-category="The Blue Figures"
+                 data-dimensions="24&quot; x 36&quot;"
+                 data-medium="Acrylic on Thick Linen Block"
+                 data-price="$1,400"
+                 data-type="Original Painting"
+                 data-desc="Centerpiece of the cold nocturnal sequence. A deeply atmospheric, layered figure rendering that analyzes organic body curves and shadows in deep marine blue."
+                 id="gal-introspection-blue-core">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=600" alt="Textured blue and turquoise figure study">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2026 Series</span>
+            <h3 class="card-title">Introspection II (Blue)</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,400</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 2 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200"
+                 data-title="Nocturnal Horizon Study"
+                 data-category="The Blue Figures"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Tempera & Ash on Textured Linen"
+                 data-price="$1,800"
+                 data-type="Original Painting"
+                 data-desc="Silent midnight exploration of body weight. Fluid indigo outlines layered iteratively onto wet pumice fields for deep dimensionality."
+                 id="gal-nocturnal-horizon">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600" alt="Moody charcoal gesture illustration with dark washes">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2025 Series</span>
+            <h3 class="card-title">Nocturnal Horizon Study</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,800</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 3 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200"
+                 data-title="Vesper Contours"
+                 data-category="The Blue Figures"
+                 data-dimensions="20&quot; x 30&quot;"
+                 data-medium="Oil Lacquer on Baltic Board"
+                 data-price="Sold"
+                 data-type="Original Painting"
+                 data-desc="Blending maritime chill with expressive human profiles. Features cold slate-blue crests paired beautifully with midnight inks."
+                 id="gal-vesper-contours">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600" alt="Swirling blue dynamic oil texture abstract">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2025 Series</span>
+            <h3 class="card-title">Vesper Contours</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">Private Collection</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Series 3: Figure Studies -->
+    <section id="figure-studies" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
+      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem;">III. Figure Studies</h2>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Raw Gestural Observations</span>
+      </div>
+
+      <div class="gallery-grid">
+        
+        <!-- Artwork 1 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?q=80&w=1200"
+                 data-title="Vulnerability Study V"
+                 data-category="Figure Studies"
+                 data-dimensions="24&quot; x 30&quot;"
+                 data-medium="Tempera & Charcoal on Handmade Cotton Paper"
+                 data-price="$1,100"
+                 data-type="Original Painting"
+                 data-desc="Intentionally gestural, fast charcoal outlines combined with high-frequency natural wash. Capturing active physical postures in their raw, immediate state."
+                 id="gal-vulnerability-v-core">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?q=80&w=600" alt="Earthy abstract figure with detailed outline trails">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2025 Series</span>
+            <h3 class="card-title">Vulnerability Study V</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,100</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 2 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200"
+                 data-title="Seated Contour IX"
+                 data-category="Figure Studies"
+                 data-dimensions="18&quot; x 24&quot;"
+                 data-medium="India Ink & Plaster Wash on Board"
+                 data-price="$850"
+                 data-type="Original Painting"
+                 data-desc="An exercise in minimalism and line weight. Hand-scratched pigment traces the human spine against an off-white clay background."
+                 id="gal-seated-contour-ix">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600" alt="Beautiful linear ink abstract study">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2025 Series</span>
+            <h3 class="card-title">Seated Contour IX</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$850</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 3 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=1200"
+                 data-title="Tension study IV"
+                 data-category="Figure Studies"
+                 data-dimensions="20&quot; x 20&quot;"
+                 data-medium="Willow Charcoal on Unprimed Canvas"
+                 data-price="$950"
+                 data-type="Original Painting"
+                 data-desc="Highly abstract, muscular expression showing active physical compression. Textured and completely unsealed to observe raw pigment weathering."
+                 id="gal-tension-study-iv">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=600" alt="Monochromatic dynamic charcoal brush lines border">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2024 Series</span>
+            <h3 class="card-title">Tension study IV</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$950</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Series 4: Earlier Work -->
+    <section id="earlier-work" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
+      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem;">IV. Earlier Work</h2>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Landscape & Botanical Origins</span>
+      </div>
+
+      <div class="gallery-grid">
+        
+        <!-- Artwork 1 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200"
+                 data-title="November Fields I"
+                 data-category="Earlier Work"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Oil & Thick Gesso on Canvas"
+                 data-price="$1,850"
+                 data-type="Original Painting"
+                 data-desc="An intense seasonal horizon study of Massachusetts dune regions. Deep terracotta glazes offset by thick sandstone ridges."
+                 id="gal-nov-fields-earlier">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600" alt="Golden dune field painting coastal">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2024 Collection</span>
+            <h3 class="card-title">November Fields I</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,850</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 2 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200"
+                 data-title="Sylvan Radiance II"
+                 data-category="Earlier Work"
+                 data-dimensions="36&quot; x 48&quot;"
+                 data-medium="Traditional Oil on Heavy Linen"
+                 data-price="$2,400"
+                 data-type="Original Painting"
+                 data-desc="Capturing midday rays filtering through deep forest branches. Developed with classic green oil glazing techniques and thick brush strokes."
+                 id="gal-sylvan-radiance-earlier">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Woodland sun rays forest painting">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2024 Collection</span>
+            <h3 class="card-title">Sylvan Radiance II</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$2,400</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 3 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200"
+                 data-title="Coastal Ledge Study"
+                 data-category="Earlier Work"
+                 data-dimensions="30&quot; x 40&quot;"
+                 data-medium="Oil on Baltic Birch Panel"
+                 data-price="$1,950"
+                 data-type="Original Painting"
+                 data-desc="Rich seaside geological observations near the rocky coastal boundaries of Massachusetts. High contrast textures of granite cliffs."
+                 id="gal-coastal-ledge">
+          <div class="card-frame">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600" alt="Granite ledge ocean coastal dunes landscape">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">2024 Collection</span>
+            <h3 class="card-title">Coastal Ledge Study</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,950</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Elegant Shared Footer -->
+  <footer id="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <a href="index.html" class="logo-link">
+          <span class="logo-title">Ashley Harrington</span>
+          <span class="logo-subtitle">Fine Art</span>
+        </a>
+        <div class="footer-links-row" id="footer-main-links">
+          <a href="artwork.html" class="nav-link active">Gallery</a>
+          <a href="shop.html" class="nav-link">Shop Prints</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <div class="footer-social-row" id="footer-socials">
+          <a href="https://instagram.com" class="footer-social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://pinterest.com" class="footer-social-link" target="_blank" rel="noopener noreferrer">Pinterest</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Ashley Harrington. All Rights Reserved.</span>
+        <div class="footer-legal-links" id="footer-legal">
+          <a href="faq.html">Shipping & FAQ</a>
+          <span>•</span>
+          <a href="legal.html">Privacy & Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Native Image Lightbox Drawer (Split Screen Modal) -->
+  <div class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visual inquiry lightbox" id="gallery-lightbox">
+    <div class="lightbox-background" id="lightbox-bg-close"></div>
+    <div class="lightbox-frame">
+      <button class="lightbox-close" aria-label="Close Lightbox" id="lightbox-close-btn">
+        <svg class="lightbox-close-icon" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+        Close
+      </button>
+
+      <!-- Left Image panel -->
+      <div class="lightbox-image-box">
+        <img class="lightbox-main-img" src="" alt="Selected Painting Detail">
+      </div>
+
+      <!-- Right Details and Inquiry panel -->
+      <div class="lightbox-details-box">
+        <span class="lightbox-art-category">Category</span>
+        <h2 class="lightbox-art-title">Title of Painting</h2>
+        <p class="lightbox-art-meta">Specs and properties</p>
+        <p class="lightbox-art-description">Descriptive insights of the piece</p>
+        <p class="lightbox-art-price">$1,200</p>
+
+        <!-- Native Minimalist Inquiry Form (Integrated natively, no popup) -->
+        <div class="lightbox-inquiry-container">
+          <h3 class="inquiry-form-title">Inquire About This Piece</h3>
+          <form class="mailerlite-inquiry-form" id="lightbox-mailerlite-form">
+            <!-- Automatically captured metadata string injected here via vanilla JS -->
+            <input type="hidden" name="mailerlite-inquiry-item" id="mailerlite-inquiry-item">
+
+            <div class="form-group">
+              <label class="form-label" for="inquiry-name">Your Name</label>
+              <input type="text" id="inquiry-name" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inquiry-email">Your Email</label>
+              <input type="email" id="inquiry-email" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inquiry-message">Your Message</label>
+              <textarea id="inquiry-message" name="message" class="form-input" placeholder="Provide any questions, details requested, or request a shipping quote..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-filled btn-submit" style="width: 100%;">Submit Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
