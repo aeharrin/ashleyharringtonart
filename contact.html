@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Studio Inquiries | Ashley Harrington Fine Art</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade-in">
+
+  <!-- Responsive Navigation Header (Identical across pages) -->
+  <header id="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-link" id="nav-logo">
+        <span class="logo-title">Ashley Harrington</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" id="menu-desktop">
+        <a href="artwork.html" class="nav-link">Artwork</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <!-- Mobile Right Actions -->
+      <div class="mobile-nav-actions" style="display: flex; align-items: center; gap: var(--spacing-md);">
+        <!-- Mobile Hamburger Toggle -->
+        <button class="menu-toggle" aria-label="Toggle navigation menu" id="mobile-toggle-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="menu-mobile">
+    <a href="artwork.html" class="nav-link">Artwork</a>
+    <a href="shop.html" class="nav-link">Shop</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link active">Contact</a>
+  </div>
+
+  <main class="page-container" id="contact-page-main" style="padding-top: var(--spacing-md); padding-bottom: var(--spacing-xl);">
+    
+    <!-- Header Hero Grid -->
+    <section class="hero-section" id="contact-hero" style="margin-bottom: var(--spacing-lg);">
+      <span class="hero-subtitle">Get in Touch</span>
+      <h1 class="hero-title" style="margin-bottom: var(--spacing-sm);">Studio Inquiries</h1>
+      <p class="hero-description" style="max-width: 680px; margin-bottom: 0;">
+        Whether you are interested in acquiring an original painting, proposing a custom gesso/oil commission, scheduling an appointment for a studio visit, or have questions about a print order, please initiate the dialogue below.
+      </p>
+    </section>
+
+    <!-- Two-column Contact Structure -->
+    <section class="contact-layout" id="contact-details-grid">
+      
+      <!-- Left side: Information, details, direct contact, social -->
+      <div class="contact-info-block" id="contact-info-panel">
+        <div style="margin-bottom: var(--spacing-md);">
+          <span class="card-meta" style="color: var(--color-primary); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.15em;">The Studio</span>
+          <h2 class="font-serif" style="font-size: 1.6rem; margin-top: 4px; margin-bottom: var(--spacing-xs); font-weight: 400;">Boston, Massachusetts</h2>
+          <p style="font-family: var(--font-sans); color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 300;">
+            Located near the historic, rocky maritime shorelines of Massachusetts. Private visits and custom studio appointments are welcomed by advance coordination for collectors, curatorial researchers, and patrons.
+          </p>
+        </div>
+
+        <div style="margin-bottom: var(--spacing-md); padding-top: var(--spacing-sm); border-top: 1px solid var(--color-border-light);">
+          <span class="card-meta" style="color: var(--color-primary); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.15em;">Direct Correspondence</span>
+          <p style="font-family: var(--font-sans); color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 300; margin-bottom: 0.25rem;">
+            For urgent professional inquires, licensing, or custom private curation discussions, you can reach me directly at:
+          </p>
+          <a href="mailto:aeharrington1@gmail.com" class="contact-email-link" id="contact-direct-email">aeharrington1@gmail.com</a>
+        </div>
+
+        <div style="margin-bottom: var(--spacing-md); padding-top: var(--spacing-sm); border-top: 1px solid var(--color-border-light);">
+          <span class="card-meta" style="color: var(--color-primary); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.15em;">Gallery Representation</span>
+          <p style="font-family: var(--font-sans); color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 300;">
+            Original major canvases and figure studies are also curated and may be acquired through my representative galleries:
+          </p>
+          <ul style="list-style-type: none; padding-left: 0; margin-top: var(--spacing-xs); display: flex; flex-direction: column; gap: 8px;">
+            <li style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--color-text); font-weight: 400;">
+              <strong>Slate Hill Fine Arts</strong> — Boston, MA
+            </li>
+            <li style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--color-text); font-weight: 400;">
+              <strong>Cove Collective Gallery</strong> — Portland, ME
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right side: Clean, styled form -->
+      <div class="contact-form-block" id="contact-form-panel" style="background-color: var(--color-card); border: 1px solid var(--color-border); padding: var(--spacing-md);">
+        <h3 class="inquiry-form-title" style="border-bottom: 1px solid var(--color-border-light); padding-bottom: var(--spacing-xs); margin-bottom: var(--spacing-sm);">Send a Message</h3>
+        
+        <form class="mailerlite-inquiry-form" id="main-contact-form">
+          
+          <!-- Explicitly tag subject for email notification script parsing -->
+          <input type="hidden" name="mailerlite-inquiry-item" id="mailerlite-inquiry-item" value="General Studio Contact">
+
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Your Email</label>
+            <input type="email" id="contact-email" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-purpose">Reason for Inquiry</label>
+            <select id="contact-purpose" name="purpose" class="form-input" style="background: var(--color-bg); font-family: var(--font-sans); cursor: pointer; outline: none;" onchange="document.getElementById('mailerlite-inquiry-item').value = 'Contact Info: ' + this.value;">
+              <option value="General Dialogue">General Curation Inquiry</option>
+              <option value="Original Painting Purchase">Original Painting Acquisition</option>
+              <option value="Commission Request">Custom Commission Proposal</option>
+              <option value="Studio Appointment">Private Studio Visit Appointment</option>
+              <option value="Print / Shipping Query">Print Shop / Shipping Inquiries</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: var(--spacing-md);">
+            <label class="form-label" for="contact-message">Your Message</label>
+            <textarea id="contact-message" name="message" class="form-input" placeholder="Please elaborate on your inquiry (e.g. particular painting title, desired dimensions for commission, preferred dates, etc.)." style="min-height: 150px;" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-filled btn-submit" style="width: 100%; border-radius: 0; padding: 12px 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;">
+            Submit Inquiry
+          </button>
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Elegant Shared Footer -->
+  <footer id="site-footer" style="padding: var(--spacing-md) 0;">
+    <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-sm);">
+      
+      <!-- Social Links with Icons -->
+      <div class="footer-social-row" id="footer-socials-centered" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem;">
+        <a href="https://instagram.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.7; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+          <svg style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram
+        </a>
+        <a href="https://pinterest.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.7; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+          <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.42 7.62 11.16-.1-.95-.19-2.41.04-3.45.21-.94 1.34-5.69 1.34-5.69s-.34-.68-.34-1.69c0-1.58.92-2.76 2.06-2.76.97 0 1.44.73 1.44 1.61 0 .98-.62 2.44-.94 3.79-.27 1.13.57 2.05 1.68 2.05 2.02 0 3.57-2.13 3.57-5.21 0-2.73-1.96-4.63-4.75-4.63-3.24 0-5.14 2.43-5.14 4.94 0 .98.38 2.03.85 2.6.09.12.11.22.08.33l-.32 1.3c-.05.21-.17.26-.39.16-1.46-.68-2.38-2.82-2.38-4.54 0-3.7 2.69-7.1 7.75-7.1 4.07 0 7.23 2.9 7.23 6.77 0 4.04-2.55 7.29-6.09 7.29-1.19 0-2.31-.62-2.69-1.35l-.73 2.79c-.26 1.01-1 2.27-1.49 3.08C10.08 23.83 11.02 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
+          Pinterest
+        </a>
+      </div>
+
+      <!-- Footer Navigation (Independent from Main Top Nav) -->
+      <nav id="footer-navigation" class="footer-nav-container" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 0.25rem; margin-bottom: 0.25rem;">
+        <a href="artwork.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Artwork</a>
+        <a href="shop.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Shop</a>
+        <a href="about.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">About</a>
+        <a href="contact.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Contact</a>
+        <a href="faq.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">FAQ & Shipping</a>
+        <a href="legal.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Privacy & Terms</a>
+      </nav>
+
+      <!-- Copyright -->
+      <div class="footer-bottom-centered" style="text-align: center; border-top: 1px solid var(--color-border); padding-top: var(--spacing-sm); width: 100%;">
+        <span class="footer-copyright" style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">© 2026 Ashley Harrington. All Rights Reserved.</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
