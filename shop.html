@@ -51,20 +51,17 @@
   </div>
 
   <main>
-    <!-- Elegant Minimal Hero Section for Shop Print -->
+    <!-- Elegant Minimal Hero Section for Shop -->
     <section class="hero-section page-container" id="shop-hero" style="padding-bottom: var(--spacing-md);">
-      <span class="hero-subtitle">Archival Reproductions</span>
-      <h1 class="hero-title">The Print Shop</h1>
+      <span class="hero-subtitle">Online Store</span>
+      <h1 class="hero-title">The Shop</h1>
       
-      <!-- Studio Philosophy Notice -->
-      <div class="studio-notice" style="border-left: 2px solid var(--color-text); padding-left: var(--spacing-md); margin-top: var(--spacing-sm); margin-bottom: var(--spacing-md); max-width: 720px;">
-        <p style="font-family: var(--font-sans); font-size: 0.88rem; line-height: 1.6; color: var(--color-text); margin: 0; font-style: italic;">
-          All fine art prints are made to order in-house by the artist to ensure exceptional quality. Please allow time for printing, inspection, and studio processing before shipping.
-        </p>
-      </div>
-
-      <p class="hero-description" style="max-width: 720px; margin-bottom: var(--spacing-md);">
-        Museum-quality giclée prints individually proofed and processed under technical curation. Printed on weight-dense 310gsm German cotton rag paper with premium lightfast pigment inks, designed to sustain vibrant color fidelity for over 100 years.
+      <p class="hero-description" style="max-width: 720px; margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.6; color: var(--color-text);">
+        Original mini paintings and fine art prints — made to live in your space. All prints are produced on archival paper with museum-quality inks.
+      </p>
+      
+      <p style="font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-top: 0; margin-bottom: var(--spacing-md);">
+        To inquire about an original painting, visit the <a href="artwork.html" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; font-weight: 500;">Gallery page</a>.
       </p>
       
       <!-- Subtle Educational Metadata Icons -->
@@ -85,17 +82,24 @@
     </section>
 
     <!-- Subnav Sticky Category filtering -->
-    <nav class="series-subnav" style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+    <nav class="series-subnav" id="shop-series-menu" style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); position: sticky; top: 73px; background: rgba(249, 248, 246, 0.95); backdrop-filter: blur(8px); z-index: 10;">
       <div class="subnav-container">
-        <button class="subnav-link active" data-filter="all">All Prints</button>
-        <button class="subnav-link" data-filter="landscape">Landscape Collection</button>
-        <button class="subnav-link" data-filter="figure">Expressionist Figures</button>
+        <a href="#section-prints" class="subnav-link active">Prints</a>
+        <a href="#section-mini-paintings" class="subnav-link">Mini Paintings</a>
       </div>
     </nav>
 
-    <!-- Print Products Catalog -->
-    <section class="page-container" id="shop-catalog-section" style="padding-top: var(--spacing-lg); padding-bottom: var(--spacing-xl);">
-      <div class="gallery-grid" id="shop-products-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+    <!-- Prints Catalog Section -->
+    <section class="gallery-section page-container" id="section-prints" style="padding-top: var(--spacing-sm); padding-bottom: var(--spacing-lg);">
+      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem;">I. Archival Prints</h2>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Giclée Reproductions</span>
+      </div>
+      <p style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-muted); font-weight: 300; max-width: 720px; margin-bottom: var(--spacing-md); line-height: 1.6;">
+        Museum-grade prints are captured digitally directly from original pieces and color-matched specifically to the artist's proofing under technical studio lighting.
+      </p>
+
+      <div class="gallery-grid" id="shop-prints-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
         
         <!-- Product 1: November Fields I -->
         <article class="card-item product-card fade-in" data-lightbox="true" data-category-filter="landscape"
@@ -309,6 +313,166 @@
               <span class="card-price">From $85.00</span>
               <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
                 Inquire to Order
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Mini Paintings Catalog Section -->
+    <section class="gallery-section page-container" id="section-mini-paintings" style="padding-top: var(--spacing-sm); padding-bottom: var(--spacing-xl);">
+      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem;">II. Mini Paintings</h2>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Original Small Works</span>
+      </div>
+      <p style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-muted); font-weight: 300; max-width: 720px; margin-bottom: var(--spacing-md); line-height: 1.6;">
+        Original, small-format paint/pigment studies on custom prepared wood blocks or weighted Baltic birch panels. Perfectly sized for cozy display niches, mantelpieces, or physical shelf pairings.
+      </p>
+
+      <div class="gallery-grid" id="shop-paintings-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+        
+        <!-- Painting 1: Meadow Study IV -->
+        <article class="card-item fade-in" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200"
+                 data-title="Meadow Study IV"
+                 data-category="Original Oil Painting"
+                 data-dimensions="6&quot; x 6&quot;"
+                 data-medium="Oil on Birchwood Block"
+                 data-price="$280.00"
+                 data-type="Original Painting"
+                 data-desc="Delicate palette-knife meadow study rendered in heavy glaze oils on Baltic birch block. Ready to display tabletop or insert into a deep float frame."
+                 id="paint-meadow-study-iv">
+          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=600" alt="Heavily textured abstract fluid splotches oil brush painting study">
+            <div class="card-overlay"></div>
+            <span class="product-badge" style="position: absolute; top: var(--spacing-sm); left: var(--spacing-sm); background-color: var(--color-bg); padding: 4px 8px; font-family: var(--font-sans); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--color-border); z-index: 5;">One of a Kind</span>
+          </div>
+          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
+            <div style="margin-bottom: var(--spacing-xs);">
+              <span class="card-meta">Oil Study</span>
+              <h3 class="card-title" style="margin-bottom: 2px;">Meadow Study IV</h3>
+              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
+                Oil on Birchwood Block
+              </p>
+              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
+                Size: 6" x 6"
+              </p>
+            </div>
+            
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+              <span class="card-price">$280.00</span>
+              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+                Inquire to Buy
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Painting 2: Postural Sketch (Sienna) -->
+        <article class="card-item fade-in" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200"
+                 data-title="Postural Sketch (Sienna)"
+                 data-category="Original Painting"
+                 data-dimensions="8&quot; x 8&quot;"
+                 data-medium="Pigment & Tempera on Wood"
+                 data-price="$340.00"
+                 data-type="Original Painting"
+                 data-desc="Form Study on deep raw sienna background. Blends natural bone powder tempera washes with dense graphite boundaries on wood panel."
+                 id="paint-postural-sketch">
+          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=600" alt="Abstract earth tone raw tempera sketch panel">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
+            <div style="margin-bottom: var(--spacing-xs);">
+              <span class="card-meta">Tempera & Graphite</span>
+              <h3 class="card-title" style="margin-bottom: 2px;">Postural Sketch (Sienna)</h3>
+              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
+                Tempera & Graphite on Wood Panel
+              </p>
+              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
+                Size: 8" x 8"
+              </p>
+            </div>
+            
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+              <span class="card-price">$340.00</span>
+              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+                Inquire to Buy
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Painting 3: Nocturnal Study XI -->
+        <article class="card-item fade-in" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200"
+                 data-title="Nocturnal Study XI"
+                 data-category="Original Indigo Study"
+                 data-dimensions="5&quot; x 7&quot;"
+                 data-medium="Acrylic & Ash on Panel"
+                 data-price="$260.00"
+                 data-type="Original Painting"
+                 data-desc="Small format exercise inspecting fluid body curves and marine twilight depth. Mixed media including volcanic ash glaze for soft, organic texture."
+                 id="paint-nocturnal-study">
+          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600" alt="Beautiful blue textured fluid study">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
+            <div style="margin-bottom: var(--spacing-xs);">
+              <span class="card-meta">Indigo study</span>
+              <h3 class="card-title" style="margin-bottom: 2px;">Nocturnal Study XI</h3>
+              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
+                Acrylic & Volcanic Ash on Panel
+              </p>
+              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
+                Size: 5" x 7"
+              </p>
+            </div>
+            
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+              <span class="card-price">$260.00</span>
+              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+                Inquire to Buy
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Painting 4: Golden Hour Shoreline -->
+        <article class="card-item fade-in" data-lightbox="true"
+                 data-img="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200"
+                 data-title="Golden Hour Shoreline"
+                 data-category="Original Landscape Painting"
+                 data-dimensions="6&quot; x 8&quot;"
+                 data-medium="Oil on Gesso Board"
+                 data-price="$310.00"
+                 data-type="Original Painting"
+                 data-desc="Warm, ambient oil shoreline study capturing rich sun filtration. Built up in luminous glaze layers to sustain a golden indoor glow."
+                 id="paint-golden-hour">
+          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Beautiful sunbeams through rich woodland forest oil study">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
+            <div style="margin-bottom: var(--spacing-xs);">
+              <span class="card-meta">Oil Landscape</span>
+              <h3 class="card-title" style="margin-bottom: 2px;">Golden Hour Shoreline</h3>
+              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
+                Oil on Gesso Board
+              </p>
+              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
+                Size: 6" x 8"
+              </p>
+            </div>
+            
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+              <span class="card-price">$310.00</span>
+              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+                Inquire to Buy
               </button>
             </div>
           </div>
