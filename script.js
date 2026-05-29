@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Form Submissions and Toast Feedback Alerts
   initializeForms();
+
+  // Series sticky sub-navigation highlighting
+  initializeGallerySubnav();
 });
 
 /**
@@ -252,4 +255,38 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove('show');
   }, 4000);
+}
+
+/**
+ * Gallery series sub-navigation dynamic viewport tracking highlighting
+ */
+function initializeGallerySubnav() {
+  const subnav = document.querySelector('.series-subnav');
+  if (!subnav) return;
+
+  const sections = document.querySelectorAll('.gallery-section');
+  const navLinks = document.querySelectorAll('.subnav-link');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-30% 0px -55% 0px', // Captures the active section near the viewport center
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
 }
