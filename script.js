@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Series sticky sub-navigation highlighting
   initializeGallerySubnav();
+
+  // Fine Art Print Shop and Unified Cart Drawer System
+  initializeShopAndCartSystem();
 });
 
 /**
@@ -148,7 +151,11 @@ function initializeLightbox() {
 
     // JavaScript Automation for MailerLite fields inside details panel
     if (inquiryInput) {
-      const inquiryString = `${title} - ${type}`;
+      let inquiryString = `${title} - ${type}`;
+      if (card.classList.contains('product-card')) {
+        const cleanTitle = title.replace(/\s+Print$/i, '').trim();
+        inquiryString = `${cleanTitle} Print - Made to Order`;
+      }
       inquiryInput.value = inquiryString;
     }
 
@@ -289,4 +296,335 @@ function initializeGallerySubnav() {
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
+}
+
+/**
+ * Master Shopping Cart and Fine Art Print Store Engine
+ */
+function initializeShopAndCartSystem() {
+  // 1. Dynamic Pricing Updates on Product Cards
+  const productCards = document.querySelectorAll('.product-card');
+  productCards.forEach(card => {
+    const sizeSelect = card.querySelector('.size-select');
+    const frameSelect = card.querySelector('.frame-select');
+    const priceDisplay = card.querySelector('.product-total-price');
+
+    if (!sizeSelect || !priceDisplay) return;
+
+    function updateCardPrice() {
+      const basePrices = JSON.parse(sizeSelect.getAttribute('data-base-prices') || '{}');
+      const selectedSize = sizeSelect.value;
+      const basePrice = basePrices[selectedSize] || 0;
+
+      const selectedFrameOpt = frameSelect ? frameSelect.options[frameSelect.selectedIndex] : null;
+      const addPrice = selectedFrameOpt ? parseFloat(selectedFrameOpt.getAttribute('data-add-price') || '0') : 0;
+
+      const totalPrice = basePrice + addPrice;
+      priceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
+    }
+
+    sizeSelect.addEventListener('change', updateCardPrice);
+    if (frameSelect) {
+      frameSelect.addEventListener('change', updateCardPrice);
+    }
+
+    // Run once at load
+    updateCardPrice();
+  });
+
+  // 2. Dynamic Categories Filter on the Shop page
+  const filterButtons = document.querySelectorAll('.series-subnav [data-filter]');
+  if (filterButtons.length > 0) {
+    const products = document.querySelectorAll('.product-card');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active button
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const activeFilter = btn.getAttribute('data-filter');
+        products.forEach(p => {
+          const cat = p.getAttribute('data-category-filter');
+          if (activeFilter === 'all' || cat === activeFilter) {
+            p.style.display = '';
+            // trigger subtle fade-in sequence
+            p.classList.remove('fade-in');
+            void p.offsetWidth; // trigger reflow
+            p.classList.add('fade-in');
+          } else {
+            p.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // 3. Setup Cart State & Inject HTML dynamically on any page
+  let cart = [];
+  try {
+    cart = JSON.parse(localStorage.getItem('ashley_harrington_cart') || '[]');
+  } catch (e) {
+    cart = [];
+  }
+
+  function saveCart() {
+    localStorage.setItem('ashley_harrington_cart', JSON.stringify(cart));
+    updateCartUI();
+  }
+
+  // Inject drawer structure into the bottom of body if not present
+  let drawer = document.getElementById('site-cart-drawer');
+  let overlay = document.getElementById('cart-drawer-overlay');
+
+  if (!drawer) {
+    overlay = document.createElement('div');
+    overlay.id = 'cart-drawer-overlay';
+    overlay.className = 'cart-drawer-overlay';
+    document.body.appendChild(overlay);
+
+    drawer = document.createElement('div');
+    drawer.id = 'site-cart-drawer';
+    drawer.className = 'cart-drawer';
+    drawer.innerHTML = `
+      <div class="cart-drawer-header">
+        <h2 class="cart-drawer-title font-serif">Your Cart</h2>
+        <button class="cart-drawer-close" id="cart-drawer-close-btn" aria-label="Close Cart">
+          <svg class="cart-close-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          Close
+        </button>
+      </div>
+      <div class="cart-drawer-items" id="cart-items-container"></div>
+      <div class="cart-drawer-footer" id="cart-footer-container">
+        <div class="cart-summary-row">
+          <span>Cart Subtotal</span>
+          <span class="cart-subtotal-val" id="cart-subtotal-display">$0.00</span>
+        </div>
+        <p class="cart-shipping-notice">Standard flat-rate shipping ($10) added at purchase. Free shipping on paper orders over $150.</p>
+        <form id="cart-checkout-form" class="cart-checkout-form">
+          <div class="form-group" style="margin-bottom: 8px;">
+            <input type="text" id="checkout-name" name="name" class="form-input" placeholder="Your Name" style="width: 100%;" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 12px;">
+            <input type="email" id="checkout-email" name="email" class="form-input" placeholder="Your Email" style="width: 100%;" required>
+          </div>
+          <button type="submit" class="btn btn-filled" style="width: 100%; padding: 10px;">Send Print Order Request</button>
+        </form>
+      </div>
+    `;
+    document.body.appendChild(drawer);
+  }
+
+  const itemsContainer = document.getElementById('cart-items-container');
+  const subtotalDisplay = document.getElementById('cart-subtotal-display');
+  const checkoutForm = document.getElementById('cart-checkout-form');
+  const closeBtn = document.getElementById('cart-drawer-close-btn');
+
+  // Trigger elements (buttons with class .cart-trigger)
+  const cartTriggers = document.querySelectorAll('.cart-trigger');
+
+  function openCartDrawer() {
+    drawer.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCartDrawer() {
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Register triggers
+  cartTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCartDrawer();
+    });
+  });
+
+  // Close triggers
+  if (closeBtn) closeBtn.addEventListener('click', closeCartDrawer);
+  if (overlay) overlay.addEventListener('click', closeCartDrawer);
+
+  // 4. Update the complete Cart interface
+  function updateCartUI() {
+    // Collect counts
+    const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+    const counts = document.querySelectorAll('.cart-count');
+    counts.forEach(span => {
+      span.textContent = totalCount;
+    });
+
+    if (!itemsContainer) return;
+
+    if (cart.length === 0) {
+      itemsContainer.innerHTML = `
+        <div class="cart-empty-msg">
+          <p>Your shopping cart is currently empty.</p>
+          <p style="margin-top: 4px; font-size: 0.75rem;">Explore our Print Shop collections to select your reproductions.</p>
+        </div>
+      `;
+      if (subtotalDisplay) subtotalDisplay.textContent = '$0.00';
+      if (checkoutForm) checkoutForm.style.display = 'none';
+      return;
+    }
+
+    if (checkoutForm) checkoutForm.style.display = 'block';
+
+    let subtotal = 0;
+    itemsContainer.innerHTML = '';
+
+    cart.forEach((item, index) => {
+      const itemCost = item.price * item.qty;
+      subtotal += itemCost;
+
+      const row = document.createElement('div');
+      row.className = 'cart-item-row';
+      row.innerHTML = `
+        <img class="cart-item-img" src="${item.img}" alt="${item.title}">
+        <div class="cart-item-details">
+          <div>
+            <h3 class="cart-item-name">${item.title}</h3>
+            <p class="cart-item-meta">${item.size} • ${item.frame}</p>
+          </div>
+          <div class="cart-item-actions">
+            <div class="cart-item-qty-container">
+              <button class="cart-qty-btn decrease-qty-btn" data-index="${index}">−</button>
+              <span class="cart-qty-val">${item.qty}</span>
+              <button class="cart-qty-btn increase-qty-btn" data-index="${index}">+</button>
+            </div>
+            <button class="cart-item-remove" data-index="${index}">Delete</button>
+            <span class="cart-item-price">$${itemCost.toFixed(2)}</span>
+          </div>
+        </div>
+      `;
+      itemsContainer.appendChild(row);
+    });
+
+    if (subtotalDisplay) subtotalDisplay.textContent = `$${subtotal.toFixed(2)}`;
+
+    // Quantity modify listeners
+    const decBtns = itemsContainer.querySelectorAll('.decrease-qty-btn');
+    const incBtns = itemsContainer.querySelectorAll('.increase-qty-btn');
+    const delBtns = itemsContainer.querySelectorAll('.cart-item-remove');
+
+    decBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-index'));
+        if (cart[idx].qty > 1) {
+          cart[idx].qty--;
+        } else {
+          cart.splice(idx, 1);
+        }
+        saveCart();
+      });
+    });
+
+    incBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-index'));
+        cart[idx].qty++;
+        saveCart();
+      });
+    });
+
+    delBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-index'));
+        cart.splice(idx, 1);
+        saveCart();
+      });
+    });
+  }
+
+  // 5. Add to Cart Handler
+  const addButtons = document.querySelectorAll('.btn-add-to-cart');
+  addButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Avoid activating outer overlays if any
+
+      const card = btn.closest('.product-card');
+      if (!card) return;
+
+      const title = btn.getAttribute('data-title');
+      const img = btn.getAttribute('data-img');
+      const sizeSelect = card.querySelector('.size-select');
+      const frameSelect = card.querySelector('.frame-select');
+
+      const sizeOptionText = sizeSelect.options[sizeSelect.selectedIndex].text;
+      const sizeKey = sizeSelect.value;
+      const sizeClean = sizeOptionText.split('—')[0].trim(); // e.g., "12\" x 16\""
+
+      const frameOptionText = frameSelect ? frameSelect.options[frameSelect.selectedIndex].text : 'Unframed';
+      const frameClean = frameOptionText.replace(/\(.*\)/, '').trim(); // e.g. "Solid Oak Frame"
+
+      // Base price math
+      const basePrices = JSON.parse(sizeSelect.getAttribute('data-base-prices') || '{}');
+      const basePrice = basePrices[sizeKey] || 0;
+      const addPrice = frameSelect ? parseFloat(frameSelect.options[frameSelect.selectedIndex].getAttribute('data-add-price') || '0') : 0;
+      const finalPrice = basePrice + addPrice;
+
+      // Check if duplicate element exists
+      const existingIndex = cart.findIndex(item => 
+        item.title === title && 
+        item.size === sizeClean && 
+        item.frame === frameClean
+      );
+
+      if (existingIndex !== -1) {
+        cart[existingIndex].qty++;
+      } else {
+        cart.push({
+          title: title,
+          img: img,
+          size: sizeClean,
+          frame: frameClean,
+          price: finalPrice,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      showToast(`Added prints of "${title}" to your cart.`);
+      
+      // Auto open cart drawer to display results
+      openCartDrawer();
+    });
+  });
+
+  // 6. Checkout Order Request Submission
+  if (checkoutForm) {
+    checkoutForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const clientName = document.getElementById('checkout-name').value;
+      const clientEmail = document.getElementById('checkout-email').value;
+
+      if (!clientName || !clientEmail) return;
+
+      // Map cart items to metadata
+      const itemsString = cart.map(item => `[${item.qty}x] ${item.title} (Size: ${item.size}, Frame: ${item.frame})`).join('\n');
+      const cartSummaryMessage = `User Placed Print Order:\nName: ${clientName}\nEmail: ${clientEmail}\nItems:\n${itemsString}`;
+
+      console.log('Sending Custom print order via simulated MailerLite:', cartSummaryMessage);
+
+      // Trigger beautiful order toast
+      showToast(`Thank you, ${clientName}! Your print order request has been received.`);
+
+      // Reset cart completely
+      cart = [];
+      saveCart();
+
+      // Close drawer with delay
+      setTimeout(() => {
+        closeCartDrawer();
+        checkoutForm.reset();
+      }, 1500);
+    });
+  }
+
+  // Sync state initially
+  updateCartUI();
 }
