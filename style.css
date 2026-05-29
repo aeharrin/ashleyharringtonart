@@ -1104,8 +1104,8 @@ footer {
   .lightbox-frame {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    height: 95vh;
-    max-height: 95vh;
+    height: 80vh; /* Centered visually with clear space around it */
+    max-height: 80vh;
     width: calc(100% - 20px);
   }
 
@@ -1168,10 +1168,15 @@ footer {
   margin: 0 auto;
   padding: 0.75rem var(--spacing-md);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Aligns subnav items left under Ashley Harrington logo */
   align-items: center;
   gap: var(--spacing-md);
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Keep on a single line */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.subnav-container::-webkit-scrollbar {
+  display: none;
 }
 
 .subnav-link {
@@ -1181,9 +1186,10 @@ footer {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--color-text-muted);
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0;
   transition: var(--transition-fast);
   opacity: 0.8;
+  flex-shrink: 0; /* Prevents text from shrinking on smaller single-line views */
 }
 
 .subnav-link:hover, .subnav-link.active {
@@ -1198,6 +1204,13 @@ footer {
 @media (max-width: 768px) {
   .series-subnav {
     top: 65px; /* Adjust for mobile header sizing spacing */
+  }
+  .subnav-container {
+    overflow-x: auto; /* Active horizontal scrolling on mobile scale */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbars for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbars for IE/Edge */
+    padding: 0.75rem var(--spacing-md); /* Keep identical padding when sticky */
   }
   .gallery-section {
     scroll-margin-top: 120px;
