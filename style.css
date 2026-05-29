@@ -85,7 +85,7 @@ a {
 }
 
 /* Navigation Header */
-header {
+header#site-header {
   position: sticky;
   top: 0;
   background-color: rgba(249, 248, 246, 0.95);
