@@ -91,7 +91,7 @@ header#site-header {
   background-color: rgba(249, 248, 246, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
-  z-index: 100;
+  z-index: 1005;
   transition: var(--transition-smooth);
 }
 
@@ -169,6 +169,10 @@ header#site-header {
 }
 
 /* Mobile Nav Styles */
+.mobile-nav-actions {
+  display: none !important;
+}
+
 .menu-toggle {
   display: none;
   background: none;
@@ -190,30 +194,69 @@ header#site-header {
 .mobile-nav-overlay {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  right: -320px; /* Hidden off-screen right by default */
+  width: 320px;
+  max-width: 85vw; /* Safe width on extra narrow screens */
   height: 100vh;
   background-color: var(--color-bg);
-  z-index: 105;
+  border-left: 1px solid var(--color-border);
+  z-index: 1000; /* Directly under header index */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: var(--spacing-lg);
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 100px var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Header spacing vertical clearance */
   gap: var(--spacing-md);
   opacity: 0;
   visibility: hidden;
-  transition: var(--transition-smooth);
+  box-shadow: -10px 0 35px rgba(44, 44, 44, 0.08);
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity var(--transition-smooth), visibility var(--transition-smooth);
 }
 
 .mobile-nav-overlay.open {
+  right: 0;
   opacity: 1;
   visibility: visible;
 }
 
 .mobile-nav-overlay .nav-link {
-  font-size: 1.5rem;
-  letter-spacing: 0.2em;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  width: 100%;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border-light);
+  display: block;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.mobile-nav-overlay .nav-link:hover, .mobile-nav-overlay .nav-link.active {
+  color: var(--color-primary);
+  padding-left: 8px;
+}
+
+/* Slide-in sidebar dim backdrop filter mask */
+.mobile-nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(44, 44, 44, 0.25);
+  backdrop-filter: blur(4px);
+  z-index: 999; /* Higher than content, lower than header/drawer */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav-backdrop.open {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Page Main Structure */
@@ -814,15 +857,20 @@ textarea.form-input {
 }
 
 .accordion-item {
-  border: 1px solid var(--color-border);
-  background-color: var(--color-card);
-  margin-bottom: 0.75rem;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  margin-bottom: 0;
   transition: var(--transition-fast);
+}
+
+.accordion-item:first-of-type {
+  border-top: 1px solid var(--color-border);
 }
 
 .accordion-header {
   width: 100%;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -834,15 +882,21 @@ textarea.form-input {
 
 .accordion-title {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--color-text);
   font-weight: 400;
+  transition: color var(--transition-fast);
+}
+
+.accordion-header:hover .accordion-title {
+  color: var(--color-primary);
 }
 
 .accordion-icon {
   position: relative;
   width: 14px;
   height: 14px;
+  margin-left: 1.5rem;
   transform: rotate(0deg);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -885,10 +939,11 @@ textarea.form-input {
 }
 
 .accordion-content {
-  padding: 0 1.5rem 1.5rem 1.5rem;
-  font-size: 0.92rem;
+  padding: 1.5rem 0;
+  font-size: 0.95rem;
   color: var(--color-text);
   font-weight: 300;
+  line-height: 1.7;
   border-top: 1px solid transparent;
 }
 
@@ -1075,7 +1130,11 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .mobile-nav-actions {
+    display: flex !important;
+  }
+
   .desktop-nav {
     display: none;
   }
@@ -1203,7 +1262,7 @@ footer {
   scroll-margin-top: 140px; /* Accounts for header + sticky subnav height triggers */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .series-subnav {
     top: 65px; /* Adjust for mobile header sizing spacing */
   }
@@ -1218,4 +1277,283 @@ footer {
     scroll-margin-top: 120px;
   }
 }
+
+/* ==========================================================================
+   FINE ART PRINT SHOP & SHOPPING CART DRAWER
+   ========================================================================== */
+
+/* Cart Count badges */
+.cart-count {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  transition: var(--transition-fast);
+}
+
+.cart-trigger:hover .cart-count {
+  color: var(--color-text);
+}
+
+/* Hide mobile cart action on desktop */
+.cart-trigger-mobile {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .cart-trigger-mobile {
+    display: block !important;
+  }
+}
+
+/* Shop Badge and styling enhancements */
+.product-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-sm);
+  transition: var(--transition-smooth);
+}
+
+.product-card:hover {
+  border-color: var(--color-text-muted);
+}
+
+.product-card .card-frame {
+  margin-bottom: var(--spacing-sm);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+}
+
+.product-card select {
+  transition: var(--transition-fast);
+}
+
+.product-card select:hover, .product-card select:focus {
+  border-color: var(--color-text);
+}
+
+/* Sidebar Cart Drawer overlay and content container */
+.cart-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-overlay-dark);
+  z-index: 299;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 440px;
+  max-width: 100%;
+  background-color: var(--color-bg);
+  border-left: 1px solid var(--color-border);
+  z-index: 300;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer.active {
+  transform: translateX(0);
+}
+
+.cart-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.cart-drawer-title {
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cart-drawer-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+  padding: 8px 0;
+}
+
+.cart-drawer-close:hover {
+  color: var(--color-text);
+}
+
+.cart-drawer-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer-footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-md);
+  background-color: rgba(249, 248, 246, 0.6);
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.cart-subtotal-val {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+}
+
+.cart-shipping-notice {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-sm);
+}
+
+.cart-checkout-form .form-group input {
+  font-size: 0.85rem;
+  padding: 10px var(--spacing-sm);
+}
+
+/* Individual Cart row layout */
+.cart-item-row {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.cart-item-img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border: 1px solid var(--color-border-light);
+}
+
+.cart-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-item-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.cart-item-meta {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.cart-item-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.cart-item-qty-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--color-border-light);
+  padding: 2px 6px;
+}
+
+.cart-qty-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0 4px;
+  color: var(--color-text-muted);
+  line-height: 1.1;
+}
+
+.cart-qty-val {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a24b4b;
+  padding: 4px;
+}
+
+.cart-item-remove:hover {
+  text-decoration: underline;
+}
+
+.cart-item-price {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Empty State card */
+.cart-empty-msg {
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  padding: var(--spacing-lg) 0;
+}
+
 
