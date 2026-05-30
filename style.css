@@ -283,8 +283,8 @@ main {
   }
 }
 
-/* Hero Section */
-.hero-section {
+/* Homepage Full-Width Hero */
+.hero-home {
   position: relative;
   width: 100%;
   min-height: 580px;
@@ -360,7 +360,7 @@ main {
 }
 
 @media (max-width: 768px) {
-  .hero-section {
+  .hero-home {
     min-height: 480px;
   }
   .hero-overlay {
@@ -370,6 +370,46 @@ main {
     padding-top: var(--spacing-lg);
     padding-bottom: var(--spacing-lg);
   }
+}
+
+/* Page Intro Hero / Header Section (for shop, contact) - Stacks Vertically like Artwork */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  max-width: 900px;
+}
+
+.hero-section .hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+.hero-section .hero-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-top: 0.5rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.hero-section .hero-description {
+  font-size: 1.15rem;
+  font-weight: 300;
+  max-width: 720px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+  opacity: 1;
 }
 
 /* Minimalist Terracotta Buttons */
@@ -1250,7 +1290,7 @@ footer {
     font-size: 15px;
   }
 
-  .hero-section {
+  .hero-home {
     min-height: 380px;
   }
 
