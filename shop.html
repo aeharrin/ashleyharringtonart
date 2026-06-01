@@ -20,7 +20,7 @@
         <a href="artwork.html" class="nav-link">Artwork</a>
         <a href="shop.html" class="nav-link active">Shop</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="#" class="nav-link inquire-trigger nav-link-cta">Inquire</a>
       </nav>
 
       <!-- Mobile Right Actions -->
@@ -40,42 +40,29 @@
     <a href="artwork.html" class="nav-link">Artwork</a>
     <a href="shop.html" class="nav-link active">Shop</a>
     <a href="about.html" class="nav-link">About</a>
-    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="nav-link inquire-trigger nav-link-cta">Inquire</a>
   </div>
 
   <main>
     <!-- Elegant Minimal Hero Section for Shop -->
-    <section class="hero-section page-container" id="shop-hero" style="padding-bottom: var(--spacing-md);">
-      <span class="hero-subtitle">Online Store</span>
-      <h1 class="hero-title">The Shop</h1>
-      
-      <p class="hero-description" style="max-width: 720px; margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.6; color: var(--color-text);">
-        Original mini paintings and fine art prints — made to live in your space. All prints are produced on archival paper with museum-quality inks.
-      </p>
-      
-      <p style="font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-top: 0; margin-bottom: var(--spacing-md);">
-        To inquire about an original painting, visit the <a href="artwork.html" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; font-weight: 500;">Gallery page</a>.
-      </p>
-      
-      <!-- Subtle Educational Metadata Icons -->
-      <div class="shop-badges-row" style="display: flex; flex-wrap: wrap; gap: var(--spacing-md); margin-top: var(--spacing-sm); border-top: 1px solid var(--color-border); padding-top: var(--spacing-sm);">
-        <div class="badge-item" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-muted);">
-          <span style="display: inline-block; width: 6px; height: 6px; background-color: var(--color-text); border-radius: 50%;"></span>
-          310gsm Cotton Rag Paper
-        </div>
-        <div class="badge-item" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-muted);">
-          <span style="display: inline-block; width: 6px; height: 6px; background-color: var(--color-text); border-radius: 50%;"></span>
-          Lightfast Pigment Inks
-        </div>
-        <div class="badge-item" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-muted);">
-          <span style="display: inline-block; width: 6px; height: 6px; background-color: var(--color-text); border-radius: 50%;"></span>
-          Secure Carbon Neutral Shipping
-        </div>
-      </div>
-    </section>
+    <div class="page-container" style="padding-bottom: 0;">
+      <section class="hero-section" id="shop-hero" style="margin-bottom: var(--spacing-sm);">
+        <span class="hero-subtitle">Online Store</span>
+        <h1 class="hero-title">The Shop</h1>
+        <p class="hero-description">
+          Original mini paintings and fine art prints — made to live in your space. All prints are produced on archival paper with museum-quality inks.
+        </p>
+        
+        <p style="font-family: var(--font-sans); color: var(--color-text-muted); margin-top: var(--spacing-sm); margin-bottom: var(--spacing-md); max-width: 720px;">
+          To inquire about an original painting, visit the <a href="artwork.html" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; font-weight: 500;">Gallery page</a>.
+        </p>
+        
+
+      </section>
+    </div>
 
     <!-- Subnav Sticky Category filtering -->
-    <nav class="series-subnav" id="shop-series-menu" style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); position: sticky; top: 73px; background: rgba(249, 248, 246, 0.95); backdrop-filter: blur(8px); z-index: 10;">
+    <nav class="series-subnav" id="shop-series-menu" style="border-bottom: 1px solid var(--color-border); position: sticky; top: 64px; background: rgba(249, 248, 246, 0.95); backdrop-filter: blur(8px); z-index: 10;">
       <div class="subnav-container">
         <a href="#section-prints" class="subnav-link active">Prints</a>
         <a href="#section-mini-paintings" class="subnav-link">Mini Paintings</a>
@@ -84,13 +71,13 @@
 
     <!-- Prints Catalog Section -->
     <section class="gallery-section page-container" id="section-prints" style="padding-top: var(--spacing-sm); padding-bottom: var(--spacing-lg);">
-      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem;">I. Archival Prints</h2>
-        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Giclée Reproductions</span>
+      <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">I. Archival Prints</h2>
+        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Giclée Reproductions</span>
+        <p class="series-description">
+          Museum-grade prints are captured digitally directly from original pieces and color-matched specifically to the artist's proofing under technical studio lighting.
+        </p>
       </div>
-      <p style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-muted); font-weight: 300; max-width: 720px; margin-bottom: var(--spacing-md); line-height: 1.6;">
-        Museum-grade prints are captured digitally directly from original pieces and color-matched specifically to the artist's proofing under technical studio lighting.
-      </p>
 
       <div class="gallery-grid" id="shop-prints-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
         
@@ -105,7 +92,7 @@
                  data-type="Made to Order"
                  data-desc="Premium archival giclée reproduction of November Fields I. Individually proofed and technical curation to ensure exact texture replication."
                  id="prod-november-fields">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600" alt="Autumn dunes and golden fields landscape print">
             <div class="card-overlay"></div>
             <span class="product-badge" style="position: absolute; top: var(--spacing-sm); left: var(--spacing-sm); background-color: var(--color-bg); padding: 4px 8px; font-family: var(--font-sans); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--color-border); z-index: 5;">Best Seller</span>
@@ -122,9 +109,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
+              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Order
               </button>
             </div>
@@ -142,7 +129,7 @@
                  data-type="Made to Order"
                  data-desc="Premium archival giclée reproduction of Introspection II. Captures the deep indigo and moody teal lines mapped on textured museum-grade paper."
                  id="prod-introspection-blue">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=600" alt="Abstract blue and turquoise textured figure print">
             <div class="card-overlay"></div>
           </div>
@@ -158,9 +145,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
+              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Order
               </button>
             </div>
@@ -178,7 +165,7 @@
                  data-type="Made to Order"
                  data-desc="Premium archival giclée reproduction of Clay & Recline I. Individually proofed to capture the organic earth ochres and deep tactile plaster contours."
                  id="prod-clay-recline">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?q=80&w=600" alt="Seated female figure study on sketch block background">
             <div class="card-overlay"></div>
           </div>
@@ -194,9 +181,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
+              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Order
               </button>
             </div>
@@ -214,7 +201,7 @@
                  data-type="Made to Order"
                  data-desc="Premium archival giclée reproduction of Sylvan Radiance II. Renders woodland rays and lush forest canopies with pristine chromatic details."
                  id="prod-sylvan-radiance">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Woodland sunburst highlighting moss greens landscape print">
             <div class="card-overlay"></div>
           </div>
@@ -230,9 +217,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
+              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Order
               </button>
             </div>
@@ -250,7 +237,7 @@
                  data-type="Made to Order"
                  data-desc="Premium archival giclée reproduction of Vulnerability Study V. Hand-proofed lines designed to stay vibrant, mapping gestural bodies with ultimate clarity."
                  id="prod-vulnerability-study">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600" alt="Gestural movement research charcoal study">
             <div class="card-overlay"></div>
           </div>
@@ -266,9 +253,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
+              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Order
               </button>
             </div>
@@ -286,7 +273,7 @@
                  data-type="Made to Order"
                  data-desc="Premium archival giclée reproduction of Coastal Ledge Study. Deep maritime cliff textures and blue ocean horizons rendered on heavyweight German cotton rag."
                  id="prod-coastal-ledge">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600" alt="Earthy coastal cliffs colliding with active ocean blue">
             <div class="card-overlay"></div>
           </div>
@@ -302,9 +289,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
+              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Order
               </button>
             </div>
@@ -316,13 +303,13 @@
 
     <!-- Mini Paintings Catalog Section -->
     <section class="gallery-section page-container" id="section-mini-paintings" style="padding-top: var(--spacing-sm); padding-bottom: var(--spacing-xl);">
-      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem;">II. Mini Paintings</h2>
-        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Original Small Works</span>
+      <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">II. Mini Paintings</h2>
+        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Original Small Works</span>
+        <p class="series-description">
+          Original, small-format paint/pigment studies on custom prepared wood blocks or weighted Baltic birch panels. Perfectly sized for cozy display niches, mantelpieces, or physical shelf pairings.
+        </p>
       </div>
-      <p style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-text-muted); font-weight: 300; max-width: 720px; margin-bottom: var(--spacing-md); line-height: 1.6;">
-        Original, small-format paint/pigment studies on custom prepared wood blocks or weighted Baltic birch panels. Perfectly sized for cozy display niches, mantelpieces, or physical shelf pairings.
-      </p>
 
       <div class="gallery-grid" id="shop-paintings-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
         
@@ -337,7 +324,7 @@
                  data-type="Original Painting"
                  data-desc="Delicate palette-knife meadow study rendered in heavy glaze oils on Baltic birch block. Ready to display tabletop or insert into a deep float frame."
                  id="paint-meadow-study-iv">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=600" alt="Heavily textured abstract fluid splotches oil brush painting study">
             <div class="card-overlay"></div>
             <span class="product-badge" style="position: absolute; top: var(--spacing-sm); left: var(--spacing-sm); background-color: var(--color-bg); padding: 4px 8px; font-family: var(--font-sans); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--color-border); z-index: 5;">One of a Kind</span>
@@ -354,9 +341,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">$280.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">$280.00</span>
+              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Buy
               </button>
             </div>
@@ -374,7 +361,7 @@
                  data-type="Original Painting"
                  data-desc="Form Study on deep raw sienna background. Blends natural bone powder tempera washes with dense graphite boundaries on wood panel."
                  id="paint-postural-sketch">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=600" alt="Abstract earth tone raw tempera sketch panel">
             <div class="card-overlay"></div>
           </div>
@@ -390,9 +377,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">$340.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">$340.00</span>
+              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Buy
               </button>
             </div>
@@ -410,7 +397,7 @@
                  data-type="Original Painting"
                  data-desc="Small format exercise inspecting fluid body curves and marine twilight depth. Mixed media including volcanic ash glaze for soft, organic texture."
                  id="paint-nocturnal-study">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600" alt="Beautiful blue textured fluid study">
             <div class="card-overlay"></div>
           </div>
@@ -426,9 +413,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">$260.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">$260.00</span>
+              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Buy
               </button>
             </div>
@@ -446,7 +433,7 @@
                  data-type="Original Painting"
                  data-desc="Warm, ambient oil shoreline study capturing rich sun filtration. Built up in luminous glaze layers to sustain a golden indoor glow."
                  id="paint-golden-hour">
-          <div class="card-frame" style="aspect-ratio: 4/3; cursor: pointer;">
+          <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Beautiful sunbeams through rich woodland forest oil study">
             <div class="card-overlay"></div>
           </div>
@@ -462,9 +449,9 @@
               </p>
             </div>
             
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-              <span class="card-price">$310.00</span>
-              <button class="btn btn-filled" style="padding: 6px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0;">
+            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
+              <span class="card-price" style="margin-bottom: 2px;">$310.00</span>
+              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
                 Inquire to Buy
               </button>
             </div>
@@ -475,51 +462,77 @@
     </section>
   </main>
 
-  <!-- Native Image Lightbox Drawer (Split Screen Modal) -->
-  <div class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visual inquiry lightbox" id="gallery-lightbox">
+  <!-- Simplified Distraction-Free Image Lightbox -->
+  <div class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visual zoomed lightbox" id="gallery-lightbox">
     <div class="lightbox-background" id="lightbox-bg-close"></div>
+    <button class="lightbox-close" aria-label="Close Lightbox" id="lightbox-close-btn">
+      <svg class="lightbox-close-icon" viewBox="0 0 24 24">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
     <div class="lightbox-frame">
-      <button class="lightbox-close" aria-label="Close Lightbox" id="lightbox-close-btn">
-        <svg class="lightbox-close-icon" viewBox="0 0 24 24">
+      <div class="lightbox-image-box">
+        <img class="lightbox-main-img" src="" alt="Selected Painting Detail">
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Inquiry Modal Popup -->
+  <div class="inquiry-modal" role="dialog" aria-modal="true" aria-label="Artwork inquiry modal" id="global-inquiry-modal">
+    <div class="inquiry-modal-background" id="inquiry-modal-bg-close"></div>
+    <div class="inquiry-modal-frame">
+      <button class="inquiry-modal-close" aria-label="Close Modal" id="inquiry-modal-close-btn">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
-        Close
       </button>
-
-      <!-- Left Image panel -->
-      <div class="lightbox-image-box">
-        <img class="lightbox-main-img" src="" alt="Selected Printing Detail">
-      </div>
-
-      <!-- Right Details and Inquiry panel -->
-      <div class="lightbox-details-box">
-        <span class="lightbox-art-category">Category</span>
-        <h2 class="lightbox-art-title">Title of Print</h2>
-        <p class="lightbox-art-meta">Specs and properties</p>
-        <p class="lightbox-art-description">Descriptive insights of the piece</p>
-        <p class="lightbox-art-price">$85.00</p>
-
-        <!-- Native Minimalist Inquiry Form (Integrated natively, no popup) -->
-        <div class="lightbox-inquiry-container">
-          <h3 class="inquiry-form-title">Inquire About This Print</h3>
-          <form class="mailerlite-inquiry-form" id="lightbox-mailerlite-form">
-            <!-- Automatically captured metadata string injected here via vanilla JS -->
-            <input type="hidden" name="mailerlite-inquiry-item" id="mailerlite-inquiry-item">
-
+      <div class="inquiry-modal-content">
+        <span class="inquiry-modal-subtitle">Direct Studio Inquiry</span>
+        <h2 class="inquiry-modal-title">Inquire About Artwork</h2>
+        <p class="inquiry-modal-description">Please enter your details below. If you're interested in a specific piece or a custom commission size, please specify below.</p>
+        
+        <!-- MailerLite Form Integration Placeholder -->
+        <div class="mailerlite-form-placeholder">
+          <!-- 
+            MailerLite Form Integration Placeholder:
+            Copy and paste your MailerLite universal/embedded form code here.
+          -->
+          <form class="mailerlite-inquiry-form" id="global-mailerlite-form">
             <div class="form-group">
-              <label class="form-label" for="inquiry-name">Your Name</label>
-              <input type="text" id="inquiry-name" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+              <label class="form-label" for="global-inquiry-name">Your Name</label>
+              <input type="text" id="global-inquiry-name" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="inquiry-email">Your Email</label>
-              <input type="email" id="inquiry-email" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required>
+              <label class="form-label" for="global-inquiry-email">Your Email</label>
+              <input type="email" id="global-inquiry-email" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="inquiry-message">Your Message</label>
-              <textarea id="inquiry-message" name="message" class="form-input" placeholder="Please specify your desired print size and shipping address, and I will follow up with pricing and a custom invoice." required></textarea>
+              <label class="form-label" for="global-inquiry-artwork">Select Artwork or Series of Interest</label>
+              <select id="global-inquiry-artwork" name="artwork" class="form-input" style="background: var(--color-bg); font-family: var(--font-sans); cursor: pointer; outline: none;">
+                <option value="General Inquiry">General Studio Inquiry / Custom Commission</option>
+                <option value="Meadow Study IV">Landscape: Meadow Study IV</option>
+                <option value="Postural Sketch (Sienna)">Figure: Postural Sketch (Sienna)</option>
+                <option value="Nocturnal Study XI">Figure: Nocturnal Study XI</option>
+                <option value="Golden Hour Shoreline">Landscape: Golden Hour Shoreline</option>
+                <option value="November Fields I">Landscape: November Fields I</option>
+                <option value="Introspection II (Blue)">Figure: Introspection II (Blue)</option>
+                <option value="Helianthus Portrait">Botanical: Helianthus Portrait</option>
+                <option value="Clay & Recline I">Sculpt: Clay & Recline I</option>
+                <option value="The Heavy Earth">Sculpt: The Heavy Earth</option>
+                <option value="Torso & Charcoal Glow">Sculpt: Torso & Charcoal Glow</option>
+                <option value="Nocturnal Horizon Study">Figure: Nocturnal Horizon Study</option>
+                <option value="Vesper Contours">Figure: Vesper Contours</option>
+                <option value="Fine Art Print Study">Fine Art Prints Series</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="global-inquiry-message">Your Message</label>
+              <textarea id="global-inquiry-message" name="message" class="form-input" placeholder="Provide any questions, sizing, or request a shipping quote..." required></textarea>
             </div>
 
             <button type="submit" class="btn btn-filled btn-submit" style="width: 100%;">Submit Inquiry</button>
@@ -533,6 +546,11 @@
   <footer id="site-footer" style="padding: var(--spacing-md) 0;">
     <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-sm);">
       
+      <!-- Footer Prominent Call-to-Action -->
+      <div class="footer-cta-wrapper" style="margin-top: var(--spacing-xs); margin-bottom: var(--spacing-xs); text-align: center;">
+        <button class="btn btn-filled inquire-trigger" style="padding: 12px 28px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;">Inquire About Artwork</button>
+      </div>
+
       <!-- Social Links with Icons -->
       <div class="footer-social-row" id="footer-socials-centered" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem;">
         <a href="https://instagram.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.7; text-decoration: none; display: flex; align-items: center; gap: 6px;">
@@ -550,7 +568,7 @@
         <a href="artwork.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Artwork</a>
         <a href="shop.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Shop</a>
         <a href="about.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">About</a>
-        <a href="contact.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Contact</a>
+        <a href="#" class="footer-nav-link inquire-trigger" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Inquire</a>
         <a href="faq.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">FAQ & Shipping</a>
         <a href="legal.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Privacy & Terms</a>
       </nav>
