@@ -309,7 +309,7 @@ button.inquiry-submit:hover,
 /* Desktop header clearance adjustment for CTA link to stay inline cleanly inside header's 64px row */
 header#site-header .nav-link-cta {
   padding: 8px 20px !important;
-  font-size: 0.85rem !important;
+  font-size: 0.8rem !important;
 }
 
 /* ==========================================================================
@@ -372,13 +372,23 @@ header#site-header.scrolled {
 
 .nav-link {
   font-family: var(--font-body);
-  font-size: 1rem !important; /* Exact standard nav size as requested */
+  font-size: 0.8rem !important; /* Elegant 0.8rem as requested */
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   padding: 0.5rem 0;
   position: relative;
   opacity: 0.8;
+}
+
+.nav-link.nav-link-cta {
+  font-size: 0.8rem !important;
+  opacity: 1 !important; /* Keep full terracotta intensity always */
+}
+
+.nav-link.nav-link-cta::after {
+  display: none !important; /* Disable underline to prevent double/thick border on hover */
+  content: none !important;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -2072,9 +2082,27 @@ textarea.form-input {
 
 footer {
   background-color: var(--bg-color);
-  border-top: 1px solid var(--color-border);
+  border-top: none !important;
   padding: var(--spacing-lg) 0 var(--spacing-md) 0;
   margin-top: auto;
+  position: relative;
+}
+
+footer::before,
+#site-footer::before {
+  content: "" !important;
+  display: block !important;
+  width: 60% !important;
+  height: 1px !important;
+  background-color: var(--color-border) !important;
+  margin: 0 auto !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 20% !important;
+}
+
+.footer-bottom-centered {
+  border-top: none !important;
 }
 
 .footer-container {
