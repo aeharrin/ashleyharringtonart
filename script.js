@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize general page transitions/animations
   initializeEntranceAnimations();
 
+  // Scroll detection for sticky navigation header
+  initializeScrollHeader();
+
   // Mobile Menu Interaction
   initializeMobileMenu();
 
@@ -16,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Lightbox & Mailerlite Inquiry Form Integration
   initializeLightbox();
+
+  // Global Inquire Modal Overlay popup
+  initializeInquiryModal();
 
   // Form Submissions and Toast Feedback Alerts
   initializeForms();
@@ -32,6 +38,27 @@ function initializeEntranceAnimations() {
   animatedElements.forEach((el, index) => {
     el.style.animationDelay = `${index * 0.1}s`;
   });
+}
+
+/**
+ * Handle scroll states for header border toggling
+ */
+function initializeScrollHeader() {
+  const siteHeader = document.getElementById('site-header');
+  if (!siteHeader) return;
+
+  const handleScroll = () => {
+    if (window.scrollY > 5) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  };
+
+  // Run initial state check in case page was refreshed while scrolled
+  handleScroll();
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
 }
 
 /**
@@ -111,8 +138,7 @@ function initializeFAQAccordion() {
 }
 
 /**
- * Image Lightbox Modal with side-by-side details
- * and automated mailerlite-inquiry-item capture logic
+ * Image Lightbox Modal - Simplified purely visual zoom Study
  */
 function initializeLightbox() {
   const cards = document.querySelectorAll('.card-item[data-lightbox="true"]');
@@ -120,51 +146,17 @@ function initializeLightbox() {
   
   if (!lightboxModal || cards.length === 0) return;
 
-  // Locate the nodes to populate within the split modal
   const lightboxImg = lightboxModal.querySelector('.lightbox-main-img');
-  const artCategory = lightboxModal.querySelector('.lightbox-art-category');
-  const artTitle = lightboxModal.querySelector('.lightbox-art-title');
-  const artMeta = lightboxModal.querySelector('.lightbox-art-meta');
-  const artDescription = lightboxModal.querySelector('.lightbox-art-description');
-  const artPrice = lightboxModal.querySelector('.lightbox-art-price');
-  const inquiryInput = lightboxModal.querySelector('#mailerlite-inquiry-item');
-
   const closeButton = lightboxModal.querySelector('.lightbox-close');
   const backgroundOverlay = lightboxModal.querySelector('.lightbox-background');
 
   function openLightbox(card) {
-    // Collect data attributes from the card element
     const imgSrc = card.getAttribute('data-img');
-    const title = card.getAttribute('data-title');
-    const category = card.getAttribute('data-category'); // e.g., 'Selected Painting'
-    const dimensions = card.getAttribute('data-dimensions'); // e.g., '36" x 48"'
-    const medium = card.getAttribute('data-medium'); // e.g., 'Oil on canvas'
-    const price = card.getAttribute('data-price');
-    const descText = card.getAttribute('data-desc') || 'Original painting. Highly detailed brushwork and loaded textures.';
-    const type = card.getAttribute('data-type') || 'Original'; // e.g., 'Original' or 'Fine Art Print'
+    const title = card.getAttribute('data-title') || 'Artwork';
 
-    // Populate the modal fields
     if (lightboxImg) {
       lightboxImg.setAttribute('src', imgSrc);
-      lightboxImg.setAttribute('alt', `${title} - Artwork`);
-    }
-    if (artCategory) artCategory.textContent = category;
-    if (artTitle) artTitle.textContent = title;
-    
-    if (artMeta) {
-      artMeta.textContent = `${medium} • ${dimensions}`;
-    }
-    if (artDescription) artDescription.textContent = descText;
-    if (artPrice) artPrice.textContent = price;
-
-    // JavaScript Automation for MailerLite fields inside details panel
-    if (inquiryInput) {
-      let inquiryString = `${title} - ${type}`;
-      if (card.classList.contains('product-card')) {
-        const cleanTitle = title.replace(/\s+Print$/i, '').trim();
-        inquiryString = `${cleanTitle} Print - Made to Order`;
-      }
-      inquiryInput.value = inquiryString;
+      lightboxImg.setAttribute('alt', `${title} - Artwork Zoomed`);
     }
 
     // Toggle scroll locking on background and open modal elegantly
@@ -180,8 +172,8 @@ function initializeLightbox() {
   // Attach dynamic clicks to the list cards
   cards.forEach(card => {
     card.addEventListener('click', (e) => {
-      // Avoid triggering when user clicks secondary interactive buttons/links if any
-      if (e.target.closest('.no-lightbox')) return;
+      // Avoid triggering when user clicks secondary interactive buttons/links/actions (e.g., Inquire button)
+      if (e.target.closest('.no-lightbox') || e.target.closest('.btn') || e.target.closest('.inquire-trigger')) return;
       openLightbox(card);
     });
   });
@@ -213,7 +205,7 @@ function initializeForms() {
       const name = form.querySelector('[name="name"]')?.value || form.querySelector('[type="text"]')?.value || '';
       const email = form.querySelector('[name="email"]')?.value || form.querySelector('[type="email"]')?.value || '';
       const message = form.querySelector('textarea')?.value || '';
-      const itemSubject = form.querySelector('#mailerlite-inquiry-item')?.value || '';
+      const itemSubject = form.querySelector('#mailerlite-inquiry-item')?.value || form.querySelector('select')?.value || '';
 
       // Validate basic criteria
       if (!name || !email) {
@@ -239,11 +231,11 @@ function initializeForms() {
       // Perform deep client-side cleanups
       form.reset();
 
-      // If this was inside the lightbox portal, shut down after a short delay
-      const lightboxModal = document.querySelector('.lightbox-modal');
-      if (lightboxModal && lightboxModal.classList.contains('active') && form.closest('.lightbox-details-box')) {
+      // If this was inside the global inquiry modal, shut down after a short delay
+      const inquiryModal = document.querySelector('.inquiry-modal');
+      if (inquiryModal && inquiryModal.classList.contains('active')) {
         setTimeout(() => {
-          lightboxModal.classList.remove('active');
+          inquiryModal.classList.remove('active');
           document.body.style.overflow = '';
         }, 1500);
       }
@@ -304,5 +296,85 @@ function initializeGallerySubnav() {
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
+}
+
+/**
+ * Global Inquire Modal logic and custom triggers
+ */
+function initializeInquiryModal() {
+  const inquiryModal = document.querySelector('.inquiry-modal');
+  if (!inquiryModal) return;
+
+  const triggers = document.querySelectorAll('.inquire-trigger');
+  const closeBtn = inquiryModal.querySelector('.inquiry-modal-close');
+  const backgroundOverlay = inquiryModal.querySelector('.inquiry-modal-background');
+  const artworkSelect = inquiryModal.querySelector('#global-inquiry-artwork');
+
+  function openModal() {
+    document.body.style.overflow = 'hidden';
+    inquiryModal.classList.add('active');
+  }
+
+  function closeModal() {
+    inquiryModal.classList.remove('active');
+    
+    // Check if other components are Locking Scroll before unlocking the body
+    const isMobileNavOpen = document.querySelector('.mobile-nav-overlay.open');
+    const isLightboxActive = document.querySelector('.lightbox-modal.active');
+    
+    if (!isMobileNavOpen && !isLightboxActive) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+
+      // Shut down any active mobile sidebar navigation overlay on click
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+      const backdrop = document.querySelector('.mobile-nav-backdrop');
+      if (menuToggle && menuToggle.classList.contains('open')) {
+        menuToggle.classList.remove('open');
+        if (mobileNavOverlay) mobileNavOverlay.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
+      }
+      
+      // Auto-tag artwork selection in select dropdown list if present
+      const cardParent = trigger.closest('.card-item');
+      if (cardParent && artworkSelect) {
+        const title = cardParent.getAttribute('data-title');
+        if (title) {
+          let found = false;
+          for (let i = 0; i < artworkSelect.options.length; i++) {
+            if (artworkSelect.options[i].value.toLowerCase().includes(title.toLowerCase())) {
+              artworkSelect.selectedIndex = i;
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            artworkSelect.value = 'General Inquiry';
+          }
+        }
+      } else if (artworkSelect) {
+        artworkSelect.value = 'General Inquiry';
+      }
+
+      openModal();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backgroundOverlay) backgroundOverlay.addEventListener('click', closeModal);
+
+  // Close handlers on click and Escape key presses
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && inquiryModal.classList.contains('active')) {
+      closeModal();
+    }
+  });
 }
 
