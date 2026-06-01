@@ -1894,11 +1894,17 @@ footer {
   margin: 0 !important;
 }
 
+/* Disable hover animations specifically for the vertical list elements */
 .artwork-vertical-list .card-item:hover {
-  transform: translateY(-4px);
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-/* Image container */
+.artwork-vertical-list .card-item:hover .card-frame img {
+  transform: none !important;
+}
+
+/* Image container with visible overflow to allow image to scale/zoom outside boundaries */
 .artwork-vertical-list .card-frame {
   width: 100%;
   max-width: 100%;
@@ -1907,14 +1913,14 @@ footer {
   align-items: center;
   background: transparent !important;
   position: relative;
-  overflow: hidden;
+  overflow: visible !important;
   margin-bottom: var(--spacing-sm) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-/* Restrict the images to max-height: 75vh and object-fit: contain */
+/* Restrict the images to max-height: 75vh and object-fit: contain with smooth zoom transitions */
 .artwork-vertical-list .card-frame img {
   max-height: 75vh !important;
   width: auto !important;
@@ -1922,8 +1928,19 @@ footer {
   object-fit: contain !important;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04), 0 5px 15px rgba(0, 0, 0, 0.02); /* Soft museum shadows */
   border: 1px solid rgba(0, 0, 0, 0.03); /* Subtle edge definition */
-  transition: opacity 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, opacity 0.3s ease !important;
   border-radius: 0px !important;
+  cursor: zoom-in !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Inline Cinematic Zoom scaled state style */
+.artwork-vertical-list .card-frame img.inline-zoomed {
+  transform: scale(1.18) !important; /* Highly elegant and immersive inline expansion */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 15px 30px rgba(0, 0, 0, 0.06) !important; /* Luxurious deep gallery shadow */
+  cursor: zoom-out !important;
+  z-index: 25 !important;
 }
 
 /* Hide ambient overlays */
