@@ -195,6 +195,7 @@ function initializeLightbox() {
 
 /**
  * Inline Cinematic Zoom logic for vertical images
+ * Supporting Desktop click-hold-drag and Mobile fullscreen-pinch-pan
  */
 function initializeInlineZoom() {
   const artworkImages = document.querySelectorAll('.artwork-vertical-list .card-frame img');
@@ -203,34 +204,138 @@ function initializeInlineZoom() {
   let activeZoomedImg = null;
   let initialScrollY = 0;
 
+  // Desktop drag states
+  let isDragging = false;
+  let hasMoved = false;
+  let startX = 0;
+  let startY = 0;
+  let translateX = 0;
+  let translateY = 0;
+  const desktopScale = 2.4; // Advanced high detail scale level
+
   function zoomIn(img) {
     if (activeZoomedImg && activeZoomedImg !== img) {
       zoomOut(activeZoomedImg);
     }
+    
+    const parentFrame = img.closest('.card-frame');
+    if (parentFrame) {
+      parentFrame.classList.add('zoomed-parent');
+    }
+    
     img.classList.add('inline-zoomed');
+    img.style.transform = `scale(${desktopScale})`;
     activeZoomedImg = img;
     initialScrollY = window.scrollY;
+    translateX = 0;
+    translateY = 0;
   }
 
   function zoomOut(img) {
     if (!img) return;
     img.classList.remove('inline-zoomed');
+    img.style.transform = '';
+    img.style.cursor = '';
+    
+    const parentFrame = img.closest('.card-frame');
+    if (parentFrame) {
+      parentFrame.classList.remove('zoomed-parent');
+    }
+    
     if (activeZoomedImg === img) {
       activeZoomedImg = null;
     }
+    isDragging = false;
+    hasMoved = false;
+    translateX = 0;
+    translateY = 0;
   }
 
-  // Handle image clicks
+  // Handle images interaction
   artworkImages.forEach(img => {
+    // Prevent browser standard image drag ghost
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+
     img.addEventListener('click', (e) => {
-      e.stopPropagation(); // Stop propagation to prevent document click handler from instantly closing it
+      e.stopPropagation();
       
-      if (img.classList.contains('inline-zoomed')) {
-        zoomOut(img);
+      const isMobileDevice = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      
+      if (isMobileDevice) {
+        // Mobile Fullscreen Pinch and Move zoom modal
+        openMobileFullscreen(img);
       } else {
-        zoomIn(img);
+        // Desktop zoom toggle
+        if (img.classList.contains('inline-zoomed')) {
+          if (!hasMoved) {
+            zoomOut(img);
+          }
+        } else {
+          zoomIn(img);
+        }
       }
     });
+
+    // Desktop Drag handling with Pointer/Mouse events
+    img.addEventListener('mousedown', (e) => {
+      if (!img.classList.contains('inline-zoomed')) return;
+      
+      const isMobileDevice = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      if (isMobileDevice) return;
+
+      e.preventDefault();
+      isDragging = true;
+      hasMoved = false;
+      img.style.cursor = 'grabbing';
+      img.style.transition = 'none'; // Snappy performance response during movement
+      
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+    });
+  });
+
+  // Global mousemove inside viewport to handle drag-panning
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging || !activeZoomedImg) return;
+    
+    const currentX = e.clientX - startX;
+    const currentY = e.clientY - startY;
+    
+    const container = activeZoomedImg.closest('.card-frame');
+    if (!container) return;
+    
+    const originalWidth = activeZoomedImg.offsetWidth;
+    const originalHeight = activeZoomedImg.offsetHeight;
+    
+    const scaledWidth = originalWidth * desktopScale;
+    const scaledHeight = originalHeight * desktopScale;
+    
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+    
+    // Bounds limit relative to centered position
+    const maxTranslateX = Math.max(0, (scaledWidth - containerWidth) / 2);
+    const maxTranslateY = Math.max(0, (scaledHeight - containerHeight) / 2);
+    
+    const deltaX = Math.abs(currentX - translateX);
+    const deltaY = Math.abs(currentY - translateY);
+    if (deltaX > 4 || deltaY > 4) {
+      hasMoved = true;
+    }
+    
+    translateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, currentX));
+    translateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, currentY));
+    
+    activeZoomedImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${desktopScale})`;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    if (activeZoomedImg) {
+      activeZoomedImg.style.cursor = 'grab';
+      activeZoomedImg.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    }
   });
 
   // Handle clicking outside to reset zoom
@@ -246,12 +351,273 @@ function initializeInlineZoom() {
   window.addEventListener('scroll', () => {
     if (activeZoomedImg) {
       const diff = Math.abs(window.scrollY - initialScrollY);
-      // Auto-collapse if the visitor scrolls more than 150px (smooth and intuitive)
-      if (diff > 150) {
+      if (diff > 180) { // Seamless and smooth auto-collapse
         zoomOut(activeZoomedImg);
       }
     }
   }, { passive: true });
+
+  // Mobile Fullscreen Pinch/Pan Zoomer implementation
+  function openMobileFullscreen(img) {
+    const cardItem = img.closest('.card-item');
+    const title = cardItem ? cardItem.dataset.title || '' : '';
+    const category = cardItem ? cardItem.dataset.category || '' : '';
+    const dimensions = cardItem ? cardItem.dataset.dimensions || '' : '';
+    const medium = cardItem ? cardItem.dataset.medium || '' : '';
+    
+    const metaParts = [];
+    if (category) metaParts.push(category);
+    if (dimensions) metaParts.push(dimensions);
+    if (medium) metaParts.push(medium);
+    const metaText = metaParts.join('  •  ');
+
+    // Create modal elements
+    const modal = document.createElement('div');
+    modal.className = 'mobile-fullscreen-viewer';
+    
+    // Styling the container beautifully
+    Object.assign(modal.style, {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: 'rgba(10, 11, 12, 0.98)',
+      zIndex: '99999',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      overflow: 'hidden',
+      touchAction: 'none'
+    });
+
+    // Close button
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    `;
+    
+    Object.assign(closeBtn.style, {
+      position: 'absolute',
+      top: '20px',
+      right: '25px',
+      width: '46px',
+      height: '46px',
+      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+      border: 'none',
+      borderRadius: '50%',
+      color: '#ffffff',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      zIndex: '100001',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+      outline: 'none',
+      webkitTapHighlightColor: 'transparent'
+    });
+
+    // Details panel
+    const captionPanel = document.createElement('div');
+    Object.assign(captionPanel.style, {
+      position: 'absolute',
+      bottom: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '85%',
+      textAlign: 'center',
+      color: '#ffffff',
+      zIndex: '100001',
+      pointerEvents: 'none'
+    });
+
+    const titleEl = document.createElement('h3');
+    titleEl.textContent = title;
+    Object.assign(titleEl.style, {
+      fontFamily: 'Playfair Display, Georgia, serif',
+      fontSize: '1.2rem',
+      fontWeight: '400',
+      margin: '0 0 4px 0',
+      letterSpacing: '0.01em',
+      color: '#ffffff',
+      textShadow: '0 2px 4px rgba(0,0,0,0.5)'
+    });
+
+    const metaEl = document.createElement('p');
+    metaEl.textContent = metaText;
+    Object.assign(metaEl.style, {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '0.75rem',
+      margin: '0',
+      color: '#b0b5bc',
+      letterSpacing: '0.05em',
+      textTransform: 'uppercase',
+      textShadow: '0 1px 3px rgba(0,0,0,0.5)'
+    });
+
+    captionPanel.appendChild(titleEl);
+    captionPanel.appendChild(metaEl);
+
+    // Image viewport container
+    const viewport = document.createElement('div');
+    Object.assign(viewport.style, {
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'relative'
+    });
+
+    const clonedImg = document.createElement('img');
+    clonedImg.src = img.src;
+    clonedImg.alt = title;
+    
+    Object.assign(clonedImg.style, {
+      maxWidth: '92%',
+      maxHeight: '78%',
+      objectFit: 'contain',
+      userSelect: 'none',
+      webkitUserDrag: 'none',
+      transformOrigin: 'center center',
+      boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+    });
+
+    viewport.appendChild(clonedImg);
+    modal.appendChild(closeBtn);
+    modal.appendChild(viewport);
+    modal.appendChild(captionPanel);
+
+    // Advanced Touch Gestures State variables
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isPinch = false;
+    let startDist = 0;
+    let startScale = 1;
+    let startX = 0;
+    let startY = 0;
+    let lastX = 0;
+    let lastY = 0;
+
+    viewport.addEventListener('touchstart', (e) => {
+      clonedImg.style.transition = 'none'; // responsive tracking
+      if (e.touches.length === 1) {
+        isPinch = false;
+        startX = e.touches[0].clientX - translateX;
+        startY = e.touches[0].clientY - translateY;
+      } else if (e.touches.length === 2) {
+        isPinch = true;
+        startScale = scale;
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        startDist = Math.sqrt(dx * dx + dy * dy);
+        
+        lastX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        lastY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+      }
+    }, { passive: false });
+
+    viewport.addEventListener('touchmove', (e) => {
+      e.preventDefault(); // Lock mobile screen background scrolls
+      
+      if (e.touches.length === 1 && !isPinch) {
+        // Drag to pan
+        translateX = e.touches[0].clientX - startX;
+        translateY = e.touches[0].clientY - startY;
+
+        if (scale <= 1.05) {
+          translateX = 0;
+          translateY = 0;
+        } else {
+          // Dynamic clamping of pan relative to scaled size
+          const parentRect = viewport.getBoundingClientRect();
+          const imgRect = clonedImg.getBoundingClientRect();
+          const maxTX = Math.max(0, (imgRect.width - parentRect.width) / 2);
+          const maxTY = Math.max(0, (imgRect.height - parentRect.height) / 2);
+          
+          translateX = Math.max(-maxTX, Math.min(maxTX, translateX));
+          translateY = Math.max(-maxTY, Math.min(maxTY, translateY));
+        }
+        applyMobileTransform();
+      } else if (e.touches.length === 2) {
+        // Pinch-to-zoom
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        scale = Math.max(1, Math.min(4.5, startScale * (dist / startDist)));
+
+        const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+        if (scale > 1.05) {
+          translateX += (midX - lastX) * 0.4;
+          translateY += (midY - lastY) * 0.4;
+        } else {
+          translateX = 0;
+          translateY = 0;
+        }
+
+        lastX = midX;
+        lastY = midY;
+        applyMobileTransform();
+      }
+    }, { passive: false });
+
+    viewport.addEventListener('touchend', (e) => {
+      if (e.touches.length === 0) {
+        if (scale <= 1.05) {
+          scale = 1;
+          translateX = 0;
+          translateY = 0;
+          clonedImg.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+          applyMobileTransform();
+        } else {
+          // Clamp bounds on finger release
+          const parentRect = viewport.getBoundingClientRect();
+          const imgRect = clonedImg.getBoundingClientRect();
+          const maxTX = Math.max(0, (imgRect.width - parentRect.width) / 2);
+          const maxTY = Math.max(0, (imgRect.height - parentRect.height) / 2);
+          
+          translateX = Math.max(-maxTX, Math.min(maxTX, translateX));
+          translateY = Math.max(-maxTY, Math.min(maxTY, translateY));
+          
+          clonedImg.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+          applyMobileTransform();
+        }
+      } else if (e.touches.length === 1) {
+        // Transiting from 2 fingers to 1 finger
+        startX = e.touches[0].clientX - translateX;
+        startY = e.touches[0].clientY - translateY;
+        isPinch = false;
+      }
+    });
+
+    function applyMobileTransform() {
+      clonedImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+
+    // Modal Close actions
+    function closeModal() {
+      document.body.style.overflow = '';
+      modal.remove();
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target === viewport) {
+        closeModal();
+      }
+    });
+
+    document.body.style.overflow = 'hidden';
+    document.body.appendChild(modal);
+  }
 }
 
 /**
