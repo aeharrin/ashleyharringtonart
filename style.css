@@ -1900,7 +1900,7 @@ footer {
   box-shadow: none !important;
 }
 
-.artwork-vertical-list .card-item:hover .card-frame img {
+.artwork-vertical-list .card-item:hover .card-frame img:not(.inline-zoomed) {
   transform: none !important;
 }
 
@@ -1945,6 +1945,10 @@ footer {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 15px 30px rgba(0, 0, 0, 0.06) !important; /* Luxurious deep gallery shadow */
   cursor: grab !important;
   z-index: 25 !important;
+}
+
+.artwork-vertical-list .card-frame img.inline-zoomed.dragging {
+  cursor: grabbing !important;
 }
 
 /* Hide ambient overlays */
