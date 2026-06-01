@@ -229,11 +229,13 @@ function initializeInlineZoom() {
     initialScrollY = window.scrollY;
     translateX = 0;
     translateY = 0;
+    hasMoved = false;
   }
 
   function zoomOut(img) {
     if (!img) return;
     img.classList.remove('inline-zoomed');
+    img.classList.remove('dragging');
     img.style.transform = '';
     img.style.cursor = '';
     
@@ -286,7 +288,7 @@ function initializeInlineZoom() {
       e.preventDefault();
       isDragging = true;
       hasMoved = false;
-      img.style.cursor = 'grabbing';
+      img.classList.add('dragging');
       img.style.transition = 'none'; // Snappy performance response during movement
       
       startX = e.clientX - translateX;
@@ -333,7 +335,7 @@ function initializeInlineZoom() {
     if (!isDragging) return;
     isDragging = false;
     if (activeZoomedImg) {
-      activeZoomedImg.style.cursor = 'grab';
+      activeZoomedImg.classList.remove('dragging');
       activeZoomedImg.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
     }
   });
