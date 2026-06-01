@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Lightbox & Mailerlite Inquiry Form Integration
   initializeLightbox();
 
+  // Inline Cinematic Zoom for gallery painting images
+  initializeInlineZoom();
+
   // Global Inquire Modal Overlay popup
   initializeInquiryModal();
 
@@ -188,6 +191,67 @@ function initializeLightbox() {
       closeLightbox();
     }
   });
+}
+
+/**
+ * Inline Cinematic Zoom logic for vertical images
+ */
+function initializeInlineZoom() {
+  const artworkImages = document.querySelectorAll('.artwork-vertical-list .card-frame img');
+  if (artworkImages.length === 0) return;
+
+  let activeZoomedImg = null;
+  let initialScrollY = 0;
+
+  function zoomIn(img) {
+    if (activeZoomedImg && activeZoomedImg !== img) {
+      zoomOut(activeZoomedImg);
+    }
+    img.classList.add('inline-zoomed');
+    activeZoomedImg = img;
+    initialScrollY = window.scrollY;
+  }
+
+  function zoomOut(img) {
+    if (!img) return;
+    img.classList.remove('inline-zoomed');
+    if (activeZoomedImg === img) {
+      activeZoomedImg = null;
+    }
+  }
+
+  // Handle image clicks
+  artworkImages.forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation(); // Stop propagation to prevent document click handler from instantly closing it
+      
+      if (img.classList.contains('inline-zoomed')) {
+        zoomOut(img);
+      } else {
+        zoomIn(img);
+      }
+    });
+  });
+
+  // Handle clicking outside to reset zoom
+  document.addEventListener('click', (e) => {
+    if (activeZoomedImg) {
+      if (!e.target.closest('.card-frame')) {
+        zoomOut(activeZoomedImg);
+      }
+    }
+  });
+
+  // Handle scroll detection for smart automatic zoom out
+  window.addEventListener('scroll', () => {
+    if (activeZoomedImg) {
+      const diff = Math.abs(window.scrollY - initialScrollY);
+      // Auto-collapse if the visitor scrolls more than 150px (smooth and intuitive)
+      if (diff > 150) {
+        zoomOut(activeZoomedImg);
+      }
+    }
+  }, { passive: true });
 }
 
 /**
