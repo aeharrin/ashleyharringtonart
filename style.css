@@ -1928,18 +1928,22 @@ footer {
   object-fit: contain !important;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04), 0 5px 15px rgba(0, 0, 0, 0.02); /* Soft museum shadows */
   border: 1px solid rgba(0, 0, 0, 0.03); /* Subtle edge definition */
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, opacity 0.3s ease !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.3s ease !important;
   border-radius: 0px !important;
   cursor: zoom-in !important;
   position: relative;
   z-index: 1;
 }
 
+/* Parent container hidden overflow when zoomed to keep details framed inside viewport */
+.artwork-vertical-list .card-frame.zoomed-parent {
+  overflow: hidden !important;
+}
+
 /* Inline Cinematic Zoom scaled state style */
 .artwork-vertical-list .card-frame img.inline-zoomed {
-  transform: scale(1.18) !important; /* Highly elegant and immersive inline expansion */
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 15px 30px rgba(0, 0, 0, 0.06) !important; /* Luxurious deep gallery shadow */
-  cursor: zoom-out !important;
+  cursor: grab !important;
   z-index: 25 !important;
 }
 
