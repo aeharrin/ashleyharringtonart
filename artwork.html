@@ -20,7 +20,7 @@
         <a href="artwork.html" class="nav-link active">Artwork</a>
         <a href="shop.html" class="nav-link">Shop</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="#" class="nav-link inquire-trigger nav-link-cta">Inquire</a>
       </nav>
 
       <!-- Mobile Right Actions -->
@@ -40,46 +40,43 @@
     <a href="artwork.html" class="nav-link active">Artwork</a>
     <a href="shop.html" class="nav-link">Shop</a>
     <a href="about.html" class="nav-link">About</a>
-    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="nav-link inquire-trigger nav-link-cta">Inquire</a>
   </div>
 
-  <!-- Minimalist Sticky Sub-Navigation Menu for Series Navigation -->
-  <nav class="series-subnav" id="series-menu">
-    <div class="subnav-container">
-      <a href="#shifting-bodies" class="subnav-link">Shifting Bodies</a>
-      <a href="#blue-figures" class="subnav-link">The Blue Figures</a>
-      <a href="#figure-studies" class="subnav-link">Figure Studies</a>
-      <a href="#earlier-work" class="subnav-link">Earlier Work</a>
-    </div>
-  </nav>
-
-  <main class="page-container" id="gallery-page-main">
+  <main id="gallery-page-main">
     
-     <!-- Title Area with Editorial Intro -->
-    <header class="section-header" style="margin-top: var(--spacing-sm); margin-bottom: var(--spacing-lg);" id="gallery-intro-header">
-      <div>
-        <span class="section-label">Selected Collections</span>
-        <h1 class="font-serif" style="font-size: 2.8rem; margin-bottom: var(--spacing-xs);">The Galleries</h1>
-        <p style="font-size: 1.15rem; font-weight: 300; max-width: 650px; margin-bottom: 0; color: var(--color-text-muted);">
-          A curated archive of original oil paintings, tempera drawings, and raw plasters exploring the intersections of landscape geologies and figure lines.
+    <!-- Title Area with Editorial Intro -->
+    <div class="page-container" style="padding-bottom: 0;">
+      <header class="hero-section" style="margin-bottom: var(--spacing-lg);" id="gallery-intro-header">
+        <span class="hero-subtitle">SELECTED COLLECTIONS</span>
+        <h1 class="hero-title">Original Paintings</h1>
+        <p class="hero-description">
+          Acrylic on canvas. Built in layers — the subconscious first, then interpretation. Available for purchase and commission.
         </p>
-      </div>
-      <span class="section-action" style="align-self: flex-end;">Archive 2024–2026</span>
-    </header>
+      </header>
+    </div>
 
+    <!-- Minimalist Sticky Sub-Navigation Menu for Series Navigation -->
+    <nav class="series-subnav" id="series-menu" style="border-bottom: 1px solid var(--color-border); margin-bottom: var(--spacing-md);">
+      <div class="subnav-container">
+        <a href="#shifting-bodies" class="subnav-link">Shifting Bodies</a>
+        <a href="#blue-figures" class="subnav-link">Blue Figures</a>
+        <a href="#figure-studies" class="subnav-link">Figure Studies</a>
+        <a href="#earlier-work" class="subnav-link">Earlier Work</a>
+      </div>
+    </nav>
+
+    <div class="page-container" style="padding-top: 0;">
 
     <!-- Series 1: Shifting Bodies -->
     <section id="shifting-bodies" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
-      <div class="section-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem;">Shifting Bodies</h2>
-        <p style="font-size: 1.15rem; font-weight: 300; max-width: 650px; margin-bottom: 0; color: var(--color-text-muted);">
+      <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">Shifting Bodies</h2>
+        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Series of 12 • Acrylic on Canvas</span>
+        <p class="series-description">
           Funded by a United Arts Council grant — this series examines the body in flux, shaped by forces both internal and cultural. Exhibited at a solo pop-up in Raleigh, 2023.
-        </p> 
+        </p>
       </div>
-        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">Series of 12 - Acrylic on Canvas - 2023</span>
-        
-      
-
 
       <div class="gallery-grid">
         
@@ -92,10 +89,10 @@
                  data-medium="Acrylic on Canvas"
                  data-price="$1,150"
                  data-type="Original Painting"
-                 data-desc="'Lost in Silence' captures the inner journey of self-observation, where one encounters only darkness and silence. It evokes a sense of panic, the struggle of not knowing oneself, and the effort to rebuild trust to unlock buried memories."
-                 id="lost-in-silence">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-1">
           <div class="card-frame">
-            <img src="assets/Shifting Figures - 01 - Ashley Harrington - Lost in Silence - Original 40x30 Acrylic Painting.webp" alt="figure painting">
+            <img src="assets/Shifting Figures - 01 - Ashley Harrington - Lost in Silence - Original 40x30 Acrylic Painting.webp" alt="Lost in Silence" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
@@ -108,27 +105,26 @@
           </div>
         </article>
 
-
         <!-- Artwork 2 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200"
-                 data-title="The Heavy Earth"
+                 data-img="assets/Shifting Figures - 02 - Ashley Harrington - Leap - Original 40x30 Acrylic Painting.webp"
+                 data-title="Leap"
                  data-category="Shifting Bodies"
-                 data-dimensions="36&quot; x 48&quot;"
-                 data-medium="Oil & Gypsum Dust on Wood Block"
-                 data-price="$2,200"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
                  data-type="Original Painting"
-                 data-desc="An intense textural exploration of skeletal gravity and physical posture. Employs thick layered palette-knife fields of warm marble mud."
-                 id="gal-heavy-earth">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-2">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=600" alt="Earthy abstract brushwork with loaded textures">
+            <img src="assets/Shifting Figures - 02 - Ashley Harrington - Leap - Original 40x30 Acrylic Painting.webp" alt="Leap" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2026 Series</span>
-            <h3 class="card-title">The Heavy Earth</h3>
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Leap</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$2,200</span>
+              <span class="card-price">$1,150</span>
               <span class="card-availability">Available</span>
             </div>
           </div>
@@ -136,24 +132,249 @@
 
         <!-- Artwork 3 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200"
-                 data-title="Torso & Charcoal Glow"
+                 data-img="assets/Shifting Figures - 03 - Ashley Harrington - Shade - Original 40x30 Acrylic Painting.webp"
+                 data-title="Shade"
                  data-category="Shifting Bodies"
-                 data-dimensions="24&quot; x 36&quot;"
-                 data-medium="Cold Wax & Oil on Cotton Panel"
-                 data-price="$1,400"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
                  data-type="Original Painting"
-                 data-desc="Intimate contours of the human back in reflection. A deep dialogue between bright wax whites and raw obsidian charcoal dust."
-                 id="gal-torso-glow">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-3">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600" alt="Fine art warm high-contrast portrait">
+            <img src="assets/Shifting Figures - 03 - Ashley Harrington - Shade - Original 40x30 Acrylic Painting.webp" alt="Shade" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2025 Series</span>
-            <h3 class="card-title">Torso & Charcoal Glow</h3>
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Shade</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$1,400</span>
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 4 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 04 - Ashley Harrington - Pull Through - Original 48x36 Acrylic Painting.webp"
+                 data-title="Pull Through"
+                 data-category="Shifting Bodies"
+                 data-dimensions="48&quot; x 36&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-4">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 04 - Ashley Harrington - Pull Through - Original 48x36 Acrylic Painting.webp" alt="Pull Through" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">48x36 Acrylic on Canvas</span>
+            <h3 class="card-title">Pull Through</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 5 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 05 - Ashley Harrington - Rooted Stress - Original 40x30 Acrylic Painting.webp"
+                 data-title="Rooted Stress"
+                 data-category="Shifting Bodies"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-5">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 05 - Ashley Harrington - Rooted Stress - Original 40x30 Acrylic Painting.webp" alt="Rooted Stress" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Rooted Stress</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 6 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 06 - Ashley Harrington - Release - Original 40x30 Acrylic Painting.webp"
+                 data-title="Release"
+                 data-category="Shifting Bodies"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-6">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 06 - Ashley Harrington - Release - Original 40x30 Acrylic Painting.webp" alt="Release" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Release</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 7 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 07 - Ashley Harrington - Looking Inward - Original 40x30 Acrylic Painting.webp"
+                 data-title="Looking Inward"
+                 data-category="Shifting Bodies"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-7">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 07 - Ashley Harrington - Looking Inward - Original 40x30 Acrylic Painting.webp" alt="Looking Inward" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Looking Inward</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$1,150</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 8 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 08 - Ashley Harrington - Grounding Emotion - Original 48x36 Acrylic Painting.webp"
+                 data-title="Grounding Emotion"
+                 data-category="Shifting Bodies"
+                 data-dimensions="48&quot; x 36&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-8">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 08 - Ashley Harrington - Grounding Emotion - Original 48x36 Acrylic Painting.webp" alt="Grounding Emotion" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Grounding Emotion</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 9 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 09 - Ashley Harrington - Collapsing Inward - Original 40x30 Acrylic Painting.webp"
+                 data-title="Collapsing Inward"
+                 data-category="Shifting Bodies"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-9">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 09 - Ashley Harrington - Collapsing Inward - Original 40x30 Acrylic Painting.webp" alt="Collapsing Inward" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Collapsing Inward</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 10 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 10 - Ashley Harrington - Settling - Original 40x30 Acrylic Painting.webp"
+                 data-title="Settling"
+                 data-category="Shifting Bodies"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-10">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 10 - Ashley Harrington - Settling - Original 40x30 Acrylic Painting.webp" alt="Settling" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Settling</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 11 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 11 - Ashley Harrington - Holding Back Everything - Original 40x30 Acrylic Painting.webp"
+                 data-title="Holding Back Everything"
+                 data-category="Shifting Bodies"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-11">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 11 - Ashley Harrington - Holding Back Everything - Original 40x30 Acrylic Painting.webp" alt="Holding Back Everything" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Holding Back Everything</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 12 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Shifting Figures - 12 - Ashley Harrington - Embracing Imperfections - Original 48x36 Acrylic Painting.webp"
+                 data-title="Embracing Imperfections"
+                 data-category="Shifting Bodies"
+                 data-dimensions="48&quot; x 36&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,500"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-shifting-12">
+          <div class="card-frame">
+            <img src="assets/Shifting Figures - 12 - Ashley Harrington - Embracing Imperfections - Original 48x36 Acrylic Painting.webp" alt="Embracing Imperfections" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">48x36 Acrylic on Canvas</span>
+            <h3 class="card-title">Embracing Imperfections</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,500</span>
               <span class="card-availability">Available</span>
             </div>
           </div>
@@ -162,13 +383,13 @@
       </div>
     </section>
 
-    <!-- Series 2: The Blue Figures -->
+    <!-- Series 2: Blue Figures -->
     <section id="blue-figures" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
       <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">II. The Blue Figures</h2>
-        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Prussian Indigos & Moody Teals</span>
-        <p class="series-description" style="font-size: 0.95rem; font-weight: 300; max-width: 720px; line-height: 1.6; color: var(--color-text-muted); margin: 0;">
-          A nocturnal series capturing moments of quiet contemplation. Multiple layering glazes of cold Prussian indigos and deep marine teals interact to define subtle shadows around introspective forms.
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">Blue Figures</h2>
+        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Series of 12 • Acrylic on Canvas</span>
+        <p class="series-description">
+          Figures rendered in deep, meditative blues — exploring the emotional body as it moves between containment and release.
         </p>
       </div>
 
@@ -176,24 +397,24 @@
         
         <!-- Artwork 1 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=1200"
-                 data-title="Introspection II (Blue)"
-                 data-category="The Blue Figures"
-                 data-dimensions="24&quot; x 36&quot;"
-                 data-medium="Acrylic on Thick Linen Block"
-                 data-price="$1,400"
+                 data-img="assets/Blue Figures - 01 - Ashley Harrington - Taking a moment to breath and reset - Original 40x30 Acrylic Painting.webp"
+                 data-title="Taking a moment to breath and reset"
+                 data-category="Blue Figures"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
                  data-type="Original Painting"
-                 data-desc="Centerpiece of the cold nocturnal sequence. A deeply atmospheric, layered figure rendering that analyzes organic body curves and shadows in deep marine blue."
-                 id="gal-introspection-blue-core">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-1">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=600" alt="Textured blue and turquoise figure study">
+            <img src="assets/Blue Figures - 01 - Ashley Harrington - Taking a moment to breath and reset - Original 40x30 Acrylic Painting.webp" alt="Taking a moment to breath and reset" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2026 Series</span>
-            <h3 class="card-title">Introspection II (Blue)</h3>
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Taking a moment to breath and reset</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$1,400</span>
+              <span class="card-price">$1,150</span>
               <span class="card-availability">Available</span>
             </div>
           </div>
@@ -201,24 +422,24 @@
 
         <!-- Artwork 2 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200"
-                 data-title="Nocturnal Horizon Study"
-                 data-category="The Blue Figures"
+                 data-img="assets/Blue Figures - 02 - Ashley Harrington - In the shadow of the light - Original 40x30 Acrylic Painting.webp"
+                 data-title="In the shadow of the light"
+                 data-category="Blue Figures"
                  data-dimensions="40&quot; x 30&quot;"
-                 data-medium="Tempera & Ash on Textured Linen"
-                 data-price="$1,800"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
                  data-type="Original Painting"
-                 data-desc="Silent midnight exploration of body weight. Fluid indigo outlines layered iteratively onto wet pumice fields for deep dimensionality."
-                 id="gal-nocturnal-horizon">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-2">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600" alt="Moody charcoal gesture illustration with dark washes">
+            <img src="assets/Blue Figures - 02 - Ashley Harrington - In the shadow of the light - Original 40x30 Acrylic Painting.webp" alt="In the shadow of the light" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2025 Series</span>
-            <h3 class="card-title">Nocturnal Horizon Study</h3>
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">In the shadow of the light</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$1,800</span>
+              <span class="card-price">$1,150</span>
               <span class="card-availability">Available</span>
             </div>
           </div>
@@ -226,25 +447,250 @@
 
         <!-- Artwork 3 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200"
-                 data-title="Vesper Contours"
-                 data-category="The Blue Figures"
-                 data-dimensions="20&quot; x 30&quot;"
-                 data-medium="Oil Lacquer on Baltic Board"
-                 data-price="Sold"
+                 data-img="assets/Blue Figures - 03 - Ashley Harrington - Lifting oneself up - Original 40x30 Acrylic Painting.webp"
+                 data-title="Lifting oneself up"
+                 data-category="Blue Figures"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
                  data-type="Original Painting"
-                 data-desc="Blending maritime chill with expressive human profiles. Features cold slate-blue crests paired beautifully with midnight inks."
-                 id="gal-vesper-contours">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-3">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600" alt="Swirling blue dynamic oil texture abstract">
+            <img src="assets/Blue Figures - 03 - Ashley Harrington - Lifting oneself up - Original 40x30 Acrylic Painting.webp" alt="Lifting oneself up" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2025 Series</span>
-            <h3 class="card-title">Vesper Contours</h3>
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Lifting oneself up</h3>
             <div class="card-pricing-row">
-              <span class="card-price text-muted">Private Collection</span>
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 4 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 04 - Ashley Harrington - Swaying into relaxation - Original 48x24 Acrylic Painting.webp"
+                 data-title="Swaying into relaxation"
+                 data-category="Blue Figures"
+                 data-dimensions="48&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,120"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-4">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 04 - Ashley Harrington - Swaying into relaxation - Original 48x24 Acrylic Painting.webp" alt="Swaying into relaxation" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">48x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Swaying into relaxation</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,120</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 5 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 05 - Ashley Harrington - Surrender to gravity - Original 48x24 Acrylic Painting.webp"
+                 data-title="Surrender to gravity"
+                 data-category="Blue Figures"
+                 data-dimensions="48&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,120"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-5">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 05 - Ashley Harrington - Surrender to gravity - Original 48x24 Acrylic Painting.webp" alt="Surrender to gravity" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">48x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Surrender to gravity</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,120</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 6 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 06 - Ashley Harrington - Heaviness in the chest - Original 48x24 Acrylic Painting.webp"
+                 data-title="Heaviness in the chest"
+                 data-category="Blue Figures"
+                 data-dimensions="48&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,120"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-6">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 06 - Ashley Harrington - Heaviness in the chest - Original 48x24 Acrylic Painting.webp" alt="Heaviness in the chest" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">48x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Heaviness in the chest</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,120</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 7 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 07 - Ashley Harrington - Bare hug - Original 36x24 Acrylic Painting.webp"
+                 data-title="Bare hug"
+                 data-category="Blue Figures"
+                 data-dimensions="36&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$850"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-7">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 07 - Ashley Harrington - Bare hug - Original 36x24 Acrylic Painting.webp" alt="Bare hug" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">36x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Bare hug</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$850</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 8 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 08 - Ashley Harrignton - Off kilter - Original 36x24 Acrylic Painting.webp"
+                 data-title="Off kilter"
+                 data-category="Blue Figures"
+                 data-dimensions="36&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$850"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-8">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 08 - Ashley Harrignton - Off kilter - Original 36x24 Acrylic Painting.webp" alt="Off kilter" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">36x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Off kilter</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$850</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 9 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 09 - Ashley Harrington - Put out - Original 36x24 Acrylic Painting.webp"
+                 data-title="Put out"
+                 data-category="Blue Figures"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$850"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-9">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 09 - Ashley Harrington - Put out - Original 36x24 Acrylic Painting.webp" alt="Put out" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Put out</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$850</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 10 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 10 - Ashley Harrington - On hands and knees - Original 40x30 Acrylic Painting.webp"
+                 data-title="On hands and knees"
+                 data-category="Blue Figures"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-10">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 10 - Ashley Harrington - On hands and knees - Original 40x30 Acrylic Painting.webp" alt="On hands and knees" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">On hands and knees</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 11 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 11 - Ashley Harrington - You are my sky I am your ground - Original 30x40 Acrylic Painting.webp"
+                 data-title="You are my sky I am your ground"
+                 data-category="Blue Figures"
+                 data-dimensions="30&quot; x 40&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-11">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 11 - Ashley Harrington - You are my sky I am your ground - Original 30x40 Acrylic Painting.webp" alt="You are my sky I am your ground" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">30x40 Acrylic on Canvas</span>
+            <h3 class="card-title">You are my sky I am your ground</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$1,150</span>
               <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 12 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Blue Figures - 12 - Ashley Harrington - Enveloped in this moment - Original 40x30 Acrylic Painting.webp"
+                 data-title="Enveloped in this moment"
+                 data-category="Blue Figures"
+                 data-dimensions="40&quot; x 30&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-blue-12">
+          <div class="card-frame">
+            <img src="assets/Blue Figures - 12 - Ashley Harrington - Enveloped in this moment - Original 40x30 Acrylic Painting.webp" alt="Enveloped in this moment" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">40x30 Acrylic on Canvas</span>
+            <h3 class="card-title">Enveloped in this moment</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$1,150</span>
+              <span class="card-availability">Available</span>
             </div>
           </div>
         </article>
@@ -255,10 +701,10 @@
     <!-- Series 3: Figure Studies -->
     <section id="figure-studies" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
       <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">III. Figure Studies</h2>
-        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Raw Gestural Observations</span>
-        <p class="series-description" style="font-size: 0.95rem; font-weight: 300; max-width: 720px; line-height: 1.6; color: var(--color-text-muted); margin: 0;">
-          Immediate studio observations translating rapid physical kinetics into raw markings. Combining expressive charcoal strokes with high-contrast wash elements on coarse handmade paper surfaces.
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">Figure Studies</h2>
+        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">15 Works • Acrylic on Canvas • 2021-2025</span>
+        <p class="series-description">
+          Figures rendered in deep, meditative blues — exploring the emotional body as it moves between containment and release.
         </p>
       </div>
 
@@ -266,24 +712,24 @@
         
         <!-- Artwork 1 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?q=80&w=1200"
-                 data-title="Vulnerability Study V"
+                 data-img="assets/Other Figures - 01 - Ashley Harrington - Shifting Weight - Original 48x36 Acrylic Painting.webp"
+                 data-title="Shifting Weight"
                  data-category="Figure Studies"
-                 data-dimensions="24&quot; x 30&quot;"
-                 data-medium="Tempera & Charcoal on Handmade Cotton Paper"
-                 data-price="$1,100"
+                 data-dimensions="48&quot; x 36&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,500"
                  data-type="Original Painting"
-                 data-desc="Intentionally gestural, fast charcoal outlines combined with high-frequency natural wash. Capturing active physical postures in their raw, immediate state."
-                 id="gal-vulnerability-v-core">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-studies-1">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?q=80&w=600" alt="Earthy abstract figure with detailed outline trails">
+            <img src="assets/Other Figures - 01 - Ashley Harrington - Shifting Weight - Original 48x36 Acrylic Painting.webp" alt="Shifting Weight" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2025 Series</span>
-            <h3 class="card-title">Vulnerability Study V</h3>
+            <span class="card-meta">48x36 Acrylic on Canvas</span>
+            <h3 class="card-title">Shifting Weight</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$1,100</span>
+              <span class="card-price">$1,500</span>
               <span class="card-availability">Available</span>
             </div>
           </div>
@@ -291,24 +737,24 @@
 
         <!-- Artwork 2 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200"
-                 data-title="Seated Contour IX"
+                 data-img="assets/Other Figures - 02 - Ashley Harrington - Just out of reach - Original 30x48 Acrylic Painting.webp"
+                 data-title="Just out of reach"
                  data-category="Figure Studies"
-                 data-dimensions="18&quot; x 24&quot;"
-                 data-medium="India Ink & Plaster Wash on Board"
-                 data-price="$850"
+                 data-dimensions="30&quot; x 48&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,500"
                  data-type="Original Painting"
-                 data-desc="An exercise in minimalism and line weight. Hand-scratched pigment traces the human spine against an off-white clay background."
-                 id="gal-seated-contour-ix">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-studies-2">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=600" alt="Beautiful linear ink abstract study">
+            <img src="assets/Other Figures - 02 - Ashley Harrington - Just out of reach - Original 30x48 Acrylic Painting.webp" alt="Just out of reach" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2025 Series</span>
-            <h3 class="card-title">Seated Contour IX</h3>
+            <span class="card-meta">30x48 Acrylic on Canvas</span>
+            <h3 class="card-title">Just out of reach</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$850</span>
+              <span class="card-price">$1,500</span>
               <span class="card-availability">Available</span>
             </div>
           </div>
@@ -316,25 +762,250 @@
 
         <!-- Artwork 3 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=1200"
-                 data-title="Tension study IV"
+                 data-img="assets/Other Figures - 03 - Ashley Harrington - Different Perspective - Original 48x36 Acrylic Painting.webp"
+                 data-title="Different Perspective"
                  data-category="Figure Studies"
-                 data-dimensions="20&quot; x 20&quot;"
-                 data-medium="Willow Charcoal on Unprimed Canvas"
-                 data-price="$950"
+                 data-dimensions="48&quot; x 36&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$1,500"
                  data-type="Original Painting"
-                 data-desc="Highly abstract, muscular expression showing active physical compression. Textured and completely unsealed to observe raw pigment weathering."
-                 id="gal-tension-study-iv">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-studies-3">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=600" alt="Monochromatic dynamic charcoal brush lines border">
+            <img src="assets/Other Figures - 03 - Ashley Harrington - Different Perspective - Original 48x36 Acrylic Painting.webp" alt="Different Perspective" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2024 Series</span>
-            <h3 class="card-title">Tension study IV</h3>
+            <span class="card-meta">48x36 Acrylic on Canvas</span>
+            <h3 class="card-title">Different Perspective</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$950</span>
+              <span class="card-price">$1,500</span>
               <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 4 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 04 - Ashley Harrington - Lean back - Original 12x12 Mixed Media Painting.webp"
+                 data-title="Lean back"
+                 data-category="Figure Studies"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Mixed Media on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Mixed Media on Canvas"
+                 id="gal-studies-4">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 04 - Ashley Harrington - Lean back - Original 12x12 Mixed Media Painting.webp" alt="Lean back" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">12x12 Mixed Media on Canvas</span>
+            <h3 class="card-title">Lean back</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 5 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 05 - Ashley Harrington - Propped - Original 12x12 Mixed Media Painting.webp"
+                 data-title="Propped"
+                 data-category="Figure Studies"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Mixed Media on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Mixed Media on Canvas"
+                 id="gal-studies-5">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 05 - Ashley Harrington - Propped - Original 12x12 Mixed Media Painting.webp" alt="Propped" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">12x12 Mixed Media on Canvas</span>
+            <h3 class="card-title">Propped</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$200</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 6 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 06 - Ashley Harrington - Grounded - Original 12x12 Mixed Media Painting.webp"
+                 data-title="Grounded"
+                 data-category="Figure Studies"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Mixed Media on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Mixed Media on Canvas"
+                 id="gal-studies-6">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 06 - Ashley Harrington - Grounded - Original 12x12 Mixed Media Painting.webp" alt="Grounded" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">12x12 Mixed Media on Canvas</span>
+            <h3 class="card-title">Grounded</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 7 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 07 - Ashley Harrington - No Cares - Original 12x12 Mixed Media Painting.webp"
+                 data-title="No Cares"
+                 data-category="Figure Studies"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Mixed Media on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Mixed Media on Canvas"
+                 id="gal-studies-7">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 07 - Ashley Harrington - No Cares - Original 12x12 Mixed Media Painting.webp" alt="No Cares" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">12x12 Mixed Media on Canvas</span>
+            <h3 class="card-title">No Cares</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 8 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 08 - Ashley Harrington - Raw Energy - Original 12x12 Mixed Media Painting.webp"
+                 data-title="Raw Energy"
+                 data-category="Figure Studies"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Mixed Media on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Mixed Media on Canvas"
+                 id="gal-studies-8">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 08 - Ashley Harrington - Raw Energy - Original 12x12 Mixed Media Painting.webp" alt="Raw Energy" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">12x12 Mixed Media on Canvas</span>
+            <h3 class="card-title">Raw Energy</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 9 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 09 - Ashley Harrington - Riding the Wave - Original 12x12 Mixed Media Painting.webp"
+                 data-title="Riding the Wave"
+                 data-category="Figure Studies"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Mixed Media on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Mixed Media on Canvas"
+                 id="gal-studies-9">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 09 - Ashley Harrington - Riding the Wave - Original 12x12 Mixed Media Painting.webp" alt="Riding the Wave" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">12x12 Mixed Media on Canvas</span>
+            <h3 class="card-title">Riding the Wave</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$200</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 10 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 10 - Ashley Harrington - Sitting with yourself - Original 10x10 Acrylic Painting.webp"
+                 data-title="Sitting with yourself"
+                 data-category="Figure Studies"
+                 data-dimensions="10&quot; x 10&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-studies-10">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 10 - Ashley Harrington - Sitting with yourself - Original 10x10 Acrylic Painting.webp" alt="Sitting with yourself" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">10x10 Acrylic on Canvas</span>
+            <h3 class="card-title">Sitting with yourself</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 11 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 11 - Ashley Harrington - Gazing Ahead - Original 10x10 Acrylic Painting.webp"
+                 data-title="Gazing Ahead"
+                 data-category="Figure Studies"
+                 data-dimensions="10&quot; x 10&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-studies-11">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 11 - Ashley Harrington - Gazing Ahead - Original 10x10 Acrylic Painting.webp" alt="Gazing Ahead" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">10x10 Acrylic on Canvas</span>
+            <h3 class="card-title">Gazing Ahead</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$150</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 12 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Other Figures - 12 - Ashley Harrington - Staying in the moment - Original 16x08 Acrylic Painting.webp"
+                 data-title="Staying in the moment"
+                 data-category="Figure Studies"
+                 data-dimensions="16&quot; x 8&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$175"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-studies-12">
+          <div class="card-frame">
+            <img src="assets/Other Figures - 12 - Ashley Harrington - Staying in the moment - Original 16x08 Acrylic Painting.webp" alt="Staying in the moment" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">16x8 Acrylic on Canvas</span>
+            <h3 class="card-title">Staying in the moment</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$175</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
             </div>
           </div>
         </article>
@@ -345,10 +1016,10 @@
     <!-- Series 4: Earlier Work -->
     <section id="earlier-work" class="gallery-section" style="margin-bottom: var(--spacing-xl);">
       <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">IV. Earlier Work</h2>
-        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Landscape & Botanical Origins</span>
-        <p class="series-description" style="font-size: 0.95rem; font-weight: 300; max-width: 720px; line-height: 1.6; color: var(--color-text-muted); margin: 0;">
-          Foundational landscape inquiries depicting atmospheric weather patterns, salt marshes, and granite ridges of coastal New England. This early body represents the origins of the artist's heavy plaster methods.
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">Earlier Work</h2>
+        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">15 Works • Acrylic on Canvas • 2021-2025</span>
+        <p class="series-description">
+          Rooted in observing nature before my departure to my inner world of emotion and female experience.
         </p>
       </div>
 
@@ -356,75 +1027,500 @@
         
         <!-- Artwork 1 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1200"
-                 data-title="November Fields I"
+                 data-img="assets/Botanicals - 01 - Ashley Harrington - Dancing Shrimp - Original 24x18 Acrylic Painting.webp"
+                 data-title="Dancing Shrimp"
                  data-category="Earlier Work"
-                 data-dimensions="40&quot; x 30&quot;"
-                 data-medium="Oil & Thick Gesso on Canvas"
-                 data-price="$1,850"
+                 data-dimensions="24&quot; x 18&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$200"
                  data-type="Original Painting"
-                 data-desc="An intense seasonal horizon study of Massachusetts dune regions. Deep terracotta glazes offset by thick sandstone ridges."
-                 id="gal-nov-fields-earlier">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-1">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600" alt="Golden dune field painting coastal">
+            <img src="assets/Botanicals - 01 - Ashley Harrington - Dancing Shrimp - Original 24x18 Acrylic Painting.webp" alt="Dancing Shrimp" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2024 Collection</span>
-            <h3 class="card-title">November Fields I</h3>
+            <span class="card-meta">Botanical • 24x18 Acrylic on Canvas</span>
+            <h3 class="card-title">Dancing Shrimp</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$1,850</span>
-              <span class="card-availability">Available</span>
+              <span class="card-price text-muted">$200</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
             </div>
           </div>
         </article>
 
         <!-- Artwork 2 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200"
-                 data-title="Sylvan Radiance II"
+                 data-img="assets/Botanicals - 02 - Ashley Harrington - Puffs of Spring - Original 12x16 Acrylic Painting.webp"
+                 data-title="Puffs of Spring"
                  data-category="Earlier Work"
-                 data-dimensions="36&quot; x 48&quot;"
-                 data-medium="Traditional Oil on Heavy Linen"
-                 data-price="$2,400"
+                 data-dimensions="12&quot; x 16&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$100"
                  data-type="Original Painting"
-                 data-desc="Capturing midday rays filtering through deep forest branches. Developed with classic green oil glazing techniques and thick brush strokes."
-                 id="gal-sylvan-radiance-earlier">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-2">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Woodland sun rays forest painting">
+            <img src="assets/Botanicals - 02 - Ashley Harrington - Puffs of Spring - Original 12x16 Acrylic Painting.webp" alt="Puffs of Spring" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2024 Collection</span>
-            <h3 class="card-title">Sylvan Radiance II</h3>
+            <span class="card-meta">Botanical • 12x16 Acrylic on Canvas</span>
+            <h3 class="card-title">Puffs of Spring</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$2,400</span>
-              <span class="card-availability">Available</span>
+              <span class="card-price text-muted">$100</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
             </div>
           </div>
         </article>
 
         <!-- Artwork 3 -->
         <article class="card-item" data-lightbox="true"
-                 data-img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200"
-                 data-title="Coastal Ledge Study"
+                 data-img="assets/Botanicals - 03 - Ashley Harrington - Small Yet Mighty - Original 12x12 Acrylic Painting.webp"
+                 data-title="Small Yet Mighty"
                  data-category="Earlier Work"
-                 data-dimensions="30&quot; x 40&quot;"
-                 data-medium="Oil on Baltic Birch Panel"
-                 data-price="$1,950"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$75"
                  data-type="Original Painting"
-                 data-desc="Rich seaside geological observations near the rocky coastal boundaries of Massachusetts. High contrast textures of granite cliffs."
-                 id="gal-coastal-ledge">
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-3">
           <div class="card-frame">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600" alt="Granite ledge ocean coastal dunes landscape">
+            <img src="assets/Botanicals - 03 - Ashley Harrington - Small Yet Mighty - Original 12x12 Acrylic Painting.webp" alt="Small Yet Mighty" referrerPolicy="no-referrer">
             <div class="card-overlay"></div>
           </div>
           <div class="card-details">
-            <span class="card-meta">2024 Collection</span>
-            <h3 class="card-title">Coastal Ledge Study</h3>
+            <span class="card-meta">Botanical • 12x12 Acrylic on Canvas</span>
+            <h3 class="card-title">Small Yet Mighty</h3>
             <div class="card-pricing-row">
-              <span class="card-price">$1,950</span>
+              <span class="card-price text-muted">$75</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 4 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Botanicals - 04 - Ashley Harrington - Flourishing Fire - Original 20x16 Acrylic Painting.webp"
+                 data-title="Flourishing Fire"
+                 data-category="Earlier Work"
+                 data-dimensions="20&quot; x 16&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-4">
+          <div class="card-frame">
+            <img src="assets/Botanicals - 04 - Ashley Harrington - Flourishing Fire - Original 20x16 Acrylic Painting.webp" alt="Flourishing Fire" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Botanical • 20x16 Acrylic on Canvas</span>
+            <h3 class="card-title">Flourishing Fire</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$150</span>
               <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 5 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Botanicals - 05 - Ashley Harrington - Sun's Gaze - Original 20x16 Acrylic Painting.webp"
+                 data-title="Sun's Gaze"
+                 data-category="Earlier Work"
+                 data-dimensions="20&quot; x 16&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$150"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-5">
+          <div class="card-frame">
+            <img src="assets/Botanicals - 05 - Ashley Harrington - Sun's Gaze - Original 20x16 Acrylic Painting.webp" alt="Sun's Gaze" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Botanical • 20x16 Acrylic on Canvas</span>
+            <h3 class="card-title">Sun's Gaze</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$150</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 6 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Botanicals - 06 - Ashley Harrington - Sunflower Trio - Original 12x12 Acrylic Painting.webp"
+                 data-title="Sunflower Trio"
+                 data-category="Earlier Work"
+                 data-dimensions="12&quot; x 12&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$75"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-6">
+          <div class="card-frame">
+            <img src="assets/Botanicals - 06 - Ashley Harrington - Sunflower Trio - Original 12x12 Acrylic Painting.webp" alt="Sunflower Trio" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Botanical • 12x12 Acrylic on Canvas</span>
+            <h3 class="card-title">Sunflower Trio</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$75</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 7 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Botanicals - 07 - Ashley Harrington - Seed Seekers - Original 16x12 Acrylic Painting.webp"
+                 data-title="Seed Seekers"
+                 data-category="Earlier Work"
+                 data-dimensions="16&quot; x 12&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$100"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-7">
+          <div class="card-frame">
+            <img src="assets/Botanicals - 07 - Ashley Harrington - Seed Seekers - Original 16x12 Acrylic Painting.webp" alt="Seed Seekers" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Botanical • 16x12 Acrylic on Canvas</span>
+            <h3 class="card-title">Seed Seekers</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$100</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 8 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Botanicals - 08 - Ashley Harrington - Field of Gold - Original 20x20 Acrylic Painting.webp"
+                 data-title="Field of Gold"
+                 data-category="Earlier Work"
+                 data-dimensions="24&quot; x 18&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-8">
+          <div class="card-frame">
+            <img src="assets/Botanicals - 08 - Ashley Harrington - Field of Gold - Original 20x20 Acrylic Painting.webp" alt="Field of Gold" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Botanical • 24x18 Acrylic on Canvas</span>
+            <h3 class="card-title">Field of Gold</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 9 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 01 - Ashley Harrington - Onward and Upward - Original 24x18 Acrylic Painting.webp"
+                 data-title="Onward and Upward"
+                 data-category="Earlier Work"
+                 data-dimensions="24&quot; x 18&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$450"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-9">
+          <div class="card-frame">
+            <img src="assets/Nature - 01 - Ashley Harrington - Onward and Upward - Original 24x18 Acrylic Painting.webp" alt="Onward and Upward" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 24x18 Acrylic on Canvas</span>
+            <h3 class="card-title">Onward and Upward</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$450</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 10 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 02 - Ashley Harrington - In and Out of Light - Original 24x18 Acrylic Painting.webp"
+                 data-title="In and Out of Light"
+                 data-category="Earlier Work"
+                 data-dimensions="24&quot; x 18&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$450"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-10">
+          <div class="card-frame">
+            <img src="assets/Nature - 02 - Ashley Harrington - In and Out of Light - Original 24x18 Acrylic Painting.webp" alt="In and Out of Light" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 24x18 Acrylic on Canvas</span>
+            <h3 class="card-title">In and Out of Light</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$450</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 11 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 03 - Ashley Harrington - Magical Forest - Original 24x18 Acrylic Painting.webp"
+                 data-title="Magical Forest"
+                 data-category="Earlier Work"
+                 data-dimensions="24&quot; x 18&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$450"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-11">
+          <div class="card-frame">
+            <img src="assets/Nature - 03 - Ashley Harrington - Magical Forest - Original 24x18 Acrylic Painting.webp" alt="Magical Forest" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 24x18 Acrylic on Canvas</span>
+            <h3 class="card-title">Magical Forest</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$450</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 12 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 04 - Ashley Harrington - Places Inbetween - Original 18x24 Acrylic Painting.webp"
+                 data-title="Places Inbetween"
+                 data-category="Earlier Work"
+                 data-dimensions="18&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$275"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-12">
+          <div class="card-frame">
+            <img src="assets/Nature - 04 - Ashley Harrington - Places Inbetween - Original 18x24 Acrylic Painting.webp" alt="Places Inbetween" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 18x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Places Inbetween</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$275</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 13 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 05 - Ashley Harrington - Giants - Original 18x24 Acrylic Painting.webp"
+                 data-title="Giants"
+                 data-category="Earlier Work"
+                 data-dimensions="18&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$275"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-13">
+          <div class="card-frame">
+            <img src="assets/Nature - 05 - Ashley Harrington - Giants - Original 18x24 Acrylic Painting.webp" alt="Giants" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 18x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Giants</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$275</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 14 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 06 - Ashley Harrington - Playful Breeze - Original 18x24 Acrylic Painting.webp"
+                 data-title="Playful Breeze"
+                 data-category="Earlier Work"
+                 data-dimensions="18&quot; x 24&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$275"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-14">
+          <div class="card-frame">
+            <img src="assets/Nature - 06 - Ashley Harrington - Playful Breeze - Original 18x24 Acrylic Painting.webp" alt="Playful Breeze" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 18x24 Acrylic on Canvas</span>
+            <h3 class="card-title">Playful Breeze</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$275</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 15 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 07 - Ashley Harrington - On the Other Side - Original 22x28 Acrylic Painting.webp"
+                 data-title="On the Other Side"
+                 data-category="Earlier Work"
+                 data-dimensions="22&quot; x 28&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$550"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-15">
+          <div class="card-frame">
+            <img src="assets/Nature - 07 - Ashley Harrington - On the Other Side - Original 22x28 Acrylic Painting.webp" alt="On the Other Side" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 22x28 Acrylic on Canvas</span>
+            <h3 class="card-title">On the Other Side</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$550</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 16 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 08 - Ashley Harrington - On The Lake - Original 20x40 Acrylic Painting.webp"
+                 data-title="On The Lake"
+                 data-category="Earlier Work"
+                 data-dimensions="20&quot; x 40&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$400"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-16">
+          <div class="card-frame">
+            <img src="assets/Nature - 08 - Ashley Harrington - On The Lake - Original 20x40 Acrylic Painting.webp" alt="On The Lake" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 20x40 Acrylic on Canvas</span>
+            <h3 class="card-title">On The Lake</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$400</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 17 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 09 - Ashley Harrington - Open Air - Original 16x20 Acrylic Painting.webp"
+                 data-title="Open Air"
+                 data-category="Earlier Work"
+                 data-dimensions="16&quot; x 20&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-17">
+          <div class="card-frame">
+            <img src="assets/Nature - 09 - Ashley Harrington - Open Air - Original 16x20 Acrylic Painting.webp" alt="Open Air" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 16x20 Acrylic on Canvas</span>
+            <h3 class="card-title">Open Air</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 18 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 10 - Ashley Harrington - The Crossing - Original 24x18 Acrylic Painting.webp"
+                 data-title="The Crossing"
+                 data-category="Earlier Work"
+                 data-dimensions="24&quot; x 18&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$455"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-18">
+          <div class="card-frame">
+            <img src="assets/Nature - 10 - Ashley Harrington - The Crossing - Original 24x18 Acrylic Painting.webp" alt="The Crossing" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 24x18 Acrylic on Canvas</span>
+            <h3 class="card-title">The Crossing</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$455</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 19 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 11 - Ashley Harrington - Treeline - Original 20x16 Acrylic Painting.webp"
+                 data-title="Treeline"
+                 data-category="Earlier Work"
+                 data-dimensions="20&quot; x 16&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$200"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-19">
+          <div class="card-frame">
+            <img src="assets/Nature - 11 - Ashley Harrington - Treeline - Original 20x16 Acrylic Painting.webp" alt="Treeline" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 20x16 Acrylic on Canvas</span>
+            <h3 class="card-title">Treeline</h3>
+            <div class="card-pricing-row">
+              <span class="card-price">$200</span>
+              <span class="card-availability">Available</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 20 -->
+        <article class="card-item" data-lightbox="true"
+                 data-img="assets/Nature - 12 - Ashley Harrington - The Secret Spot - Original 24x18 Acrylic Painting.webp"
+                 data-title="The Secret Spot"
+                 data-category="Earlier Work"
+                 data-dimensions="24&quot; x 18&quot;"
+                 data-medium="Acrylic on Canvas"
+                 data-price="$455"
+                 data-type="Original Painting"
+                 data-desc="Acrylic on Canvas"
+                 id="gal-earlier-20">
+          <div class="card-frame">
+            <img src="assets/Nature - 12 - Ashley Harrington - The Secret Spot - Original 24x18 Acrylic Painting.webp" alt="The Secret Spot" referrerPolicy="no-referrer">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-details">
+            <span class="card-meta">Nature • 24x18 Acrylic on Canvas</span>
+            <h3 class="card-title">The Secret Spot</h3>
+            <div class="card-pricing-row">
+              <span class="card-price text-muted">$455</span>
+              <span class="card-availability color-indicator-sold">Sold</span>
             </div>
           </div>
         </article>
@@ -432,12 +1528,18 @@
       </div>
     </section>
 
+    </div>
   </main>
 
   <!-- Elegant Shared Footer -->
   <footer id="site-footer" style="padding: var(--spacing-md) 0;">
     <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-sm);">
       
+      <!-- Footer Prominent Call-to-Action -->
+      <div class="footer-cta-wrapper" style="margin-top: var(--spacing-xs); margin-bottom: var(--spacing-xs); text-align: center;">
+        <button class="btn btn-filled inquire-trigger" style="padding: 12px 28px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;">Inquire About Artwork</button>
+      </div>
+
       <!-- Social Links with Icons -->
       <div class="footer-social-row" id="footer-socials-centered" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem;">
         <a href="https://instagram.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.7; text-decoration: none; display: flex; align-items: center; gap: 6px;">
@@ -445,7 +1547,7 @@
           Instagram
         </a>
         <a href="https://pinterest.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.7; text-decoration: none; display: flex; align-items: center; gap: 6px;">
-          <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.42 7.62 11.16-.1-.95-.19-2.41.04-3.45.21-.94 1.34-5.69 1.34-5.69s-.34-.68-.34-1.69c0-1.58.92-2.76 2.06-2.76.97 0 1.44.73 1.44 1.61 0 .98-.62 2.44-.94 3.79-.27 1.13.57 2.05 1.68 2.05 2.02 0 3.57-2.13 3.57-5.21 0-2.73-1.96-4.63-4.75-4.63-3.24 0-5.14 2.43-5.14 4.94 0 .98.38 2.03.85 2.6.09.12.11.22.08.33l-.32 1.3c-.05.21-.17.26-.39.16-1.46-.68-2.38-2.82-2.38-4.54 0-3.7 2.69-7.1 7.75-7.1 4.07 0 7.23 2.9 7.23 6.77 0 4.04-2.55 7.29-6.09 7.29-1.19 0-2.31-.62-2.69-1.35l-.73 2.79c-.26 1.01-1 2.27-1.49 3.08C10.08 23.83 11.02 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
+          <svg style="width: 14px; height: 14px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.42 7.62 11.16-.1-.95-.19-2.41.04-3.45.21-.94 1.34-5.69 1.34-5.69s-.34-.68-.34-1.69c0-1.58.92-2.76 2.06-2.76 1.14 0 1.56.86 1.56 1.89 0 2.01-1.28 3.63-3.15 3.63-.61 0-1.19-.32-1.39-.71l-.38 1.45 c-.14.54-.51 1.21-.76 1.61C10.42 23.57 11.19 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
           Pinterest
         </a>
       </div>
@@ -455,7 +1557,7 @@
         <a href="artwork.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Artwork</a>
         <a href="shop.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Shop</a>
         <a href="about.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">About</a>
-        <a href="contact.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Contact</a>
+        <a href="#" class="footer-nav-link inquire-trigger" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Inquire</a>
         <a href="faq.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">FAQ & Shipping</a>
         <a href="legal.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Privacy & Terms</a>
       </nav>
@@ -468,51 +1570,68 @@
     </div>
   </footer>
 
-  <!-- Native Image Lightbox Drawer (Split Screen Modal) -->
-  <div class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visual inquiry lightbox" id="gallery-lightbox">
+  <!-- Simplified Distraction-Free Image Lightbox -->
+  <div class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visual zoomed lightbox" id="gallery-lightbox">
     <div class="lightbox-background" id="lightbox-bg-close"></div>
+    <button class="lightbox-close" aria-label="Close Lightbox" id="lightbox-close-btn">
+      <svg class="lightbox-close-icon" viewBox="0 0 24 24">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
     <div class="lightbox-frame">
-      <button class="lightbox-close" aria-label="Close Lightbox" id="lightbox-close-btn">
-        <svg class="lightbox-close-icon" viewBox="0 0 24 24">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-        Close
-      </button>
-
-      <!-- Left Image panel -->
       <div class="lightbox-image-box">
         <img class="lightbox-main-img" src="" alt="Selected Painting Detail">
       </div>
+    </div>
+  </div>
 
-      <!-- Right Details and Inquiry panel -->
-      <div class="lightbox-details-box">
-        <span class="lightbox-art-category">Category</span>
-        <h2 class="lightbox-art-title">Title of Painting</h2>
-        <p class="lightbox-art-meta">Specs and properties</p>
-        <p class="lightbox-art-description">Descriptive insights of the piece</p>
-        <p class="lightbox-art-price">$1,200</p>
-
-        <!-- Native Minimalist Inquiry Form (Integrated natively, no popup) -->
-        <div class="lightbox-inquiry-container">
-          <h3 class="inquiry-form-title">Inquire About This Piece</h3>
-          <form class="mailerlite-inquiry-form" id="lightbox-mailerlite-form">
-            <!-- Automatically captured metadata string injected here via vanilla JS -->
-            <input type="hidden" name="mailerlite-inquiry-item" id="mailerlite-inquiry-item">
-
+  <!-- Global Inquiry Modal Popup -->
+  <div class="inquiry-modal" role="dialog" aria-modal="true" aria-label="Artwork inquiry modal" id="global-inquiry-modal">
+    <div class="inquiry-modal-background" id="inquiry-modal-bg-close"></div>
+    <div class="inquiry-modal-frame">
+      <button class="inquiry-modal-close" aria-label="Close Modal" id="inquiry-modal-close-btn">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="inquiry-modal-content">
+        <span class="inquiry-modal-subtitle">Direct Studio Inquiry</span>
+        <h2 class="inquiry-modal-title">Inquire About Artwork</h2>
+        <p class="inquiry-modal-description">Please enter your details below. If you're interested in a specific piece or a custom commission size, please specify below.</p>
+        
+        <!-- MailerLite Form Integration Placeholder -->
+        <div class="mailerlite-form-placeholder">
+          <form class="mailerlite-inquiry-form" id="global-mailerlite-form">
             <div class="form-group">
-              <label class="form-label" for="inquiry-name">Your Name</label>
-              <input type="text" id="inquiry-name" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+              <label class="form-label" for="global-inquiry-name">Your Name</label>
+              <input type="text" id="global-inquiry-name" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="inquiry-email">Your Email</label>
-              <input type="email" id="inquiry-email" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required>
+              <label class="form-label" for="global-inquiry-email">Your Email</label>
+              <input type="email" id="global-inquiry-email" name="email" class="form-input" placeholder="e.g. eleanor@example.com" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="inquiry-message">Your Message</label>
-              <textarea id="inquiry-message" name="message" class="form-input" placeholder="Provide any questions, details requested, or request a shipping quote..." required></textarea>
+              <label class="form-label" for="global-inquiry-artwork">Select Artwork or Series of Interest</label>
+              <select id="global-inquiry-artwork" name="artwork" class="form-input" style="background: var(--color-bg); font-family: var(--font-sans); cursor: pointer; outline: none;">
+                <option value="General Inquiry">General Studio Inquiry / Custom Commission</option>
+                <option value="Lost in Silence">Lost in Silence (Shifting Bodies)</option>
+                <option value="Leap">Leap (Shifting Bodies)</option>
+                <option value="Pull Through">Pull Through (Shifting Bodies)</option>
+                <option value="Embracing Imperfections">Embracing Imperfections (Shifting Bodies)</option>
+                <option value="Taking a moment to breath and reset">Taking a moment to breath and reset (Blue Figures)</option>
+                <option value="Shifting Weight">Shifting Weight (Figure Studies)</option>
+                <option value="Dancing Shrimp">Dancing Shrimp (Earlier Work)</option>
+                <option value="Magical Forest">Magical Forest (Earlier Work)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="global-inquiry-message">Your Message</label>
+              <textarea id="global-inquiry-message" name="message" class="form-input" placeholder="Provide any questions, sizing, or request a shipping quote..." required></textarea>
             </div>
 
             <button type="submit" class="btn btn-filled btn-submit" style="width: 100%;">Submit Inquiry</button>
