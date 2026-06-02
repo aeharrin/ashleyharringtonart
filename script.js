@@ -755,8 +755,22 @@ function initializeInquiryModal() {
       const cardParent = trigger.closest('.card-item');
       
       let title = '';
+      let desc = '';
       if (cardParent) {
-        title = cardParent.getAttribute('data-title');
+        title = cardParent.getAttribute('data-title') || '';
+        
+        // Grab descriptions or layouts-based metadata
+        const artworkMetaEl = cardParent.querySelector('.artwork-meta');
+        const cardMetaEl = cardParent.querySelector('.card-meta');
+        
+        if (artworkMetaEl) {
+          desc = artworkMetaEl.textContent.trim();
+        } else if (cardMetaEl) {
+          desc = cardMetaEl.textContent.trim();
+        } else {
+          // fallback to attribute declarations if element text is missing
+          desc = cardParent.getAttribute('data-category') || '';
+        }
       }
 
       const recipient = 'aeharrington1@gmail.com';
@@ -764,7 +778,8 @@ function initializeInquiryModal() {
       let body = '';
 
       if (title) {
-        body = `I am interested in ${title}.\n\n*Feel free to provide more context*`;
+        const fullSpec = desc ? `${title} ${desc}` : title;
+        body = `I am interested in ${fullSpec}.\n\n*Feel free to provide more context*`;
       } else {
         body = `Please choose an option for your inquiry and provide specifics:\nGeneral Inquiry\nCustom Commission\nOriginal Artwork\nArt Print`;
       }
