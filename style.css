@@ -12,7 +12,7 @@
   --bg-color: #FAF9F6;          /* Elegant off-white / light cream */
   --text-color: #2C2C2C;        /* Soft charcoal / dark grey */
   --accent-color: #C05A44;      /* Warm, grounding terracotta */
-  --font-heading: "Cormorant Garamond", "Playfair Display", "Didot", "Georgia", serif;
+  --font-heading: "Cormorant Garamond", "Playfair Display", serif;
   --font-body: "Inter", "Helvetica Neue", "Arial", sans-serif;
 
   /* Color Palette Compatibility Mappings */
@@ -89,27 +89,38 @@ main {
    Typographic Hierarchy Standardization
    ========================================================================== */
 
+/* Page titles */
 h1, .hero-title {
   font-family: var(--font-heading) !important;
-  font-size: 2.5rem !important;
+  font-size: 3.5rem !important;
   font-weight: 400 !important;
-  line-height: 1.25 !important;
-  letter-spacing: 0.05em !important; /* Generous letter spacing */
+  line-height: 2 !important;
   color: var(--text-color) !important;
-  text-transform: none !important;
 }
 
+/* Section titles */
 h2, .artwork-title, .section-title, .cart-drawer-title, .inquiry-modal-title, .lightbox-art-title {
   font-family: var(--font-heading) !important;
-  font-size: 1.75rem !important;
+  font-size: 2.75rem !important;
   font-weight: 400 !important;
-  line-height: 1.25 !important;
-  letter-spacing: 0.02em !important;
+  line-height: 2.5 !important;
   color: var(--text-color) !important;
 }
 
-h3, h4, .font-serif {
+/* Painting/Product Titles*/
+h3, .font-serif {
   font-family: var(--font-heading) !important;
+  font-size: 1.5rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Large body text for page title descriptions*/
+h4 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.2rem !important;
+  line-height: 1.75 !important;
+  color: var(--text-color) !important;
+  margin-bottom: 3rem
 }
 
 /* Body and paragraphs: comfortable lines and 1rem size */
