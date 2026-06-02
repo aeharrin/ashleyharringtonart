@@ -12,7 +12,7 @@
   --bg-color: #FAF9F6;          /* Elegant off-white / light cream */
   --text-color: #2C2C2C;        /* Soft charcoal / dark grey */
   --accent-color: #C05A44;      /* Warm, grounding terracotta */
-  --font-heading: "Cormorant Garamond", "Playfair Display", serif;
+  --font-heading: "Cormorant Garamond", "Playfair Display", "Didot", "Georgia", serif;
   --font-body: "Inter", "Helvetica Neue", "Arial", sans-serif;
 
   /* Color Palette Compatibility Mappings */
@@ -89,38 +89,27 @@ main {
    Typographic Hierarchy Standardization
    ========================================================================== */
 
-/* Page titles */
 h1, .hero-title {
   font-family: var(--font-heading) !important;
-  font-size: 3.5rem !important;
+  font-size: 2.5rem !important;
   font-weight: 400 !important;
-  line-height: 2 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.05em !important; /* Generous letter spacing */
   color: var(--text-color) !important;
+  text-transform: none !important;
 }
 
-/* Section titles */
 h2, .artwork-title, .section-title, .cart-drawer-title, .inquiry-modal-title, .lightbox-art-title {
   font-family: var(--font-heading) !important;
-  font-size: 2.75rem !important;
+  font-size: 1.75rem !important;
   font-weight: 400 !important;
-  line-height: 2.5 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.02em !important;
   color: var(--text-color) !important;
 }
 
-/* Painting/Product Titles*/
-h3, .font-serif {
+h3, h4, .font-serif {
   font-family: var(--font-heading) !important;
-  font-size: 1.5rem !important;
-  line-height: 1.5 !important;
-}
-
-/* Large body text for page title descriptions*/
-h4 {
-  font-family: var(--font-heading) !important;
-  font-size: 1.2rem !important;
-  line-height: 1.75 !important;
-  color: var(--text-color) !important;
-  margin-bottom: 3rem
 }
 
 /* Body and paragraphs: comfortable lines and 1rem size */
@@ -133,18 +122,8 @@ p, .series-description, .product-description, .bio-text-content p, .contact-info
   margin-bottom: 1.5rem;
 }
 
-/* Subtitle Labels */
-.section-label {
-  font-family: var(--font-body) !important;
-  font-size: 0.8rem !important;
-  font-weight: 500 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.2rem !important;
-  color: var(--accent-color) !important;
-  line-height: 1.4 !important;
-}
 /* Metadata elements */
-.card-meta, .lightbox-art-category, .inquiry-modal-subtitle, .hero-subtitle, .section-action {
+.card-meta, .lightbox-art-category, .inquiry-modal-subtitle, .hero-subtitle, .section-label, .section-action {
   font-family: var(--font-body) !important;
   font-size: 0.75rem !important;
   font-weight: 500 !important;
@@ -199,7 +178,8 @@ p, .series-description, .product-description, .bio-text-content p, .contact-info
 
 .hero-section .btn,
 .hero-content-container .btn,
-#hero-cta-btn {
+.hero-content-container .cta-button-primary,
+.cta-button-primary {
   font-family: var(--font-body) !important;
   text-transform: uppercase !important;
   background-color: var(--accent-color) !important;
@@ -215,7 +195,8 @@ p, .series-description, .product-description, .bio-text-content p, .contact-info
 
 .hero-section .btn:hover,
 .hero-content-container .btn:hover,
-#hero-cta-btn:hover {
+.hero-content-container .cta-button-primary:hover,
+.cta-button-primary:hover {
   background-color: var(--bg-color) !important;
   color: var(--accent-color) !important;
   border-color: var(--accent-color) !important;
@@ -328,7 +309,8 @@ button.inquiry-submit:hover,
 }
 
 /* Desktop header clearance adjustment for CTA link to stay inline cleanly inside header's 64px row */
-header#site-header .nav-link-cta {
+header.site-header .nav-link-cta,
+.site-header .nav-link-cta {
   padding: 8px 18px !important;
   font-size: 0.8rem !important;
   letter-spacing: 0.15rem !important;
@@ -337,7 +319,8 @@ header#site-header .nav-link-cta {
   transition: all 0.3s ease !important;
 }
 
-header#site-header .nav-link-cta:hover {
+header.site-header .nav-link-cta:hover,
+.site-header .nav-link-cta:hover {
   background-color: transparent !important;
   color: var(--accent-color) !important;
   border-color: var(--accent-color) !important;
@@ -347,7 +330,8 @@ header#site-header .nav-link-cta:hover {
    Navigation Header
    ========================================================================== */
 
-header#site-header {
+header.site-header,
+.site-header {
   position: sticky;
   top: 0;
   background-color: rgba(250, 249, 246, 0.95);
@@ -357,7 +341,8 @@ header#site-header {
   transition: border-color var(--transition-smooth), background-color var(--transition-smooth);
 }
 
-header#site-header.scrolled {
+header.site-header.scrolled,
+.site-header.scrolled {
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -371,18 +356,16 @@ header#site-header.scrolled {
   align-items: center;
 }
 
-.logo-link {
-  display: flex;
-  flex-direction: column;
-}
-
+.logo-link,
 .logo-title {
+  display: inline-block;
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-text);
+  color: var(--color-text) !important;
+  text-decoration: none;
 }
 
 .logo-subtitle {
@@ -653,11 +636,11 @@ header#site-header.scrolled {
 }
 
 /* Specific home index curated artist section alignment and spacing */
-#artist-curated-intro .split-bio-block {
+.artist-curated-intro .split-bio-block {
   align-items: center !important;
 }
 
-#artist-curated-intro .bio-text-content {
+.artist-curated-intro .bio-text-content {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
@@ -667,7 +650,7 @@ header#site-header.scrolled {
 }
 
 /* Label "The Artist" - font-size 0.8rem, letter-spacing .2rem, no margin-bottom */
-#artist-curated-intro .section-label {
+.artist-curated-intro .section-label {
   font-family: var(--font-body) !important;
   font-size: 0.8rem !important;
   letter-spacing: 0.2rem !important;
@@ -680,7 +663,7 @@ header#site-header.scrolled {
 }
 
 /* Section title "Ashley Harrington" - font-size: 2.75rem, no margin-bottom, no letter-spacing, line-height: 2.5 */
-#artist-curated-intro h2 {
+.artist-curated-intro h2 {
   font-family: var(--font-heading) !important;
   font-size: 2.75rem !important;
   margin-bottom: 0rem !important;
@@ -691,7 +674,7 @@ header#site-header.scrolled {
 }
 
 /* Description "In the quiet of my home..." - margin-bottom: 2.5rem */
-#artist-curated-intro p {
+.artist-curated-intro p {
   font-family: var(--font-body) !important;
   font-size: 1.2rem !important;
   margin-bottom: 2.5rem !important;
@@ -701,7 +684,8 @@ header#site-header.scrolled {
 }
 
 /* CTA "Full Bio & CV" secondary starting as background color fill, with accent border and text, then changes to accent fill and background text on hover */
-#artist-curated-intro #bio-read-more-btn {
+.cta-button-secondary,
+.artist-curated-intro .cta-button-secondary {
   font-family: var(--font-body) !important;
   font-size: 0.85rem !important;
   font-weight: 500 !important;
@@ -721,7 +705,8 @@ header#site-header.scrolled {
   text-decoration: none !important;
 }
 
-#artist-curated-intro #bio-read-more-btn:hover {
+.cta-button-secondary:hover,
+.artist-curated-intro .cta-button-secondary:hover {
   /* On hover changes to accent fill color and background color text */
   background-color: var(--accent-color) !important;
   color: var(--bg-color) !important;
@@ -732,32 +717,32 @@ header#site-header.scrolled {
 
 /* Mobile responsive handling for split grids */
 @media (max-width: 900px) {
-  #artist-curated-intro .split-bio-block {
+  .artist-curated-intro .split-bio-block {
     grid-template-columns: 1fr !important;
     gap: var(--spacing-md) !important;
   }
   
-  #artist-curated-intro .bio-text-content {
+  .artist-curated-intro .bio-text-content {
     padding-left: 0 !important;
     margin-top: var(--spacing-md) !important;
   }
 }
 
 @media (max-width: 600px) {
-  #artist-curated-intro h2 {
+  .artist-curated-intro h2 {
     font-size: 2.2rem !important;
     line-height: var(--line-height-reset, 2) !important;
   }
 }
 
 /* Featured Artworks Custom Section Styles */
-#curated-showcase-section .section-title {
+.curated-showcase-section .section-title {
   font-family: var(--font-heading) !important;
   font-size: 2.75rem !important;
   color: var(--text-color) !important;
 }
 
-#curated-showcase-section .section-action {
+.curated-showcase-section .section-action {
   color: var(--accent-color) !important;
   font-size: 0.8rem !important;
   letter-spacing: 0.2rem !important;
@@ -767,8 +752,8 @@ header#site-header.scrolled {
 }
 
 /* Image Full Proportions & No Hover Animation */
-#featured-works-grid .card-item,
-#featured-works-grid .card-item:hover {
+.featured-works-grid .card-item,
+.featured-works-grid .card-item:hover {
   transform: none !important;
   box-shadow: none !important;
   border: none !important; /* clean frame borderless style */
@@ -776,7 +761,7 @@ header#site-header.scrolled {
   cursor: default !important;
 }
 
-#featured-works-grid .card-frame {
+.featured-works-grid .card-frame {
   width: 100% !important;
   aspect-ratio: auto !important;
   height: auto !important;
@@ -785,8 +770,8 @@ header#site-header.scrolled {
   overflow: hidden !important;
 }
 
-#featured-works-grid .card-frame img,
-#featured-works-grid .card-item:hover .card-frame img {
+.featured-works-grid .card-frame img,
+.featured-works-grid .card-item:hover .card-frame img {
   width: 100% !important;
   height: auto !important;
   object-fit: contain !important;
@@ -794,18 +779,18 @@ header#site-header.scrolled {
   transition: none !important;
 }
 
-#featured-works-grid .card-overlay {
+.featured-works-grid .card-overlay {
   display: none !important;
 }
 
 /* Metadata formatting */
-#featured-works-grid .card-details {
+.featured-works-grid .card-details {
   background-color: transparent !important;
   padding: 1rem 0 0 0 !important; /* completely flush with image edges */
 }
 
 /* Title (ie Lost in Silence) - font-size: 1.5rem, line-height: 1.5 */
-#featured-works-grid .card-title {
+.featured-works-grid .card-title {
   font-family: var(--font-heading) !important;
   font-size: 1.5rem !important;
   line-height: 1.5 !important;
@@ -818,7 +803,7 @@ header#site-header.scrolled {
 }
 
 /* Description (ie 40x30 arcylic on canvas) - no uppercase, no letter-spacing, font-size: 1rem, margin-bottom: .5rem */
-#featured-works-grid .card-meta {
+.featured-works-grid .card-meta {
   font-family: var(--font-body) !important;
   text-transform: none !important;
   letter-spacing: normal !important;
@@ -831,7 +816,7 @@ header#site-header.scrolled {
 }
 
 /* Label (Available) - font-size: .8rem, letter-spacing: .2rem */
-#featured-works-grid .card-availability {
+.featured-works-grid .card-availability {
   font-family: var(--font-body) !important;
   font-size: 0.8rem !important;
   letter-spacing: 0.2rem !important;
@@ -841,7 +826,7 @@ header#site-header.scrolled {
   display: inline-block !important;
 }
 
-#featured-works-grid .card-pricing-row {
+.featured-works-grid .card-pricing-row {
   font-family: var(--font-body) !important;
   font-size: 0.8rem !important;
   margin: 0 !important;
@@ -2154,16 +2139,17 @@ textarea.form-input {
    Footers & Toast elements
    ========================================================================== */
 
-footer {
+footer,
+.site-footer {
   background-color: var(--bg-color);
   border-top: none !important;
-  padding: var(--spacing-lg) 0 var(--spacing-md) 0;
+  padding: var(--spacing-md) 0;
   margin-top: auto;
   position: relative;
 }
 
 footer::before,
-#site-footer::before {
+.site-footer::before {
   content: "" !important;
   display: block !important;
   width: 60% !important;
@@ -2175,42 +2161,36 @@ footer::before,
   left: 20% !important;
 }
 
-.footer-bottom-centered {
-  border-top: none !important;
-}
-
 .footer-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-md);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-.footer-top {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-md);
-}
-
-.footer-links-row {
-  display: flex;
-  gap: var(--spacing-md);
+  justify-content: center;
+  gap: var(--spacing-sm);
 }
 
 .footer-social-row {
   display: flex;
-  gap: var(--spacing-sm);
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .footer-social-link {
-  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.70rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   opacity: 0.7;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text);
+  transition: opacity var(--transition-smooth), color var(--transition-smooth);
 }
 
 .footer-social-link:hover {
@@ -2218,31 +2198,50 @@ footer::before,
   color: var(--accent-color);
 }
 
-.footer-bottom {
+.footer-social-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.footer-nav-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--spacing-sm);
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
+  gap: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.footer-nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.60rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-smooth);
+}
+
+.footer-nav-link:hover,
+.footer-nav-link.active {
+  color: var(--color-text);
+}
+
+.footer-bottom-centered {
+  text-align: center;
+  padding-top: var(--spacing-sm);
+  width: 100%;
+  border-top: none !important;
 }
 
 .footer-copyright {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: var(--color-text-muted);
-}
-
-.footer-legal-links {
-  display: flex;
-  gap: var(--spacing-sm);
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-
-.footer-legal-links a:hover {
-  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Success toastmsg popup styles */
@@ -2439,22 +2438,22 @@ footer::before,
    About Page Revamped Overrides
    ========================================================================== */
 
-#about-page-main .hero-subtitle {
+.about-page-main .hero-subtitle {
   font-size: 0.8rem !important;
   letter-spacing: 0.2rem !important;
 }
 
-#about-page-main .hero-title {
+.about-page-main .hero-title {
   line-height: 1.1rem !important;
   margin: 1rem 0 !important;
   letter-spacing: normal !important;
 }
 
-#about-page-main .statement-text {
+.about-page-main .statement-text {
   line-height: 3rem !important;
 }
 
-#about-cv-registry .section-title {
+.about-cv-registry .section-title {
   font-size: 2.5rem !important;
   line-height: 1.5rem !important;
   font-family: var(--font-heading) !important;
@@ -2462,7 +2461,7 @@ footer::before,
   text-transform: none !important;
 }
 
-#about-cv-registry .section-header {
+.about-cv-registry .section-header {
   margin-bottom: 0 !important;
 }
 
