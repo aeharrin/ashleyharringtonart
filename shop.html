@@ -48,13 +48,13 @@
     <div class="page-container" style="padding-bottom: 0;">
       <section class="hero-section" id="shop-hero" style="margin-bottom: var(--spacing-sm);">
         <span class="hero-subtitle">Online Store</span>
-        <h1 class="hero-title">The Shop</h1>
+        <h1 class="hero-title">Shop Prints & Small Works</h1>
         <p class="hero-description">
           Original mini paintings and fine art prints — made to live in your space. All prints are produced on archival paper with museum-quality inks.
         </p>
         
         <p style="font-family: var(--font-sans); color: var(--color-text-muted); margin-top: var(--spacing-sm); margin-bottom: var(--spacing-md); max-width: 720px;">
-          To inquire about an original painting, visit the <a href="artwork.html" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; font-weight: 500;">Gallery page</a>.
+          <a href="artwork.html" style="color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; font-weight: 500;">View original paintings here</a>.
         </p>
         
 
@@ -72,14 +72,16 @@
     <!-- Prints Catalog Section -->
     <section class="gallery-section page-container" id="section-prints" style="padding-top: var(--spacing-sm); padding-bottom: var(--spacing-lg);">
       <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">I. Archival Prints</h2>
-        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Giclée Reproductions</span>
-        <p class="series-description">
-          Museum-grade prints are captured digitally directly from original pieces and color-matched specifically to the artist's proofing under technical studio lighting.
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">Selected Prints</h2>
+        <p class="series-description" style="line-height: 1.6; color: var(--color-text-muted); font-size: 0.95rem;">
+          Archival fine art prints of select original paintings. <br style="margin-bottom: 8px; display: block;">
+          All fine art prints are made to order in-house by the artist on premium archival paper. Please allow 3–5 business days for studio processing and inspection before shipping. <br style="margin-bottom: 8px; display: block;">
+          <strong>Standard Sizing & Pricing:</strong> 6x4 — $10 | 8x10 — $25 | 16x20 — $50 . <br style="margin-bottom: 8px; display: block;">
+          Hit the Inquire CTA in the Nav or below a print to place your order.
         </p>
       </div>
 
-      <div class="gallery-grid" id="shop-prints-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+      <div class="shop-masonry-grid" id="shop-prints-grid">
         
         <!-- Product 1: November Fields I -->
         <article class="card-item product-card fade-in" data-lightbox="true" data-category-filter="landscape"
@@ -96,25 +98,24 @@
             <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600" alt="Autumn dunes and golden fields landscape print">
             <div class="card-overlay"></div>
             <span class="product-badge" style="position: absolute; top: var(--spacing-sm); left: var(--spacing-sm); background-color: var(--color-bg); padding: 4px 8px; font-family: var(--font-sans); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--color-border); z-index: 5;">Best Seller</span>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Landscape Print</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">November Fields I</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Archival giclée print
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Sizes: 8x10, 11x14, 16x20 or Custom
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Landscape Print</span>
+            <h3 class="card-title">November Fields I</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Premium archival giclée reproduction of November Fields I. Individually proofed and color-matched specifically to the artist's proofing to ensure exact replication of the original rich amber brushstrokes, atmospheric fog depths, and authentic warm autumn dune values.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Order
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -132,25 +133,24 @@
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=600" alt="Abstract blue and turquoise textured figure print">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Expressionist Figure</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Introspection II</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Archival giclée print
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Sizes: 8x10, 11x14, 16x20 or Custom
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Expressionist Figure</span>
+            <h3 class="card-title">Introspection II</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Premium archival giclée reproduction of Introspection II. Captures the deep indigo and moody teal lines mapped on textured museum-grade paper. Preserves every delicate charcoal edge and wet-on-wet watercolor boundary of original studies.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Order
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -168,25 +168,24 @@
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?q=80&w=600" alt="Seated female figure study on sketch block background">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Expressionist Figure</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Clay & Recline I</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Archival giclée print
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Sizes: 8x10, 11x14, 16x20 or Custom
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Expressionist Figure</span>
+            <h3 class="card-title">Clay & Recline I</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Premium archival giclée reproduction of Clay & Recline I. Individually proofed to capture the organic earth ochres, deep tactile plaster contours, and delicate dry brush details of original warm plaster studies.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Order
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -199,30 +198,29 @@
                  data-medium="Archival pigment giclée printed"
                  data-price="From $85.00"
                  data-type="Made to Order"
-                 data-desc="Premium archival giclée reproduction of Sylvan Radiance II. Renders woodland rays and lush forest canopies with pristine chromatic details."
+                 data-desc="Premium archival giclée reproduction of Sylvan Radiance II. Renders woodland rays and forest canopy light filtration with ultimate precision on textured rag."
                  id="prod-sylvan-radiance">
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Woodland sunburst highlighting moss greens landscape print">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Landscape Print</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Sylvan Radiance II</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Archival giclée print
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Sizes: 8x10, 11x14, 16x20 or Custom
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Landscape Print</span>
+            <h3 class="card-title">Sylvan Radiance II</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Premium archival giclée reproduction of Sylvan Radiance II. Renders woodland rays and lush forest canopies with pristine chromatic details. Replicates the complex light filtration and rich yellow-green glaze variations of original landscape studies.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Order
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -240,25 +238,24 @@
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600" alt="Gestural movement research charcoal study">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Expressionist Figure</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Vulnerability Study V</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Archival giclée print
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Sizes: 8x10, 11x14, 16x20 or Custom
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Expressionist Figure</span>
+            <h3 class="card-title">Vulnerability Study V</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Premium archival giclée reproduction of Vulnerability Study V. Hand-proofed lines designed to stay vibrant, mapping gestural bodies with ultimate clarity and capturing the authentic friction of dry charcoal on weighted hot press paper.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Order
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -276,25 +273,24 @@
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600" alt="Earthy coastal cliffs colliding with active ocean blue">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Landscape Print</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Coastal Ledge Study</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Archival giclée print
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Sizes: 8x10, 11x14, 16x20 or Custom
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Landscape Print</span>
+            <h3 class="card-title">Coastal Ledge Study</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Premium archival giclée reproduction of Coastal Ledge Study. Deep maritime cliff textures and blue ocean horizons rendered on heavyweight German cotton rag, retaining the rich impasto surface details of the original oil knives.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">From $85.00</span>
-              <button class="btn btn-filled" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Order
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -304,14 +300,13 @@
     <!-- Mini Paintings Catalog Section -->
     <section class="gallery-section page-container" id="section-mini-paintings" style="padding-top: var(--spacing-sm); padding-bottom: var(--spacing-xl);">
       <div class="gallery-series-header" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md);">
-        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.25rem 0;">II. Mini Paintings</h2>
-        <span class="series-subtitle" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.75rem;">Original Small Works</span>
+        <h2 class="font-serif" style="font-size: 1.8rem; margin: 0 0 0.5rem 0;">Mini Paintings</h2>
         <p class="series-description">
           Original, small-format paint/pigment studies on custom prepared wood blocks or weighted Baltic birch panels. Perfectly sized for cozy display niches, mantelpieces, or physical shelf pairings.
         </p>
       </div>
 
-      <div class="gallery-grid" id="shop-paintings-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+      <div class="shop-masonry-grid" id="shop-paintings-grid">
         
         <!-- Painting 1: Meadow Study IV -->
         <article class="card-item fade-in" data-lightbox="true"
@@ -328,25 +323,24 @@
             <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=600" alt="Heavily textured abstract fluid splotches oil brush painting study">
             <div class="card-overlay"></div>
             <span class="product-badge" style="position: absolute; top: var(--spacing-sm); left: var(--spacing-sm); background-color: var(--color-bg); padding: 4px 8px; font-family: var(--font-sans); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--color-border); z-index: 5;">One of a Kind</span>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Oil Study</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Meadow Study IV</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Oil on Birchwood Block
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Size: 6" x 6"
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Oil Study</span>
+            <h3 class="card-title">Meadow Study IV</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Delicate, tactile palette-knife meadow study rendered in rich, luminous glaze oils on Baltic birch block. Perfect for snug gallery wall configurations, deep floating table displays, or elegant design shelf pairings.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">$280.00</span>
-              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Buy
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -364,25 +358,24 @@
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=600" alt="Abstract earth tone raw tempera sketch panel">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Tempera & Graphite</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Postural Sketch (Sienna)</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Tempera & Graphite on Wood Panel
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Size: 8" x 8"
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Tempera & Graphite</span>
+            <h3 class="card-title">Postural Sketch (Sienna)</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Form study on deep raw sienna background. Blends natural bone powder tempera washes with dense, crisp graphite boundaries on hardwood panel. Organic, mineral-based textures finished with premium archival sealant.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">$340.00</span>
-              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Buy
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -400,25 +393,24 @@
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600" alt="Beautiful blue textured fluid study">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Indigo study</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Nocturnal Study XI</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Acrylic & Volcanic Ash on Panel
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Size: 5" x 7"
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Indigo study</span>
+            <h3 class="card-title">Nocturnal Study XI</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Small format exercise inspecting fluid body curves and marine twilight depth. Mixed media including volcanic ash glaze for soft, organic, atmospheric coastal texture and tactile physical boundaries.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">$260.00</span>
-              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Buy
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -436,25 +428,24 @@
           <div class="card-frame" style="aspect-ratio: 3/4; cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Beautiful sunbeams through rich woodland forest oil study">
             <div class="card-overlay"></div>
+            <!-- Zoom Icon Indicator -->
+            <div class="zoom-indicator">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-          <div class="card-details" style="display: flex; flex-direction: column; gap: var(--spacing-xs); padding-top: var(--spacing-xs);">
-            <div style="margin-bottom: var(--spacing-xs);">
-              <span class="card-meta">Oil Landscape</span>
-              <h3 class="card-title" style="margin-bottom: 2px;">Golden Hour Shoreline</h3>
-              <p class="product-spec" style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 4px;">
-                Oil on Gesso Board
-              </p>
-              <p class="product-sizes" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text); letter-spacing: 0.02em; margin-bottom: 0;">
-                Size: 6" x 8"
-              </p>
+          <div class="card-details">
+            <span class="card-meta">Oil Landscape</span>
+            <h3 class="card-title">Golden Hour Shoreline</h3>
+            <div class="product-description-container">
+              <p class="product-description text-clamp">Warm, ambient oil shoreline study capturing rich sun filtration. Built up in luminous, transparent glaze layers to sustain a golden indoor glow and showcase organic brush depth on premium Baltic birch gesso board.</p>
+              <button class="more-toggle-btn" aria-label="Expand description">more...</button>
             </div>
-            
-            <div class="card-pricing-row" style="border-top: 1px solid var(--color-border-light); padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-xs); align-items: stretch;">
-              <span class="card-price" style="margin-bottom: 2px;">$310.00</span>
-              <button class="btn btn-filled inquire-trigger" style="padding: 10px 14px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.5; border-radius: 0; width: 100%;">
-                Inquire to Buy
-              </button>
-            </div>
+            <button class="btn btn-filled inquire-trigger">Inquire to Order</button>
           </div>
         </article>
 
@@ -546,11 +537,6 @@
   <footer id="site-footer" style="padding: var(--spacing-md) 0;">
     <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-sm);">
       
-      <!-- Footer Prominent Call-to-Action -->
-      <div class="footer-cta-wrapper" style="margin-top: var(--spacing-xs); margin-bottom: var(--spacing-xs); text-align: center;">
-        <button class="btn btn-filled inquire-trigger" style="padding: 12px 28px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;">Inquire About Artwork</button>
-      </div>
-
       <!-- Social Links with Icons -->
       <div class="footer-social-row" id="footer-socials-centered" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem;">
         <a href="https://instagram.com" class="footer-social-link" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-sans); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.7; text-decoration: none; display: flex; align-items: center; gap: 6px;">
@@ -568,13 +554,13 @@
         <a href="artwork.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Artwork</a>
         <a href="shop.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Shop</a>
         <a href="about.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">About</a>
-        <a href="#" class="footer-nav-link inquire-trigger" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Inquire</a>
+        <a href="contact.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Contact</a>
         <a href="faq.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">FAQ & Shipping</a>
         <a href="legal.html" class="footer-nav-link" style="font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-decoration: none;">Privacy & Terms</a>
       </nav>
 
       <!-- Copyright -->
-      <div class="footer-bottom-centered" style="text-align: center; border-top: 1px solid var(--color-border); padding-top: var(--spacing-sm); width: 100%;">
+      <div class="footer-bottom-centered" style="text-align: center; padding-top: var(--spacing-sm); width: 100%;">
         <span class="footer-copyright" style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">© 2026 Ashley Harrington. All Rights Reserved.</span>
       </div>
 
