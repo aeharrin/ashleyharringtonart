@@ -133,8 +133,18 @@ p, .series-description, .product-description, .bio-text-content p, .contact-info
   margin-bottom: 1.5rem;
 }
 
+/* Subtitle Labels */
+.section-label {
+  font-family: var(--font-body) !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2rem !important;
+  color: var(--accent-color) !important;
+  line-height: 1.4 !important;
+}
 /* Metadata elements */
-.card-meta, .lightbox-art-category, .inquiry-modal-subtitle, .hero-subtitle, .section-label, .section-action {
+.card-meta, .lightbox-art-category, .inquiry-modal-subtitle, .hero-subtitle, .section-action {
   font-family: var(--font-body) !important;
   font-size: 0.75rem !important;
   font-weight: 500 !important;
