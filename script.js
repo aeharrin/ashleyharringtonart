@@ -53,7 +53,7 @@ function initializeEntranceAnimations() {
  * Handle scroll states for header border toggling
  */
 function initializeScrollHeader() {
-  const siteHeader = document.getElementById('site-header');
+  const siteHeader = document.querySelector('.site-header');
   if (!siteHeader) return;
 
   const handleScroll = () => {
@@ -182,8 +182,8 @@ function initializeLightbox() {
   cards.forEach(card => {
     card.addEventListener('click', (e) => {
       // Avoid triggering when user clicks secondary interactive buttons/links/actions (e.g., Inquire button)
-      if (e.target.closest('.no-lightbox') || e.target.closest('.btn') || e.target.closest('.inquire-trigger')) return;
-      if (card.closest('.shop-masonry-grid') || card.closest('#featured-works-grid')) return; // handled by specialized shop lightbox!
+      if (e.target.closest('.no-lightbox') || e.target.closest('.btn') || e.target.closest('.cta-button-primary') || e.target.closest('.cta-button-secondary') || e.target.closest('.inquire-trigger')) return;
+      if (card.closest('.shop-masonry-grid') || card.closest('.featured-works-grid')) return; // handled by specialized shop lightbox!
       openLightbox(card);
     });
   });
@@ -630,8 +630,7 @@ function initializeInlineZoom() {
 }
 
 /**
- * Handle MailerLite Enquiry form actions client-side
- * and trigger neat visual Toast configurations 
+ * Handle Contact/Inquiry form actions by translating them into emails
  */
 function initializeForms() {
   const forms = document.querySelectorAll('form');
@@ -652,32 +651,26 @@ function initializeForms() {
         return;
       }
 
-      // Simulate sending mailerlite parameters securely
-      console.log('Sending Inquiry via MailerLite:', {
+      console.log('Constructing Direct Email Inquiry:', {
         name,
         email,
         message,
-        artworkSelection: itemSubject || 'General Contact'
+        purpose: itemSubject || 'General Contact'
       });
 
-      // Show warm, elegant success notice
-      let successMessage = 'Thank you. Your message has been sent successfully.';
-      if (itemSubject) {
-        successMessage = `Inquiry sent for "${itemSubject}". We will contact you shortly.`;
-      }
-      showToast(successMessage);
+      // Construct native mailto Link
+      const recipient = 'aeharrington1@gmail.com';
+      const subject = `Studio Inquiry - ${itemSubject || 'General Contact'}`;
+      const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+      const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+
+      // Show warm, elegant notice that email client is opening
+      showToast('Opening your email application to send inquiry...');
 
       // Perform deep client-side cleanups
       form.reset();
-
-      // If this was inside the global inquiry modal, shut down after a short delay
-      const inquiryModal = document.querySelector('.inquiry-modal');
-      if (inquiryModal && inquiryModal.classList.contains('active')) {
-        setTimeout(() => {
-          inquiryModal.classList.remove('active');
-          document.body.style.overflow = '';
-        }, 1500);
-      }
     });
   });
 }
@@ -738,33 +731,10 @@ function initializeGallerySubnav() {
 }
 
 /**
- * Global Inquire Modal logic and custom triggers
+ * Global Inquire logic converting triggers into direct personalized mailto links
  */
 function initializeInquiryModal() {
-  const inquiryModal = document.querySelector('.inquiry-modal');
-  if (!inquiryModal) return;
-
   const triggers = document.querySelectorAll('.inquire-trigger');
-  const closeBtn = inquiryModal.querySelector('.inquiry-modal-close');
-  const backgroundOverlay = inquiryModal.querySelector('.inquiry-modal-background');
-  const artworkSelect = inquiryModal.querySelector('#global-inquiry-artwork');
-
-  function openModal() {
-    document.body.style.overflow = 'hidden';
-    inquiryModal.classList.add('active');
-  }
-
-  function closeModal() {
-    inquiryModal.classList.remove('active');
-    
-    // Check if other components are Locking Scroll before unlocking the body
-    const isMobileNavOpen = document.querySelector('.mobile-nav-overlay.open');
-    const isLightboxActive = document.querySelector('.lightbox-modal.active');
-    
-    if (!isMobileNavOpen && !isLightboxActive) {
-      document.body.style.overflow = '';
-    }
-  }
 
   triggers.forEach(trigger => {
     trigger.addEventListener('click', (e) => {
@@ -780,40 +750,27 @@ function initializeInquiryModal() {
         if (mobileNavOverlay) mobileNavOverlay.classList.remove('open');
         if (backdrop) backdrop.classList.remove('open');
       }
-      
-      // Auto-tag artwork selection in select dropdown list if present
+
+      // Check if button is part of a card item/container to determine artwork title
       const cardParent = trigger.closest('.card-item');
-      if (cardParent && artworkSelect) {
-        const title = cardParent.getAttribute('data-title');
-        if (title) {
-          let found = false;
-          for (let i = 0; i < artworkSelect.options.length; i++) {
-            if (artworkSelect.options[i].value.toLowerCase().includes(title.toLowerCase())) {
-              artworkSelect.selectedIndex = i;
-              found = true;
-              break;
-            }
-          }
-          if (!found) {
-            artworkSelect.value = 'General Inquiry';
-          }
-        }
-      } else if (artworkSelect) {
-        artworkSelect.value = 'General Inquiry';
+      
+      let title = '';
+      if (cardParent) {
+        title = cardParent.getAttribute('data-title');
       }
 
-      openModal();
+      const recipient = 'aeharrington1@gmail.com';
+      const subject = 'Art Inquiry';
+      let body = '';
+
+      if (title) {
+        body = `I am interested in ${title}.\n\n*Feel free to provide more context*`;
+      } else {
+        body = `Please choose an option for your inquiry and provide specifics:\nGeneral Inquiry\nCustom Commission\nOriginal Artwork\nArt Print`;
+      }
+
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
-  });
-
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (backgroundOverlay) backgroundOverlay.addEventListener('click', closeModal);
-
-  // Close handlers on click and Escape key presses
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && inquiryModal.classList.contains('active')) {
-      closeModal();
-    }
   });
 }
 
