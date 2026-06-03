@@ -158,8 +158,9 @@ p, .series-description, .product-description, .bio-text-content p, .contact-info
   color: var(--text-color) !important;
   font-size: 3.5rem !important;
   margin-bottom: 0rem !important;
-  line-height: 2 !important;
+  line-height: 1.2 !important;
   font-weight: 400 !important;
+  padding: 1rem 0rem !important;
 }
 
 .hero-section .hero-description,
@@ -628,8 +629,8 @@ header.site-header.scrolled,
 /* Split elements styling */
 .split-bio-block {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: var(--spacing-lg) !important;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
   align-items: start !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -978,6 +979,14 @@ header.site-header.scrolled,
   border-left: 2px solid var(--accent-color);
   padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-md);
   max-width: 800px;
+}
+
+.statement-callout .hero-description p {
+  margin-bottom: 1.5rem !important;
+}
+
+.statement-callout .hero-description p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .statement-text {
@@ -1438,6 +1447,8 @@ textarea.form-input {
   align-items: center;
   gap: var(--spacing-md);
   flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .subnav-container::-webkit-scrollbar {
@@ -1879,8 +1890,9 @@ textarea.form-input {
   color: #2c2c2c !important;
 }
 
-.artwork-vertical-list .artwork-status-available {
-  color: #2c2c2c !important;
+.artwork-vertical-list .artwork-status-available,
+.artwork-vertical-list .artwork-status-available + .artwork-status-sep {
+  display: none !important;
 }
 
 .artwork-vertical-list .artwork-status-sold {
@@ -2069,11 +2081,7 @@ textarea.form-input {
 
 /* Clamped Description toggle layout */
 .shop-masonry-grid .product-description-container {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  width: 100% !important;
-  gap: 0 !important;
+  display: none !important;
 }
 
 .shop-masonry-grid .product-description {
@@ -2281,8 +2289,8 @@ footer::before,
 
   /* Split elements Stack */
   .split-bio-block {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    grid-template-columns: 1fr !important;
+    gap: var(--spacing-md) !important;
   }
 
   .contact-layout {
