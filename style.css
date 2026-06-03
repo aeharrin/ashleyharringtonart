@@ -2451,10 +2451,6 @@ footer::before,
   letter-spacing: 0.2rem !important;
 }
 
-.about-page-main .hero-title {
-  letter-spacing: normal !important;
-}
-
 .about-page-main .statement-text {
   line-height: 3rem !important;
 }
